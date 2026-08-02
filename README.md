@@ -1,6 +1,9 @@
 # MIMITools
 咪咪工具箱
 
+<img width="500" height="500" alt="app-icon" src="https://github.com/user-attachments/assets/aae48eaa-f05d-4666-87a3-6495191cfd05" />
+
+
 # 功能
 
 - Mod分析 - 复杂混淆Mod也能轻松导入模型到Blender
