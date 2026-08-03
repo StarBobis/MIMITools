@@ -4,9 +4,8 @@ import DefaultTheme from 'vitepress/theme'
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 import 'katex/dist/katex.min.css'
 import './custom.css'
-import EffectSwitch from './components/EffectSwitch.vue'
+import './index.css'
 import GoogleTranslate from './components/GoogleTranslate.vue'
-import MusicPlayer from './components/MusicPlayer.vue'
 import { h, ref } from 'vue'
 
 import DarkWatcher from "../components/DarkWatcher.vue";
@@ -17,7 +16,7 @@ export default {
 
     Layout() {
         return h(DefaultTheme.Layout, null, {
-            'nav-bar-content-after': () => [h(EffectSwitch), h(MusicPlayer), h(GoogleTranslate)]
+            'nav-bar-content-after': () => [h(GoogleTranslate)]
         })
     },
 
