@@ -3,8 +3,7 @@
 
 <img width="500" height="500" alt="app-icon" src="https://github.com/user-attachments/assets/aae48eaa-f05d-4666-87a3-6495191cfd05" />
 
-https://github.com/StarBobis/MIMITools
-
+https://starbobis.github.io/MIMITools/
 
 # 功能
 
