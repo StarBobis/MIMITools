@@ -10,7 +10,7 @@ export default defineConfig({
   base: "/MIMITools/",
   title: "MIMITools",
   description: "MIMITools - 二次元游戏 Mod 模型提取与逆向工具",
-  appearance: true,
+  appearance: 'dark',
 
   themeConfig: {
     nav,

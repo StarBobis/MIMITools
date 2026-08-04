@@ -7,7 +7,7 @@ import MiniSearch from "minisearch";
 import { u as useData, d as dataSymbol, p as pathToFile, a as useRouter, i as inBrowser, e as escapeRegExp } from "./app.js";
 import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
 import "vitepress-plugin-tabs/client";
-const localSearchIndex = { "root": () => import("./@localSearchIndexroot.ChbWN-2V.js") };
+const localSearchIndex = { "root": () => import("./@localSearchIndexroot.Bs0Ex_6U.js") };
 class LRUCache {
   max;
   cache;
