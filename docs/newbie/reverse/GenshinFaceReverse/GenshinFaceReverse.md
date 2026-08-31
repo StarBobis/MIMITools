@@ -1,4 +1,4 @@
-# 🎭 原神脸部逆向教程
+# 🎭 原神脸部格式转换教程
 
 首先以一个芙宁娜的 Mod 为例，这是文件结构：
 
@@ -36,7 +36,7 @@ void main(uint3 DTid : SV_DispatchThreadID)
 
 此时所有的 `.buf` 文件都是 `Position` 分类的数据，并且和游戏中原本脸部的 `Position` 数据仅有 `POSITION`、`NORMAL`、`TANGENT` 的位置不同。
 
-## 🛠️ 逆向步骤
+## 🛠️ 转换步骤
 
 1.  **提取原模型**：去游戏里提取脸部三个部位的原模型，以此来获取它们的 `ib` 文件。
 2.  **修改 fmt**：改写 `fmt` 文件，仅保留 `POSITION`，`NORMAL`，`TANGENT` 三个元素。

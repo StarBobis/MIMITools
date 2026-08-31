@@ -3,16 +3,16 @@ import type { DefaultTheme } from 'vitepress'
 export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/newbie/reverse/': [
     {
-      text: 'Mod 逆向教程',
+      text: 'Mod 格式转换教程',
       items: [
-        { text: '自动逆向功能', link: '/newbie/reverse/Introduction/Introduction' },
-        { text: '如何激活自动逆向', link: '/newbie/reverse/HowToActivateAutoReverse/HowToActivateAutoReverse' },
-        { text: '一键逆向后导入 Blender', link: '/newbie/reverse/T004ImportIntoBlender/T004ImportIntoBlender' },
+        { text: '自动格式转换功能', link: '/newbie/reverse/Introduction/Introduction' },
+        { text: '如何激活自动格式转换', link: '/newbie/reverse/HowToActivateAutoReverse/HowToActivateAutoReverse' },
+        { text: '格式转换后导入 Blender', link: '/newbie/reverse/T004ImportIntoBlender/T004ImportIntoBlender' },
         { text: '筛选正确的数据类型', link: '/newbie/reverse/T005UseCorrectDataType/T005UseCorrectDataType' },
         { text: '格式：ib vb fmt 与 SSMT 格式', link: '/newbie/reverse/IBVBFmtAndSSMT/IBVBFmtAndSSMT' },
-        { text: '手动逆向功能', link: '/newbie/reverse/ManualReverse/ManualReverse' },
+        { text: '手动格式转换功能', link: '/newbie/reverse/ManualReverse/ManualReverse' },
         { text: '案例：形态键面板 Mod 转换演示', link: '/newbie/reverse/ShapeKeyPanelModConvert/ShapeKeyPanelModConvert' },
-        { text: '案例：原神脸部逆向', link: '/newbie/reverse/GenshinFaceReverse/GenshinFaceReverse' },
+        { text: '案例：原神脸部格式转换', link: '/newbie/reverse/GenshinFaceReverse/GenshinFaceReverse' },
         { text: '案例：调用 TexFx 绘制的 Mod', link: '/newbie/reverse/Case_DrawWithTexFx/Case_DrawWithTexFx' },
         { text: '案例：IndexBuffer 膨胀混淆', link: '/newbie/reverse/BufferInflationObfuscation/BufferInflationObfuscation' },
         { text: '案例：ResourceVBList.size() 为 4 的 Mod', link: '/newbie/reverse/ResourceVBListSize4/ResourceVBListSize4' },
@@ -22,7 +22,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: '骨骼：鸣潮解包原骨骼', link: '/newbie/reverse/WutheringWavesBone/WutheringWavesBone' },
         { text: '萌新常见问题', link: '/newbie/reverse/FAQ/FAQ' },
         { text: '常见问题解答 (FAQ)', link: '/newbie/reverse/T006FAQ/T006FAQ' },
-        { text: '逆向后没有脸部模型？', link: '/newbie/reverse/WhyNoFaceModel/WhyNoFaceModel' }
+        { text: '格式转换后没有脸部模型？', link: '/newbie/reverse/WhyNoFaceModel/WhyNoFaceModel' }
       ]
     }
   ],

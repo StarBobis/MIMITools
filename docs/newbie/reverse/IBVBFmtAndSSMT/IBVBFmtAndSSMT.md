@@ -36,11 +36,11 @@ SSMT格式是一个.json文件，附带着所有的原始buffer，这种格式�
 
 ![alt text](image-1.png)
 
-随后我们随便逆向一个Mod，以这个面板形态键滑条Mod为例：
+随后我们随便格式转换一个Mod，以这个面板形态键滑条Mod为例：
 
 ![alt text](image-2.png)
 
-比如放到纳米猫里逆向成功之后，长这样：
+比如放到纳米猫里格式转换成功之后，长这样：
 
 ![alt text](image-3.png)
 
