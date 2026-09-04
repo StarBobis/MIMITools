@@ -9,7 +9,6 @@ https://starbobis.github.io/MIMITools/
 
 - Mod分析 - 复杂混淆Mod也能轻松导入模型到Blender
 - Mod逆向 - 手动或自动逆向Mod，导入Mod模型到Blender
-- 第六代Mod防报错
 
 # 赞助解锁完整功能
 

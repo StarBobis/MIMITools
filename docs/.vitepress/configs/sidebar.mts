@@ -25,13 +25,5 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: '格式转换后没有脸部模型？', link: '/newbie/reverse/WhyNoFaceModel/WhyNoFaceModel' }
       ]
     }
-  ],
-  '/games/gimi/': [
-    {
-      text: '原神',
-      items: [
-        { text: '10612-4001 等报错解决方法', link: '/games/gimi/HowToSolveErrorCode/HowToSolveErrorCode' }
-      ]
-    }
   ]
 }
