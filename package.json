@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "katex": "^0.16.28",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-katex": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.2",
+    "@vuepress/plugin-markdown-math": "^2.0.0-rc.122",
+    "markdown-it-mathjax3": "^4",
+    "vitepress": "^2.0.0-alpha.16",
+    "vitepress-plugin-tabs": "^0.7.3"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  }
+}
