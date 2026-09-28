@@ -2,10 +2,7 @@
 name: Deploy MIMITools site to Pages
 
 on:
-  # 推送到 main 分支时自动部署
-  push:
-    branches: [main]
-  # 支持在 Actions 页面手动触发（对应 deploy.ps1）
+  # 仅在 Actions 页面手动触发，或通过 deploy.ps1 脚本触发（不会随 push 自动部署）
   workflow_dispatch:
 
 # 部署所需的 GITHUB_TOKEN 权限
