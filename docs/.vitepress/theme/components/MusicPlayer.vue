@@ -174,7 +174,7 @@ onBeforeUnmount(() => {
   height: 24px;
   border: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--ssmt-hermes), var(--ssmt-china-red));
+  background: linear-gradient(135deg, var(--MMT-hermes), var(--MMT-china-red));
   color: #fff;
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(200, 22, 29, 0.24);
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
 }
 
 .music-toggle:focus-visible {
-  outline: 2px solid var(--ssmt-schonbrunn);
+  outline: 2px solid var(--MMT-schonbrunn);
   outline-offset: 2px;
 }
 
@@ -227,18 +227,18 @@ onBeforeUnmount(() => {
 }
 
 .status {
-  color: var(--ssmt-danger);
+  color: var(--MMT-danger);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.6px;
 }
 
 .status.on {
-  color: var(--ssmt-success);
+  color: var(--MMT-success);
 }
 
 .music-control.blocked .status {
-  color: var(--ssmt-warning);
+  color: var(--MMT-warning);
 }
 
 .volume-control {
@@ -257,11 +257,11 @@ onBeforeUnmount(() => {
   position: relative;
   width: 12px;
   height: 12px;
-  color: var(--ssmt-van-dyke);
+  color: var(--MMT-van-dyke);
 }
 
 .dark .volume-mark {
-  color: var(--ssmt-schonbrunn);
+  color: var(--MMT-schonbrunn);
 }
 
 .volume-mark::before {
@@ -288,7 +288,7 @@ onBeforeUnmount(() => {
 
 .volume-value {
   width: 27px;
-  color: var(--ssmt-van-dyke);
+  color: var(--MMT-van-dyke);
   font-size: 9px;
   font-weight: 700;
   line-height: 1;
@@ -296,7 +296,7 @@ onBeforeUnmount(() => {
 }
 
 .dark .volume-value {
-  color: var(--ssmt-schonbrunn);
+  color: var(--MMT-schonbrunn);
 }
 
 .volume-slider {
@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
   width: 72px;
   height: 4px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--ssmt-hermes), var(--ssmt-schonbrunn));
+  background: linear-gradient(90deg, var(--MMT-hermes), var(--MMT-schonbrunn));
   cursor: pointer;
   outline: none;
   opacity: 0.86;
@@ -331,7 +331,7 @@ onBeforeUnmount(() => {
   margin-top: -4.5px;
   border: 2px solid #fff;
   border-radius: 50%;
-  background: var(--ssmt-schonbrunn);
+  background: var(--MMT-schonbrunn);
   box-shadow: 0 1px 5px rgba(73, 45, 34, 0.35);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -343,14 +343,14 @@ onBeforeUnmount(() => {
 }
 
 .dark .volume-slider::-webkit-slider-thumb {
-  border-color: var(--ssmt-van-dyke);
+  border-color: var(--MMT-van-dyke);
 }
 
 .volume-slider::-moz-range-track {
   height: 4px;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--ssmt-hermes), var(--ssmt-schonbrunn));
+  background: linear-gradient(90deg, var(--MMT-hermes), var(--MMT-schonbrunn));
 }
 
 .volume-slider::-moz-range-thumb {
@@ -358,13 +358,13 @@ onBeforeUnmount(() => {
   height: 11px;
   border: 2px solid #fff;
   border-radius: 50%;
-  background: var(--ssmt-schonbrunn);
+  background: var(--MMT-schonbrunn);
   box-shadow: 0 1px 5px rgba(73, 45, 34, 0.35);
   cursor: pointer;
 }
 
 .dark .volume-slider::-moz-range-thumb {
-  border-color: var(--ssmt-van-dyke);
+  border-color: var(--MMT-van-dyke);
 }
 
 .music-control.blocked .music-shell {

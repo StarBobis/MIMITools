@@ -66,7 +66,7 @@ require_admin = true
 | `launch` | `3DMigoto Loader.exe` 启动后将自动唤起的程序路径 |
 | `delay` | `3DMigoto Loader.exe` 运行后的自动关闭延迟 |
 
-> ⚠️ **注意**：尽管原初的 3DMigoto 规定了这些参数，但现代的基于 3DMigoto 的 Mod 加载器（包括 SSMT 和 [XXMI](https://github.com/SpectrumQT/XXMI-Launcher)）部分魔改了这些参数，删掉了无用参数 `delay`，`module`，`require_admin`，并增加了部分参数例如 `launch_args`。所以这里仅供参考。
+> ⚠️ **注意**：尽管原初的 3DMigoto 规定了这些参数，但现代的基于 3DMigoto 的 Mod 加载器（包括 MMT 和 [XXMI](https://github.com/SpectrumQT/XXMI-Launcher)）部分魔改了这些参数，删掉了无用参数 `delay`，`module`，`require_admin`，并增加了部分参数例如 `launch_args`。所以这里仅供参考。
 
 ## 📂 手动安装 Mod 到 3Dmigoto
 

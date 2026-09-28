@@ -7,9 +7,9 @@ import katexPlugin from './katex-compat.js'
 // import strict from 'node:assert/strict'
 
 export default defineConfig({
-  base: "/MIMITools/"
-  title: "SSMT4-Documents",
-  description: "Documents for SSMT4",
+  base: "/MIMITools/",
+  title: "MMT-Documents",
+  description: "Documents for MMT",
   appearance: true,
 
   themeConfig: {

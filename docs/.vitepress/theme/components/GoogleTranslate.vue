@@ -210,7 +210,7 @@ onBeforeUnmount(() => {
 
 .translate-btn:hover .translate-icon,
 .translate-btn.active .translate-icon {
-  color: var(--ssmt-hermes);
+  color: var(--MMT-hermes);
   transform: rotate(-8deg) scale(1.1);
 }
 
@@ -222,7 +222,7 @@ onBeforeUnmount(() => {
 
 .translate-btn:hover .selected-text,
 .translate-btn.active .selected-text {
-  color: var(--ssmt-burgundy);
+  color: var(--MMT-burgundy);
 }
 
 .chevron-icon {
@@ -237,7 +237,7 @@ onBeforeUnmount(() => {
 
 .translate-btn:hover .chevron-icon,
 .translate-btn.active .chevron-icon {
-  color: var(--ssmt-hermes);
+  color: var(--MMT-hermes);
 }
 
 /* ---- 自定义下拉菜单 ---- */
@@ -286,7 +286,7 @@ onBeforeUnmount(() => {
 
 .dropdown-item:hover {
   background-color: rgba(249, 212, 108, 0.14);
-  color: var(--ssmt-burgundy);
+  color: var(--MMT-burgundy);
   padding-left: 16px;
 }
 
@@ -295,7 +295,7 @@ onBeforeUnmount(() => {
 }
 
 .dropdown-item.active {
-  color: var(--ssmt-hermes);
+  color: var(--MMT-hermes);
   font-weight: 600;
 }
 

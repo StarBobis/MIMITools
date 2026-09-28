@@ -267,17 +267,17 @@ onBeforeUnmount(() => {
   width: 10px;
   height: 10px;
   border-radius: 50% !important;
-  background: var(--ssmt-danger);
+  background: var(--MMT-danger);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .effect-control.active .effect-thumb {
   transform: translateX(10px);
-  background: var(--ssmt-success);
+  background: var(--MMT-success);
 }
 
 .effect-control.loading .effect-thumb {
-  background: var(--ssmt-tech);
+  background: var(--MMT-tech);
 }
 
 .effect-label {
@@ -289,7 +289,7 @@ onBeforeUnmount(() => {
 
 .effect-status {
   min-width: 18px;
-  color: var(--ssmt-danger);
+  color: var(--MMT-danger);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0;
@@ -298,15 +298,15 @@ onBeforeUnmount(() => {
 }
 
 .effect-control.active .effect-status {
-  color: var(--ssmt-success);
+  color: var(--MMT-success);
 }
 
 .effect-control:not(.active) .effect-status {
-  color: var(--ssmt-danger);
+  color: var(--MMT-danger);
 }
 
 .effect-control.loading .effect-status {
-  color: var(--ssmt-info);
+  color: var(--MMT-info);
 }
 
 @media (max-width: 768px) {

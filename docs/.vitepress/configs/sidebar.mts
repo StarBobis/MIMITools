@@ -2,23 +2,18 @@ import type { DefaultTheme } from 'vitepress'
 
 export const sidebar: DefaultTheme.Config['sidebar'] = {
 
-  '/newbie/ssmt/': [
+  '/newbie/MMT/': [
     {
-      text: 'SSMT',
+      text: 'MMT',
       items: [
-        { text: 'SSMT介绍', link: '/newbie/ssmt/Index/Index' },
-        { text: 'SSMT支持哪些游戏', link: '/newbie/ssmt/SSMTSupportedGames/SSMTSupportedGames' },
-        { text: '下载与安装', link: '/newbie/ssmt/DownloadAndInstall/DownloadAndInstall' },
-        { text: '如何创建新游戏配置', link: '/newbie/ssmt/HowToCreateNewConfig/HowToCreateNewConfig' },
-        { text: '开始游戏前的配置', link: '/newbie/ssmt/ConfigBeforeStartGame/ConfigBeforeStartGame' },
-        { text: '什么是VSCheck', link: '/newbie/ssmt/WhatIsVSCheck/WhatIsVSCheck' },
+        { text: '什么是VSCheck', link: '/newbie/MMT/WhatIsVSCheck/WhatIsVSCheck' },
         //CantUse3DmigotoInjector
-        { text: '无法使用3Dmigoto注入器?', link: '/newbie/ssmt/CantUse3DmigotoInjector/CantUse3DmigotoInjector' },
+        { text: '无法使用3Dmigoto注入器?', link: '/newbie/MMT/CantUse3DmigotoInjector/CantUse3DmigotoInjector' },
         //无法注入3Dmigoto
-        { text: '无法注入3Dmigoto?', link: '/newbie/ssmt/CantInject3Dmigoto/CantInject3Dmigoto' },
-        { text: '找不到数据类型', link: '/newbie/ssmt/CantFindDataType/CantFindDataType' },
-        { text: '提取模型有多个数据类型', link: '/newbie/ssmt/ExtractMultipleGameType/ExtractMultipleGameType' },
-        { text: 'Dump文件过大处理', link: '/newbie/ssmt/DumpFileTooHuge/DumpFileTooHuge' },
+        { text: '无法注入3Dmigoto?', link: '/newbie/MMT/CantInject3Dmigoto/CantInject3Dmigoto' },
+        { text: '找不到数据类型', link: '/newbie/MMT/CantFindDataType/CantFindDataType' },
+        { text: '提取模型有多个数据类型', link: '/newbie/MMT/ExtractMultipleGameType/ExtractMultipleGameType' },
+        { text: 'Dump文件过大处理', link: '/newbie/MMT/DumpFileTooHuge/DumpFileTooHuge' },
       ]
     }
   ],
@@ -69,72 +64,19 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
-  '/developer/vitepress/': [
+  '/other/reverse/': [
     {
-      text: 'VitePress2.0文档',
+      text: 'Mod逆向',
       items: [
-        { text: '项目初始化', link: '/developer/vitepress/project-init' }
+        { text: '功能介绍', link: '/other/reverse/Welcome/Welcome' },
       ]
     }
   ],
-  '/developer/tauri/': [
+  '/other/gimierror/': [
     {
-      text: 'Tauri学习笔记',
+      text: '原神',
       items: [
-        { text: '如何设置图标', link: '/developer/tauri/HowToSetIcon/HowToSetIcon' },
-        { text: '项目初始化', link: '/developer/tauri/ProjectInit/ProjectInit' },
-        { text: '第一次构建超时问题', link: '/developer/tauri/BuildTimeOutError/BuildTimeOutError' },
-        { text: '构建并发布', link: '/developer/tauri/BuildAndPublish/BuildAndPublish' },
-        { text: '架构', link: '/developer/tauri/架构/架构.md'},
-        { text: 'Vue', items: [
-          {text: '异步组件', link: '/developer/tauri/Vue/异步组件.md'}
-        ]}
-      ]
-    }
-  ],
-
-  '/developer/rust/': [
-    {
-      text: 'Rust 学习笔记',
-      items: [
-        { text: '简介', link: '/developer/rust/简介.md'},
-        { text: '开始', items: [
-          { text: '安装 Rust', link: '/developer/rust/开始/安装 Rust.md' },
-          { text: '哈喽 Rust', link: '/developer/rust/开始/哈喽 Rust.md' },
-          { text: '哈喽 Cargo',link: '/developer/rust/开始/哈喽 Cargo.md'}
-        ] },
-        {
-          text: '基础语法——猜数游戏', link: '/developer/rust/基础语法——猜数游戏/引入.md', items: [
-            {text: '赋值', link: '/developer/rust/基础语法——猜数游戏/赋值.md' },
-            {text: '第三方包依赖', link: '/developer/rust/基础语法——猜数游戏/第三方包依赖.md' },
-            {text: '控制语句和模式匹配', link: '/developer/rust/基础语法——猜数游戏/控制语句和模式匹配.md' },
-            {text: '循环与表达式', link: '/developer/rust/基础语法——猜数游戏/循环与表达式.md' },
-          ]
-        },
-        {
-          text: '编程语言常识', items: [
-            {text: '强类型与弱类型, 静态类型与动态类型', link: '/developer/rust/编程语言常识/强类型与弱类型, 静态类型与动态类型.md' },
-            {text: '编译型和解释型语言', link: '/developer/rust/编程语言常识/编译型和解释型语言.md'},
-            {text: '栈内存与堆内存', link: '/developer/rust/编程语言常识/栈内存与堆内存.md' }
-          ]
-        },
-        {
-          text: '基本语法与数据类型', link: '/developer/rust/基本语法与基本数据类型/基本语法与基本数据类型.md'
-        },
-        {
-          text: '函数与控制流', link: '/developer/rust/函数与控制流/函数与控制流.md'
-        },
-        {
-          text: '所有权', link: '/developer/rust/所有权/所有权.md'
-        },
-        {
-          text: '结构体与枚举',
-          // link: '/developer/rust/结构体与枚举/结构体与枚举.md',
-          items: [
-            {text: '结构体', link: '/developer/rust/结构体与枚举/结构体.md' },
-            {text: '枚举', link: '/developer/rust/结构体与枚举/枚举.md' }
-          ]
-        }
+        { text: '10612-4001报错', link: '/other/gimierror/GenshinImpactError/GenshinImpactError' },
       ]
     }
   ],

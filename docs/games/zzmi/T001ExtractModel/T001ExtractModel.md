@@ -54,7 +54,7 @@
 
 ![alt text](image-11.png)
 
-此时我们回到 <font color="#FF1493">SSMT</font>，打开 **工作台页面**，填写 <font color="#1E90FF">IB</font> 值。
+此时我们回到 <font color="#FF1493">MMT</font>，打开 **工作台页面**，填写 <font color="#1E90FF">IB</font> 值。
 
 ![alt text](image-12.png)
 
@@ -78,7 +78,7 @@
 
 ![alt text](image-15.png)
 
-然后我们回到 <font color="#FF1493">SSMT</font> 的 **工作台页面**，点击 **提取模型** 📤。
+然后我们回到 <font color="#FF1493">MMT</font> 的 **工作台页面**，点击 **提取模型** 📤。
 
 ![alt text](image-16.png)
 
@@ -112,7 +112,7 @@
 
 ## 4. 🖼️ <font color="#20B2AA">贴图</font><font color="#008080">标记</font>
 
-此时我们打开 <font color="#FF1493">SSMT</font>，进入 **贴图标记页面**。
+此时我们打开 <font color="#FF1493">MMT</font>，进入 **贴图标记页面**。
 
 ![alt text](image-23.png)
 
@@ -152,7 +152,7 @@
 ![alt text](image-30.png)
 
 ::: tip 🎉 恭喜
-当你走到这一步时，恭喜你，学会了 <font color="#FF1493">SSMT</font> 基础流程！
+当你走到这一步时，恭喜你，学会了 <font color="#FF1493">MMT</font> 基础流程！
 :::
 
 接下来的内容建立在基础流程之上，我们下一节见 👋。

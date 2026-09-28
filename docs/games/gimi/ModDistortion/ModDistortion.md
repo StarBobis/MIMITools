@@ -32,7 +32,7 @@
 -   **Index Buffer 变动**：如果是 `Index Buffer` 变动（或/和少数上古 mod 的 `Vertex Buffer`），直接在 Hunting 模式下找到，替换掉原本的 IB （或/和 VB）即可。
 -   **其他 Buffer 变动**：如果是 `Position`/`Texcoord`/`Blend` 变动，需要 dump 下来，提取模型。
     -   对于其他制作工具，可以直接于 `config.json` 中找到对应值。
-    -   对于 **SSMT**，打开工作空间，定位到每个 `.<IB>\TYPE_<something>\tmp.json`，其中拥有所需信息。
+    -   对于 **MMT**，打开工作空间，定位到每个 `.<IB>\TYPE_<something>\tmp.json`，其中拥有所需信息。
 
 ### 4. 检查是否有同一角色Mod
 -   **同角色Mod**：如果有角色Mod就会导致都进行渲染，然后叠加，就出现了撕裂，扭曲。可以选择其中一个使用，或者进行合并绑定一个切换键让两个同时存在

@@ -4,7 +4,7 @@
 
 我们都知道，目前 **崩铁** (<font color="#FF00FF">SR</font><font color="#00FFFF">MI</font>) 主流的 <font color="#FFD700">Mod</font> 制作，都是使用 **Hash 风格贴图** 的。尤其是如果你使用 <font color="#FF4500">XXMI-Tools</font> 的话，几乎只能使用 **Hash 风格贴图** 🔒。
 
-但是在 <font color="#FF1493">SSMT</font> 中，我们可以 **自由** 🕊️ 地通过贴图标记，来使用 **槽位风格贴图**。
+但是在 <font color="#FF1493">MMT</font> 中，我们可以 **自由** 🕊️ 地通过贴图标记，来使用 **槽位风格贴图**。
 
 ::: tip 🤔 为什么要用槽位风格？
 相比于 **Hash 风格贴图**，**槽位风格贴图** 在某些 **特殊需求** 下比较有效，例如：
@@ -488,7 +488,7 @@ drawindexed = 88515,0,0
 
 然后我们需要给用到的这两个贴图的 **Hash 值**，加上一个 `filter_index` 的值，作为 **过滤标签** 🏷️。
 
-首先我们得知道这俩贴图的 **Hash 值** 分别是什么。可以看到 <font color="#FFD700">Mod</font> 文件里居然没有显示 **Hash 值**（这个是 <font color="#FF1493">SSMT</font> 的一个缺陷，当前版本存在问题，后续会改进，后续版本应该能直接看到 **Hash 值** 才对 🐛）。
+首先我们得知道这俩贴图的 **Hash 值** 分别是什么。可以看到 <font color="#FFD700">Mod</font> 文件里居然没有显示 **Hash 值**（这个是 <font color="#FF1493">MMT</font> 的一个缺陷，当前版本存在问题，后续会改进，后续版本应该能直接看到 **Hash 值** 才对 🐛）。
 
 ![alt text](image-14.png)
 

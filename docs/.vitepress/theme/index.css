@@ -119,10 +119,10 @@ body {
   animation: none;
 }
 
-.VPHero .VPButton[href*="SSMT3"]:hover {
+.VPHero .VPButton[href*="MMT3"]:hover {
   box-shadow: 0 0 20px rgba(0, 198, 255, 0.4), inset 0 0 10px rgba(0, 198, 255, 0.1);
 }
-.VPHero .VPButton[href*="SSMT3"]:hover::before {
+.VPHero .VPButton[href*="MMT3"]:hover::before {
   background: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
   background-size: 200% 100%;
   animation: borderFlow 2s linear infinite;

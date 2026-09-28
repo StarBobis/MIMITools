@@ -15,9 +15,9 @@ https://gamebanana.com/games/23012
 - NTMI 专属 `d3d11.dll`：<https://github.com/ssice-a/XXMI-Libs-Package>
 - `NTMI-Tools`（用于导入导出 Blender 插件）：<https://github.com/ssice-a/mod_importer>
 
-## 在 SSMT4 中使用异环 Mod
+## 在 MMT 中使用异环 Mod
 
-目前，**SSMT4** 已经支持以下内容：
+目前，**MMT** 已经支持以下内容：
 
 - 自动下载由 **ssice-a** 开发的 NTMI 专属 `d3d11.dll`
 - 自动更新 `NTMI-PACKAGE`
@@ -35,7 +35,7 @@ https://gamebanana.com/games/23012
 
 ## 启动说明
 
-点击 **开始游戏** 后，SSMT4 会自动启动 `Run.exe`。
+点击 **开始游戏** 后，MMT 会自动启动 `Run.exe`。
 
 之后需要你 **手动从官方启动器启动游戏**，并确保官方启动器中的渲染模式设置为 **DX11**。
 

@@ -9,8 +9,8 @@
 我们在实际制作的过程中，用什么模型都是可以的，所以制作 <font color="#2196f3">Mod</font> 的前提是你熟练掌握 <font color="#d97706">Blender</font> 的模型处理技巧。
 
 ::: info ⏳ 时间分配
-在大多数情况下，<font color="#9c27b0">SSMT</font> 与 <font color="#9c27b0">TheHerta</font> 在整个 <font color="#2196f3">Mod</font> 制作过程中，只能占用你 **1%** 不到的时间。
-在你熟练使用 <font color="#9c27b0">SSMT</font> 流程之后，**99%** 的时间都会花在 <font color="#d97706">Blender</font> 中。
+在大多数情况下，<font color="#9c27b0">MMT</font> 与 <font color="#9c27b0">TheHerta</font> 在整个 <font color="#2196f3">Mod</font> 制作过程中，只能占用你 **1%** 不到的时间。
+在你熟练使用 <font color="#9c27b0">MMT</font> 流程之后，**99%** 的时间都会花在 <font color="#d97706">Blender</font> 中。
 :::
 
 ## 📦 准备好模型

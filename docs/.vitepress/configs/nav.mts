@@ -7,8 +7,8 @@ export const nav: DefaultTheme.Config['nav'] = [
     activeMatch: '/newbie/',
     items: [
       {
-        text: 'SSMT',
-        link: '/newbie/ssmt/Index/Index'
+        text: 'MMT',
+        link: '/newbie/MMT/WhatIsVSCheck/WhatIsVSCheck'
       },
       {
         text: 'TheHerta4',
@@ -33,6 +33,20 @@ export const nav: DefaultTheme.Config['nav'] = [
       {
         text: 'FAQ',
         link: '/newbie/faq/BaseInfo/BaseInfo'
+      },
+    ]
+  },
+  {
+    text: '附加功能',
+    activeMatch: '/other/',
+    items: [
+      {
+        text: 'Mod逆向',
+        link: '/other/reverse/Welcome/Welcome'
+      },
+      {
+        text: '原神10612-4001报错',
+        link: '/other/gimierror/GenshinImpactError/GenshinImpactError'
       },
     ]
   },
@@ -83,25 +97,6 @@ export const nav: DefaultTheme.Config['nav'] = [
       {
         text: '异环',
         link: '/games/ntemi/BaseInfo/BaseInfo'
-      }
-    ]
-  },
-  {
-    text: '开发者文档',
-    activeMatch: '/developer/',
-    items: [
-      {
-        text: 'VitePress2.0文档',
-        link: '/developer/vitepress/project-init'
-      },
-      {
-        text: 'Tauri学习笔记',
-        link: '/developer/tauri/HowToSetIcon/HowToSetIcon'
-      },
-
-      {
-        text: 'Rust 学习笔记',
-        link: '/developer/rust/简介'
       }
     ]
   }

@@ -1,56 +1,56 @@
 :root {
     --vp-font-family-mono: "JetBrains Mono", "Sarasa Mono SC", monospace;
 
-    --ssmt-lime: #6ECC54;
-    --ssmt-titian: #D34947;
-    --ssmt-mars: #018B8D;
-    --ssmt-klein: #002FA7;
-    --ssmt-burgundy: #470125;
-    --ssmt-schonbrunn: #F9D46C;
-    --ssmt-tiffany: #71E2D1;
-    --ssmt-china-red: #C8161D;
-    --ssmt-van-dyke: #492D22;
-    --ssmt-hermes: #EB5C20;
-    --ssmt-prussian: #0D3A69;
+    --MMT-lime: #6ECC54;
+    --MMT-titian: #D34947;
+    --MMT-mars: #018B8D;
+    --MMT-klein: #002FA7;
+    --MMT-burgundy: #470125;
+    --MMT-schonbrunn: #F9D46C;
+    --MMT-tiffany: #71E2D1;
+    --MMT-china-red: #C8161D;
+    --MMT-van-dyke: #492D22;
+    --MMT-hermes: #EB5C20;
+    --MMT-prussian: #0D3A69;
 
-    --ssmt-accent: var(--ssmt-hermes);
-    --ssmt-accent-2: var(--ssmt-titian);
-    --ssmt-accent-3: var(--ssmt-schonbrunn);
-    --ssmt-success: var(--ssmt-lime);
-    --ssmt-info: var(--ssmt-klein);
-    --ssmt-info-soft: var(--ssmt-tiffany);
-    --ssmt-tech: var(--ssmt-mars);
-    --ssmt-danger: var(--ssmt-china-red);
-    --ssmt-warning: var(--ssmt-titian);
-    --ssmt-warm: var(--ssmt-schonbrunn);
-    --ssmt-ink: var(--ssmt-van-dyke);
-    --ssmt-deep: var(--ssmt-prussian);
-    --ssmt-border: rgba(235, 92, 32, 0.22);
-    --ssmt-shadow: rgba(73, 45, 34, 0.14);
-    --ssmt-glow: rgba(249, 212, 108, 0.3);
+    --MMT-accent: var(--MMT-hermes);
+    --MMT-accent-2: var(--MMT-titian);
+    --MMT-accent-3: var(--MMT-schonbrunn);
+    --MMT-success: var(--MMT-lime);
+    --MMT-info: var(--MMT-klein);
+    --MMT-info-soft: var(--MMT-tiffany);
+    --MMT-tech: var(--MMT-mars);
+    --MMT-danger: var(--MMT-china-red);
+    --MMT-warning: var(--MMT-titian);
+    --MMT-warm: var(--MMT-schonbrunn);
+    --MMT-ink: var(--MMT-van-dyke);
+    --MMT-deep: var(--MMT-prussian);
+    --MMT-border: rgba(235, 92, 32, 0.22);
+    --MMT-shadow: rgba(73, 45, 34, 0.14);
+    --MMT-glow: rgba(249, 212, 108, 0.3);
 
-    --vp-c-brand-1: var(--ssmt-hermes);
-    --vp-c-brand-2: var(--ssmt-china-red);
-    --vp-c-brand-3: var(--ssmt-schonbrunn);
+    --vp-c-brand-1: var(--MMT-hermes);
+    --vp-c-brand-2: var(--MMT-china-red);
+    --vp-c-brand-3: var(--MMT-schonbrunn);
     --vp-c-brand-soft: rgba(235, 92, 32, 0.14);
 }
 
 .dark {
-    --ssmt-accent: var(--ssmt-schonbrunn);
-    --ssmt-accent-2: var(--ssmt-hermes);
-    --ssmt-accent-3: var(--ssmt-tiffany);
-    --ssmt-info: var(--ssmt-tiffany);
-    --ssmt-info-soft: var(--ssmt-mars);
-    --ssmt-tech: var(--ssmt-tiffany);
-    --ssmt-ink: var(--ssmt-schonbrunn);
-    --ssmt-deep: var(--ssmt-prussian);
-    --ssmt-border: rgba(249, 212, 108, 0.24);
-    --ssmt-shadow: rgba(13, 58, 105, 0.3);
-    --ssmt-glow: rgba(113, 226, 209, 0.24);
+    --MMT-accent: var(--MMT-schonbrunn);
+    --MMT-accent-2: var(--MMT-hermes);
+    --MMT-accent-3: var(--MMT-tiffany);
+    --MMT-info: var(--MMT-tiffany);
+    --MMT-info-soft: var(--MMT-mars);
+    --MMT-tech: var(--MMT-tiffany);
+    --MMT-ink: var(--MMT-schonbrunn);
+    --MMT-deep: var(--MMT-prussian);
+    --MMT-border: rgba(249, 212, 108, 0.24);
+    --MMT-shadow: rgba(13, 58, 105, 0.3);
+    --MMT-glow: rgba(113, 226, 209, 0.24);
 
-    --vp-c-brand-1: var(--ssmt-schonbrunn);
-    --vp-c-brand-2: var(--ssmt-hermes);
-    --vp-c-brand-3: var(--ssmt-titian);
+    --vp-c-brand-1: var(--MMT-schonbrunn);
+    --vp-c-brand-2: var(--MMT-hermes);
+    --vp-c-brand-3: var(--MMT-titian);
     --vp-c-brand-soft: rgba(249, 212, 108, 0.16);
 }
 
@@ -118,7 +118,7 @@
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ssmt-hermes) 72%, var(--vp-c-text-1)) !important;
+    color: color-mix(in srgb, var(--MMT-hermes) 72%, var(--vp-c-text-1)) !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     margin: 0 0 3px;
 }
@@ -144,7 +144,7 @@
 
 .VPMenu .VPMenuLink a:hover {
     background-color: rgba(249, 212, 108, 0.14) !important;
-    color: var(--ssmt-burgundy) !important;
+    color: var(--MMT-burgundy) !important;
     padding-left: 16px !important;
 }
 
@@ -191,32 +191,32 @@ pre,
     text-decoration: none;
 } /* 十六进制数字 —— 清爽青蓝色，类似常量/数字 */
 .hex-byte {
-    color: var(--ssmt-klein); /* 数值/字节，使用克莱因蓝 */
+    color: var(--MMT-klein); /* 数值/字节，使用克莱因蓝 */
 } /* x86 操作码(opcode) 醒目的暖金色 —— 一眼定位指令起点 */
 .x86-opcode {
-    color: var(--ssmt-schonbrunn); /* 金，亮眼但不刺 */
+    color: var(--MMT-schonbrunn); /* 金，亮眼但不刺 */
     font-weight: 500;
 } /* ModRM + SIB 字节 —— 典藏青绿，表示寻址模式 */
 .x86-modrm {
-    color: var(--ssmt-mars); /* 寻址模式，使用马尔斯绿 */
+    color: var(--MMT-mars); /* 寻址模式，使用马尔斯绿 */
 } /* 位移/立即数 —— 亮橘红，突出常数 */
 .x86-imm {
-    color: var(--ssmt-hermes); /* 珊瑚橘 */
+    color: var(--MMT-hermes); /* 珊瑚橘 */
 } /* 指针/重定位/节名称标记 —— 紫罗兰，象征元数据 */
 .section-tag {
-    color: var(--ssmt-titian); /* 紫，用于 .text .data 等 */
+    color: var(--MMT-titian); /* 紫，用于 .text .data 等 */
 } /* ASCII 释义区（竖线右侧） —— 保留原有的低饱和绿灰 */
 .ascii-art {
-    color: var(--ssmt-lime); /* 注释/释义，柔和绿色 */
+    color: var(--MMT-lime); /* 注释/释义，柔和绿色 */
 } /* 完全保留原有空白、缩进、管道符风格 */
 .hex-sep {
-    color: color-mix(in srgb, var(--ssmt-van-dyke) 54%, var(--vp-c-text-2)); /* 分隔符，低饱和暖棕 */
+    color: color-mix(in srgb, var(--MMT-van-dyke) 54%, var(--vp-c-text-2)); /* 分隔符，低饱和暖棕 */
 } /* 偏移量地址区 —— 茶色，稳重 */
 .offset-addr {
-    color: var(--ssmt-tiffany); /* 地址偏移，清晰浅青 */
+    color: var(--MMT-tiffany); /* 地址偏移，清晰浅青 */
 } /* 自定义高亮：PE头特征、调用约定标记等 —— 柔红点缀 */
 .pe-magic {
-    color: var(--ssmt-titian); /* 浅珊瑚红 */
+    color: var(--MMT-titian); /* 浅珊瑚红 */
 } /* 纯文本降级 —— 不加任何额外背景 */
 .plain-hex {
     color: #d4d4d4;
@@ -224,7 +224,7 @@ pre,
 
 .lemma-box {
     background: var(--vp-c-bg-soft);
-    border-left: 6px solid var(--ssmt-van-dyke);
+    border-left: 6px solid var(--MMT-van-dyke);
     border-radius: 12px;
     padding: 18px 22px;
     margin: 1.5em 0;
@@ -234,10 +234,110 @@ pre,
 .lemma-title {
     font-weight: 700;
     font-size: 1.05em;
-    color: var(--ssmt-burgundy);
+    color: var(--MMT-burgundy);
     margin-bottom: 0.6em;
 }
 
 .lemma-body {
     line-height: 1.6;
+}
+
+/* ===== 首页开源版本引导卡片 ===== */
+.mmt-oss-note {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 768px;
+    margin: 56px auto 8px;
+    padding: 18px 24px 18px 26px;
+    position: relative;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 14px;
+    background: var(--vp-c-bg-soft);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.mmt-oss-note::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 0;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, var(--MMT-hermes), var(--MMT-schonbrunn));
+    opacity: 0.85;
+}
+
+.mmt-oss-note:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--MMT-hermes) 42%, var(--vp-c-divider));
+    box-shadow: 0 12px 32px -16px var(--MMT-shadow);
+}
+
+.mmt-oss-note-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.mmt-oss-note-title {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--vp-c-text-1);
+}
+
+.mmt-oss-note-desc {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--vp-c-text-2);
+}
+
+.mmt-oss-note-desc strong {
+    color: var(--vp-c-text-1);
+    font-weight: 600;
+}
+
+.vp-doc a.mmt-oss-note-link {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 999px;
+    background: var(--vp-c-bg);
+    font-family: var(--vp-font-family-mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--vp-c-brand-1);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.vp-doc a.mmt-oss-note-link:hover {
+    border-color: var(--vp-c-brand-1);
+    color: var(--vp-c-brand-2);
+    text-decoration: none;
+    box-shadow: 0 4px 14px -6px var(--MMT-glow);
+}
+
+.mmt-oss-note-arrow {
+    transition: transform 0.25s ease;
+}
+
+.vp-doc a.mmt-oss-note-link:hover .mmt-oss-note-arrow {
+    transform: translate(2px, -2px);
+}
+
+@media (max-width: 640px) {
+    .mmt-oss-note {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin: 40px auto 0;
+    }
 }

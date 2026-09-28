@@ -6,4 +6,4 @@
 
 - **GitHub 仓库**: [https://github.com/bo3b/3Dmigoto](https://github.com/bo3b/3Dmigoto)
 
-> 💡 **提示**：SSMT 工具箱深度集成了 3Dmigoto 的功能，为您提供更便捷的操作体验。
+> 💡 **提示**：MMT 工具箱深度集成了 3Dmigoto 的功能，为您提供更便捷的操作体验。

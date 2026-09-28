@@ -27,7 +27,7 @@ YYSLS就是燕云十六声的拼音首字母简写大写
 
 ![alt text](image-5.png)
 
-目前SSMT对YYSLS的支持，仍然处于内测阶段，所以使用的是MinBase-Package以及手动Check
+目前MMT对YYSLS的支持，仍然处于内测阶段，所以使用的是MinBase-Package以及手动Check
 
 ![alt text](image-6.png)
 

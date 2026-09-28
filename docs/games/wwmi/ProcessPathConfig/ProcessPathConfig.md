@@ -27,4 +27,4 @@ d3d11.dll延迟 `500` (500-2000左右，最低150，你的CPU越好就把这个�
 
 ![alt text](image-4.png)
 
-此外，目前SSMT4 + TheHerta4可完美制作鸣潮Mod，遇到问题记得给我留言。
+此外，目前MMT + TheHerta4可完美制作鸣潮Mod，遇到问题记得给我留言。

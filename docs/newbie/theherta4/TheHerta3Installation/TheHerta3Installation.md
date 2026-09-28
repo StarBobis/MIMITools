@@ -1,4 +1,4 @@
-# SSMT 的 Blender 插件安装教程
+# MMT 的 Blender 插件安装教程
 
 ## 要求
 
@@ -7,7 +7,7 @@
 
 ## 下载插件
 
-前往 [GitHub 仓库](https://github.com/Perxenic-Acid/TheHerta4)，下载 Release 中的最新插件压缩包。
+前往 [GitHub 仓库](https://github.com/StarBobis/MIMIBlender/releases)，下载 Release 中的最新插件压缩包。
 
 ![1752128274140](1752128274140.png)
 
@@ -43,7 +43,7 @@
 
 4. 切换到 `社区版`，勾选启用插件，然后保存配置。
 
-   如果找不到插件，可以在 `社区版` 中搜索 `SSMT`。
+   如果找不到插件，可以在 `社区版` 中搜索 `MMT`。
 
    ![1752130509356](1752130509356.png)
 
@@ -51,7 +51,7 @@
 
 ## 更新插件
 
-在侧栏打开 `TheHerta` 工作菜单，点击 `检查 ssmt_blender_plugin 更新`。
+在侧栏打开 `TheHerta` 工作菜单，点击 `检查 MMT_blender_plugin 更新`。
 
 ![1752130778696](1752130778696.png)
 ![1752130805506](1752130805506.png)

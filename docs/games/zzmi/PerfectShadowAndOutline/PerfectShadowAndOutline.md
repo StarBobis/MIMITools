@@ -85,7 +85,7 @@ A 通道控制的是 **遮光率的多少**。
 
 ### 🛠️ 不偷懒的 Texcoord1 和 Texcoord2 设置方法
 
--   [★平滑法线存TEXCOORD1.xy](https://perxenic-acid.github.io/SSMT-Documents/Tutorials/SSMT-Blender-Plugins/%E2%98%85%E5%B9%B3%E6%BB%91%E6%B3%95%E7%BA%BF%E5%AD%98TEXCOORD1.xy/%E2%98%85%E5%B9%B3%E6%BB%91%E6%B3%95%E7%BA%BF%E5%AD%98TEXCOORD1.xy.html)
--   [★投影TEXCOORD2.xy(近似)](https://perxenic-acid.github.io/SSMT-Documents/Tutorials/SSMT-Blender-Plugins/%E2%98%85%E6%8A%95%E5%BD%B1TEXCOORD2.xy(%E8%BF%91%E4%BC%BC)/%E2%98%85%E6%8A%95%E5%BD%B1TEXCOORD2.xy(%E8%BF%91%E4%BC%BC).html)
+-   [★平滑法线存TEXCOORD1.xy](https://perxenic-acid.github.io/MMT-Documents/Tutorials/MMT-Blender-Plugins/%E2%98%85%E5%B9%B3%E6%BB%91%E6%B3%95%E7%BA%BF%E5%AD%98TEXCOORD1.xy/%E2%98%85%E5%B9%B3%E6%BB%91%E6%B3%95%E7%BA%BF%E5%AD%98TEXCOORD1.xy.html)
+-   [★投影TEXCOORD2.xy(近似)](https://perxenic-acid.github.io/MMT-Documents/Tutorials/MMT-Blender-Plugins/%E2%98%85%E6%8A%95%E5%BD%B1TEXCOORD2.xy(%E8%BF%91%E4%BC%BC)/%E2%98%85%E6%8A%95%E5%BD%B1TEXCOORD2.xy(%E8%BF%91%E4%BC%BC).html)
 
 
