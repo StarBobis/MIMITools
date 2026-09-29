@@ -11,7 +11,7 @@ hero:
       text: MMT下载地址
       link: https://github.com/StarBobis/MIMITools/releases
     - theme: alt
-      text: MMT的Blender插件TheHerta4下载地址
+      text: MMT的Blender插件MIMIBlender下载地址
       link: https://github.com/StarBobis/MIMIBlender/releases
 
 features:

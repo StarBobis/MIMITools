@@ -11,8 +11,8 @@ export const nav: DefaultTheme.Config['nav'] = [
         link: '/newbie/MMT/WhatIsVSCheck/WhatIsVSCheck'
       },
       {
-        text: 'TheHerta4',
-        link: '/newbie/theherta4/TheHerta3Installation/TheHerta3Installation'
+        text: 'MIMIBlender',
+        link: '/newbie/MIMIBlender/BaseInfo/BaseInfo'
       },
       {
         text: 'Reverse',
