@@ -97,6 +97,10 @@ export const nav: DefaultTheme.Config['nav'] = [
       {
         text: '异环',
         link: '/games/ntemi/BaseInfo/BaseInfo'
+      },
+      {
+        text: '永劫无间',
+        link: '/games/naraka/BaseInfo/BaseInfo'
       }
     ]
   }

@@ -194,6 +194,15 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
+  '/games/naraka/': [
+    {
+      text: '永劫无间',
+      items: [
+        { text: '基础信息', link: '/games/naraka/BaseInfo/BaseInfo' },
+        { text: '蓝图节点:快速跨IB渲染', link: '/games/naraka/FastCrossIBRender/FastCrossIBRender' },
+      ]
+    }
+  ],
   '/games/zzmi/': [
     {
       text: '绝区零',
