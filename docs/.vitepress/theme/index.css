@@ -256,6 +256,54 @@ body {
   color: transparent;
 }
 
+/* ======= 首页开源版本提示卡片 · 玻璃拟态统一 ======= */
+/* 与 VPFeature 卡片共用同一套玻璃配方：半透明底 + 背景模糊 + 细边 */
+.mmt-oss-note {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 12px;
+}
+
+.dark .mmt-oss-note {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+.mmt-oss-note:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark .mmt-oss-note:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* 卡片内的仓库链接 pill 同步玻璃化，避免实心色块 */
+.vp-doc a.mmt-oss-note-link {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dark .vp-doc a.mmt-oss-note-link {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.vp-doc a.mmt-oss-note-link:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.dark .vp-doc a.mmt-oss-note-link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: transparent;
@@ -789,6 +837,60 @@ html {
 
 .dark .VPNavBar .divider {
   background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.25), rgba(167, 85, 247, 0.25), transparent) !important;
+}
+
+/* ======= 导航栏右侧控件组 · 玻璃拟态统一 ======= */
+/* 特效开关 / BGM 播放器 / 语言切换 共用与 VPFeature 相同的玻璃配方 */
+.VPNavBar .effect-switch,
+.VPNavBar .music-shell,
+.VPNavBar .translate-btn {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+.dark .VPNavBar .effect-switch,
+.dark .VPNavBar .music-shell,
+.dark .VPNavBar .translate-btn {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* hover：统一为玻璃提亮，替代原本各自为政的实心高亮 */
+.VPNavBar .effect-switch:hover:not(:disabled),
+.VPNavBar .music-shell:hover,
+.VPNavBar .translate-btn:hover,
+.VPNavBar .translate-btn.active {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.18) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .VPNavBar .effect-switch:hover:not(:disabled),
+.dark .VPNavBar .music-shell:hover,
+.dark .VPNavBar .translate-btn:hover,
+.dark .VPNavBar .translate-btn.active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 三个控件统一高度节奏（30px），视觉对齐 */
+.VPNavBar .effect-control {
+  height: 30px;
+}
+
+.VPNavBar .effect-switch {
+  height: 30px !important;
+  padding: 3px 10px 3px 5px !important;
+}
+
+.VPNavBar .translate-btn {
+  height: 30px;
+  padding: 0 12px 0 10px !important;
 }
 
 
@@ -2380,15 +2482,18 @@ html {
 
 
 .VPSwitchAppearance {
-  background-color: rgba(0, 0, 0, 0.05) !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  border-radius: 22px !important;
+  border-radius: 999px !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0 !important;
   transition: all 0.5s ease;
 }
 
 .dark .VPSwitchAppearance {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
 }
 
 .VPSwitchAppearance:hover {
