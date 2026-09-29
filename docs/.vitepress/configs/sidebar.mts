@@ -17,17 +17,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
-  '/newbie/reverse/': [
-    {
-      text: 'Mod模型一些小问题',
-      items: [
-        { text: '萌新常见问题', link: '/newbie/reverse/FAQ/FAQ' },
-        { text: '骨骼: 模型绑定骨骼', link: '/newbie/reverse/BindModelToBone/BindModelToBone' },
-        { text: '骨骼: 米游游戏原骨骼绑骨', link: '/newbie/reverse/HoyoGamesBone/HoyoGamesBone' },
-        { text: '骨骼: 鸣潮原骨骼绑骨', link: '/newbie/reverse/WutheringWavesBone/WutheringWavesBone' },
-      ]
-    }
-  ],
   '/newbie/MIMIBlender/': [
     {
       text: 'MIMIBlender',
@@ -58,7 +47,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '常见问题',
       items: [
         { text: '基础信息', link: '/newbie/faq/BaseInfo/BaseInfo' },
-        { text: '软件在哪下载', link: '/newbie/faq/WhereGetSoftware/WhereGetSoftware' },
+        { text: '常用办公软件在哪下载', link: '/newbie/faq/WhereGetSoftware/WhereGetSoftware' },
+        { text: '模型从哪里获取', link: '/newbie/faq/WhereGetModels/WhereGetModels' },
         
       ]
     }
@@ -80,6 +70,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: 'Mod模型里没有脸部模型?', link: '/other/reverse/NoFaceModel/NoFaceModel' },
         { text: 'MMT常见问题', link: '/other/reverse/MMTFAQ/MMTFAQ' },
         { text: '四种Mod逆向方式区别', link: '/other/reverse/ReverseMethodComparison/ReverseMethodComparison' },
+        { text: '萌新常见问题', link: '/other/reverse/FAQ/FAQ' },
+        { text: '骨骼: 模型绑定骨骼', link: '/other/reverse/BindModelToBone/BindModelToBone' },
+        { text: '骨骼: 米游游戏原骨骼绑骨', link: '/other/reverse/HoyoGamesBone/HoyoGamesBone' },
+        { text: '骨骼: 鸣潮原骨骼绑骨', link: '/other/reverse/WutheringWavesBone/WutheringWavesBone' },
       ]
     }
   ],

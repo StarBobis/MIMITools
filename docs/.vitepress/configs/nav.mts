@@ -15,10 +15,6 @@ export const nav: DefaultTheme.Config['nav'] = [
         link: '/newbie/MIMIBlender/BaseInfo/BaseInfo'
       },
       {
-        text: 'Reverse',
-        link: '/newbie/reverse/FAQ/FAQ'
-      },
-      {
         text: '3Dmigoto',
         link: '/migoto/Extra_VertexNumberRaise/Extra_VertexNumberRaise'
       },
