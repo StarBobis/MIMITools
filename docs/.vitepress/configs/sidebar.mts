@@ -253,6 +253,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: 'MikuMikuRig插件', link: '/blender/MikuMikuRig/MikuMikuRig' },
         { text: '撤销次数一定要拉高', link: '/blender/MoreCtrlZSteps/MoreCtrlZSteps' },
         { text: '删除骨骼约束', link: '/blender/RemoveBoneConstraints/RemoveBoneConstraints' },
+        { text: '导入FBX后如何删除Animation', link: '/blender/RemoveFBXAnimation/RemoveFBXAnimation' },
+        { text: '姿态控制', link: '/blender/PoseControl/PoseControl' },
         { text: '去掉启动时的卡片', link: '/blender/RemoveStartTips/RemoveStartTips' },
         { text: '恢复默认布局', link: '/blender/RestoreDefaultLayout/RestoreDefaultLayout' },
         { text: 'Screenshot Keys插件', link: '/blender/ScreenshotKeys/ScreenshotKeys' },
