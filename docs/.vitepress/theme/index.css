@@ -666,6 +666,14 @@ html {
   border-bottom: none !important;
 }
 
+/* VitePress 2 使用 ::before 绘制导航背景；仅清除容器底色不足以
+   覆盖文档页、滚动后的首页及 screen-open 状态。毛玻璃统一由 .VPNav 提供。 */
+.VPNav .VPNavBar::before {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* 让子页面导航栏右侧 content-body 也透明，跟随毛玻璃效果 */
 .VPNavBar .content-body {
   background-color: transparent !important;
@@ -1972,6 +1980,14 @@ html {
 }
 
 /* ======= 2. 移动端本地导航条毛玻璃 ======= */
+/* 960–1279px 时默认 ::before 延伸到顶部导航背后，同样必须移除
+   实心底色和重复模糊，避免两个导航条出现不透明区域或接缝。 */
+.VPLocalNav::before {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 .VPLocalNav {
   background: rgba(255, 255, 255, 0.75) !important;
   backdrop-filter: blur(12px) !important;
