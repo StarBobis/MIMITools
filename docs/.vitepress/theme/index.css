@@ -902,10 +902,16 @@ html {
 }
 
 
+/* 左右导航共用透明毛玻璃，避免目录额外叠加深浅主题底色。 */
+.VPSidebar,
+.VPDocAsideOutline {
+  background: transparent !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
 .VPSidebar {
   border-right: 1px solid transparent !important;
-  background-color: transparent !important;
-  backdrop-filter: blur(10px);
 }
 
 /* 让侧边栏及其 curtain 背景从导航栏下方开始，避免透过顶部毛玻璃导航栏 */
@@ -1948,20 +1954,12 @@ html {
   text-shadow: 0 0 15px rgba(167, 85, 247, 0.6);
 }
 
-/* ======= 1. TOC 大纲面板毛玻璃 ======= */
+/* ======= 1. TOC 大纲面板：毛玻璃配方与左侧导航共用 ======= */
 .VPDocAsideOutline {
-  background: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid transparent !important;
   border-radius: 12px !important;
   padding: 16px 12px !important;
   transition: all 0.3s ease;
-}
-
-.dark .VPDocAsideOutline {
-  background: rgba(11, 12, 21, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.04) !important;
 }
 
 .VPDocAsideOutline .title {
