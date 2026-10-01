@@ -65,7 +65,11 @@
         max-width: calc(var(--vp-layout-max-width) - 64px) !important;
     }
 
-    .VPNavBar.has-sidebar .container > .title {
+    /* 文档页默认将标题列撑到侧栏宽度，导致搜索框相对首页右移。
+       所有桌面页面都使用标题自身宽度，不挪动搜索框或依赖负边距。 */
+    .VPNavBar .container > .title {
+        min-width: 0 !important;
+        max-width: none !important;
         position: static !important;
         padding: 0 !important;
         width: auto !important;
@@ -77,8 +81,9 @@
         padding-right: 0 !important;
     }
 
-    .VPNavBar.has-sidebar .VPNavBarSearch {
-        padding-left: 24px;
+    /* 首页和文档页共用相同的标题到搜索框间距。 */
+    .VPNavBar .VPNavBarSearch {
+        padding-left: 32px !important;
     }
 }
 
