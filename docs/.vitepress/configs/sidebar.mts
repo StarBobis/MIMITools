@@ -34,6 +34,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '常用工具',
       items: [
+        { text: '贴图通道与AI生成：基础与验收', link: '/newbie/tools/TextureChannelGuide/TextureChannelGuide' },
         { text: 'ComfyUI贴图工作流', link: '/newbie/tools/ComfyUITexture/ComfyUITexture' },
         { text: 'Paint.NET工具介绍', link: '/newbie/tools/PaintDotNet/PaintDotNet' },
         { text: 'Paint.NET Modify Channels插件', link: '/newbie/tools/ModifyChannelPlugin/ModifyChannelPlugin' },
@@ -90,6 +91,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '原神',
       items: [
         { text: '基础信息', link: '/games/gimi/BaseInfo/BaseInfo' },
+        { text: '贴图通道详解与生成提示词', link: '/games/gimi/TextureChannelGuide/TextureChannelGuide' },
         { text: '颜色不匹配问题', link: '/games/gimi/ColorMismatch/ColorMismatch' },
         { text: '脸部隐藏问题', link: '/games/gimi/FaceHidingIssue/FaceHidingIssue' },
         { text: 'Mod扭曲或失效', link: '/games/gimi/ModDistortion/ModDistortion' },
@@ -104,6 +106,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '崩坏:星穹铁道',
       items: [
         { text: '基础信息', link: '/games/srmi/BaseInfo/BaseInfo' },
+        { text: '贴图通道详解与生成提示词', link: '/games/srmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '无法导出完整角色体型', link: '/games/srmi/CantDumpFullBody/CantDumpFullBody' },
         { text: '动作Mod崩溃或异常', link: '/games/srmi/ActionModCrash/ActionModCrash' },
         { text: 'AI插针导致Mod炸裂', link: '/games/srmi/AIBrokeMods/AIBrokeMods' },
@@ -126,7 +129,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         { text: '基础信息', link: '/games/efmi/BaseInfo/BaseInfo' },
         { text: 'd3dx.ini特殊变更', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
-        { text: '贴图通道作用', link: '/games/efmi/TextureChannels/TextureChannels' },
+        { text: '贴图通道详解与生成提示词', link: '/games/efmi/TextureChannelGuide/TextureChannelGuide' },
+        { text: '贴图通道社区简表', link: '/games/efmi/TextureChannels/TextureChannels' },
         { text: '如何注入3Dmigoto', link: '/games/efmi/HowToConfigAndInject/HowToConfigAndInject' },
         { text: '头发生成Mod后炸裂', link: '/games/efmi/HairModBroken/HairModBroken' },
         { text: 'Hash风格贴图无法生效', link: '/games/efmi/HashStyleTextureNotWork/HashStyleTextureNotWork' }
@@ -157,6 +161,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '崩坏3',
       items: [
         { text: '基础信息', link: '/games/himi/BaseInfo/BaseInfo' },
+        { text: '贴图通道详解与生成提示词', link: '/games/himi/TextureChannelGuide/TextureChannelGuide' },
         { text: '轮廓线修复', link: '/games/himi/OutlineFix/OutlineFix' },
         { text: 'Second UV Map用途', link: '/games/himi/SecondUVMapUsage/SecondUVMapUsage' }
       ]
@@ -186,6 +191,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '鸣潮',
       items: [
         { text: '基础信息', link: '/games/wwmi/BaseInfo/BaseInfo' },
+        { text: '贴图通道详解与生成提示词', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' },
         { text: '一键启动路径配置', link: '/games/wwmi/ProcessPathConfig/ProcessPathConfig' }
       ]
@@ -213,6 +219,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '绝区零',
       items: [
         { text: '基础信息', link: '/games/zzmi/BaseInfo/BaseInfo' },
+        { text: '贴图通道详解与生成提示词', link: '/games/zzmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '爱丽丝的剑消失问题', link: '/games/zzmi/AliceSwordDisappear/AliceSwordDisappear' },
         { text: '上下身体分开问题', link: '/games/zzmi/BodySeparationIssue/BodySeparationIssue' },
         { text: '禁用动态高精度', link: '/games/zzmi/DisableDynamicHighPrecision/DisableDynamicHighPrecision' },

@@ -1,0 +1,37 @@
+{
+  "kind": "original synthetic educational diagrams, not game assets or model benchmarks",
+  "files": [
+    {
+      "file": "normal-packed-data.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "80b8b2dff9b1f7d0e76ecb197d202fa830cbd8de2ff785766fcd23582f9199d5"
+    },
+    {
+      "file": "normal-packed.png",
+      "size": [
+        1400,
+        302
+      ],
+      "sha256": "6d0f227ea6e4521bb643c80e5464dbfff3496bd157a9d99ad8004b620d1a6e11"
+    },
+    {
+      "file": "synthetic-diffuse.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "d9a9ba5f08cf2faa7c1c73195e3bfcbe15611f2a2db8d7704dcd3e09dc063066"
+    },
+    {
+      "file": "synthetic-regions.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "e3daf7b23424651ee22c56b3ac0e61e64fb24a8f7e3a4db85f02daeb3d04ec3c"
+    }
+  ]
+}
