@@ -66,6 +66,14 @@
       "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
     },
     {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L712-L738",
+      "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L467-L520",
+      "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
+    },
+    {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L414-L463",
       "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
     },
@@ -104,6 +112,10 @@
     {
       "url": "https://github.com/Elysia-simp/HI3-Toon-old/blob/8a53d3235f906517e202439aa9ec89dceb1701e0/Sub/materials.fxh#L99-L104",
       "retrieved_source_sha256": "c6c35c728c3060d878ecffe5ab4bdc3cbab15c9c4964952137ec633cd673a02e"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Colors.hlsl#L1-L27",
+      "retrieved_source_sha256": "fcbc9c14b38f7a6b92e68f107cafcbb3c08f10272a54b892892af0542ea1ed31"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L52-L158",
@@ -146,6 +158,10 @@
       "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
     },
     {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406",
+      "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
+    },
+    {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
@@ -164,6 +180,14 @@
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L690-L737",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L102-L113",
+      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L150-L164",
+      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L526-L547",
@@ -187,6 +211,14 @@
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L558-L563",
+      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L779-L833",
+      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L369-L377",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {

@@ -172,6 +172,49 @@ pre,
     line-height: 1.5;
 }
 
+/* Wide reference tables must scroll rather than clip channel descriptions. */
+.vp-doc table {
+    overflow-x: auto !important;
+}
+
+/* Plain-text examples are prose, not source code: wrap without changing copied text. */
+.vp-doc div.language-text pre {
+    overflow-x: hidden;
+    white-space: pre-wrap;
+}
+
+.vp-doc div.language-text pre code {
+    display: block;
+    min-width: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    font-family: var(--vp-font-family-base) !important;
+    line-height: 1.8;
+}
+
+/* A wrapped paragraph has no useful source-line gutter. Keep the copy toolbar clear. */
+.vp-doc div.language-text.line-numbers-mode {
+    padding-left: 0;
+}
+
+.vp-doc div.language-text .line-numbers-wrapper {
+    display: none;
+}
+
+.vp-doc div.language-text.line-numbers-mode pre.shiki {
+    padding: 44px 24px 20px !important;
+}
+
+/* Readable prose cards stay distinct from the decorative page background. */
+.vp-doc div.language-text.line-numbers-mode {
+    background: rgba(248, 246, 250, 0.96) !important;
+}
+
+.dark .vp-doc div.language-text.line-numbers-mode {
+    background: rgba(17, 17, 26, 0.96) !important;
+}
+
 .vitepress-pseudo-codeblock {
     display: block;
     background: #1e1e1e; /* VitePress 深色背景 */
