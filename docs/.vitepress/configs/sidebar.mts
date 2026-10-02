@@ -34,7 +34,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '常用工具',
       items: [
-        { text: '贴图通道与AI生成：基础与验收', link: '/newbie/tools/TextureChannelGuide/TextureChannelGuide' },
         { text: 'ComfyUI贴图工作流', link: '/newbie/tools/ComfyUITexture/ComfyUITexture' },
         { text: 'Paint.NET工具介绍', link: '/newbie/tools/PaintDotNet/PaintDotNet' },
         { text: 'Paint.NET Modify Channels插件', link: '/newbie/tools/ModifyChannelPlugin/ModifyChannelPlugin' },

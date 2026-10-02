@@ -1,200 +1,478 @@
-# 明日方舟：终末地：属性图、皮肤、脸与头发通道详解
+# 明日方舟：终末地：逐贴图通道图解与完整生成提示词
 
-终末地的属性图有几套公开说法，BA顺序甚至相反。你要做的不是选一张看起来权威的表，而是先确认自己的材质用哪套。衣服、脸和头发也要分开改。
+这页可以单独使用。先上传一张自己的Diffuse颜色图到ChatGPT Image等支持图像输入的模型，再复制目标贴图下面的**完整提示词**。不需要上传第二张LightMap，也不用读另一篇基础文章才能知道怎么用。
 
-**怎么用下面的提示词：**先读通道说明，再让模型出草稿。未修改通道请在编辑器里从原图复制，不靠模型保证像素一致；ID和阈值用取色器确认。练习数字不代表该角色的标准参数。
+**先分清两件事：**通道规则来自指定复刻Shader；下面按皮肤、布料、饰件给的数字是明确的生成练习预设，不是从该角色解包得到的原值。提示词写得完整可以减少歧义，但不能保证模型逐像素保持UV或精确执行RGBA。
 
-[通用基础与验收](../../../newbie/tools/TextureChannelGuide/TextureChannelGuide.md)。终末地的公开资料仍有不同复刻管线和社区定义，**不能把一个“R/G/B/A表”当全部材质规范**。
+本页用“原图/四通道图 → 看图说明 → 每通道数值 → 完整提示词”讲解。教学图都是程序绘制、texconv拆通道的示意，不冒充游戏解包或模型实测。
 
-## 下载练习图
+本页MME约定依据固定提交 `f9e90932a25678101e3e28a8d91663fa0706a4ed`。这是MMD/MME复刻，不是可直接安装进终末地的Shader；社区BA表与该MME不同，必须按各自布局使用。
 
-[合成Diffuse](./assets/synthetic-diffuse.png) · [同UV语义分区](./assets/synthetic-regions.png) · [原始RGBA教学数据](./assets/property-data.png) · [资源来源与边界](./assets/README.md) · [SHA256清单](./assets/manifest.json)
+## 找到你要生成的贴图
 
-可以下载旁边的合成图练习拆通道。图中的分区和数值是练习设定，不是从游戏角色测得的参数。
+- [DiffuseMap / 颜色图](#map-diffuse)
+- [衣服 Property / MME属性图](#map-property)
+- [社区 BA 相反的属性图](#map-community-property)
+- [衣服 NormalMap / RG法线](#map-normal)
+- [脸部 Diffuse / Alpha AO](#map-face-diffuse)
+- [脸 cm_M / 控制图](#map-cmm)
+- [头发 HN / 双法线](#map-hairnormal)
+- [头发 Property / P](#map-hairproperty)
+- [FaceMap / 脸部方向阴影图](#map-sdf)
+- [Ramp / 漫反射色带](#map-ramp)
+- [MatCap / 球面外观图](#map-matcap)
+- [发丝线 / 雨水 / 微细节控制图](#map-microdetail)
+- [LUT / 参数查表图](#map-lut)
+- [RD / 明暗混合色带](#map-rd)
+- [RS / 高光查表](#map-rs)
 
-## 1. 先解决旧简表与公开源码的冲突
+## 这页怎样读
 
-本站已有[社区简表](../TextureChannels/TextureChannels.md)：R金属、G镜面高光类型、B平滑度、A AO，并提到皮肤Diffuse A的AO。该页署名为“失乡のKnight”，没有附对应Shader版本和读取代码，因此应作为**待核查的社区资产约定**，不能直接删除，也不能擅自把它推广。
+- 数据值用0～255；线性UNORM中除以255得到0～1。字节128约0.502，若RGB被sRGB解码则约0.216，不能对控制图做自动Gamma或美化。Alpha通常不经过sRGB转换，仍要核对加载路径。
+- 灰度白只意味着数值大：乘子、反向遮罩、材质ID、方向数据的“白”含义不同。下面逐图解释，不用一条规则概括。
+- 只上传Diffuse时，材质分类是猜测。裸金属、丝袜、发光区域最好在文字里指出；不明区域有保守默认值，但它不恢复原角色ID。
+- 合成预览可能受Alpha显示影响；灰度A图是真正的第四通道。下载各层后用取色器看字节，不靠预览颜色判断。
 
-本次取得的 [Endfield MME Shader](https://github.com/chris0214/Arknights-Endfield-MME-Shader) 固定提交 `f9e90932a25678101e3e28a8d91663fa0706a4ed`，其 [材质指南](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/USER_GUIDE_CN.md#L67-L75)与 [衣服实际计算](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1842-L1852)明确：**R金属、G反射率、B AO、A光滑度**。这与简表BA相反、G也不能直接解释成离散高光类型。
+## 仓库里确实有这些真实示例
 
-| 约定 | R | G | B | A | 证据与使用范围 |
-| --- | --- | --- | --- | --- | --- |
-| 社区简表 | 金属 | 镜面高光类型 | 光滑度 | AO | 没有固定Shader证据；仅在确认自己的资产确实如此时使用 |
-| 本次MME衣服Property | 金属 | Reflectivity反射率 | AO | 光滑度 | 有固定版本计算源码；适用于这套复刻布局 |
-| DanbaidongRP PBRMask | 金属 | 光滑度 | AO | 反向发光1−A | 独立参考管线，不是终末地原资产规范 |
+MME仓库包含[真实脸SDF](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/textures/common/T_actor_common_female_face_01_SDF.png)、[真实cm_M](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/textures/common/T_actor_common_female_face_01_cm_M.png)和[RD色带](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/textures/common/T_actor_common_face_01_RD.png)。但作者的[资产许可边界](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/ASSET_LICENSE_BOUNDARY_CN.md)明确不授予这些游戏命名纹理的MIT权利，因此这里只链接原仓库，不把原文件或拆出的通道再分发。
 
-[DanbaidongRP实际读取](https://github.com/danbaidong1111/DanbaidongRP/blob/072b375399e4c38d0cad235a7ec513f981fd5676/Shaders/Material/PBRToon/PBRToonBase.shader#L466-L475)展示第三种布局。它是MME作者列出的参考之一，但**引用该管线不意味着所有贴图按它打包**。
+真实SDF能看到大面积方向渐变而非普通鼻子投影；cm_M能看到彼此不同的脸部控制区域。下面本地图片是标明占位/预设的原创图，不能把它们当成这两张真实资产的复原。
 
-::: danger 防止灾难性通道交换
-未经确认就把B/A交换，可能让无遮蔽区域变成极光滑或让光滑区域变成强遮蔽。先检查目标材质采样代码或做单通道小区测试；不知道属于哪套时保留原图。
-:::
+## 1. DiffuseMap / 颜色图 {#map-diffuse}
 
-![MME衣服Property教学示意](./assets/property.png)
+先看输入的蓝色衣片：颜色图里它就该是蓝色，R/G/B是颜色分量。到了控制图，同一片蓝布可能变成红橙色，那不是改了衣服颜色，而是几个控制值叠在一起。
 
-## 2. 按MME实际实现划分材质
+![明日方舟：终末地 DiffuseMap / 颜色图 输入、输出与四通道示意](./assets/maps/diffuse/overview.png)
 
-| 图与材质 | R | G | B | A |
-| --- | --- | --- | --- | --- |
-| 衣服Diffuse | RGB颜色 | 同左 | 同左 | 依具体载入/透明路径，保留，别套皮肤AO |
-| 衣服Property | 金属度控制 | 反射率控制 | AO式遮蔽控制 | 光滑度，代码取1−A获得粗糙度 |
-| 衣服Normal | 法线X | 法线Y | 核心RG解包未使用，保留 | 同左 |
-| 脸Diffuse（已核查Face路径） | RGB颜色 | 同左 | 同左 | AO控制，并受参数指数影响 |
-| 独立Skin路径Diffuse | RGB颜色 | 同左 | 同左 | 本次核心Skin函数只读RGB，不能据此断言A用于AO；原资产约定待确认 |
-| 脸SDF | 方向阴影阈值R | 另一方向阈值G/混合使用 | 本页没有确认用途，先保留 | 同左 |
-| 脸cm_M | SSS作用权重 | 脸SDF/几何区混合与保护 | 摄像机阴影区域控制 | 脸边缘/轮廓光遮罩 |
-| 头发HN | 常规法线X | 常规法线Y | 平滑法线X | 平滑法线Y；BA也是法线而非AO/光滑度 |
-| 头发Property / P | 层/法线混合等头发专属控制 | 反射率或高光遮罩，按路径 | AO式控制，按路径 | 光滑度或发丝线控制，按路径 |
-| RD | RGB色带/光照外观 | 同左 | 同左 | 明暗混合权重 |
-| RS | RGB高光查表 | 同左 | 同左 | 依表，保留 |
-| Skin LUT / FGD / MatCap | 查表外观/数值，非衣服UV | 依表 | 依表 | 依表 |
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
 
-这个表限定为上述MME复刻的确认路径；头发与脸图不能套衣服Property。下面每个贴图给出一次可复制的提示词，未知编码只给保守修补而不硬编。
+[原始RGBA图](./assets/maps/diffuse/diffuse.png) · [R灰度层](./assets/maps/diffuse/diffuse-r.png) · [G灰度层](./assets/maps/diffuse/diffuse-g.png) · [B灰度层](./assets/maps/diffuse/diffuse-b.png) · [A灰度层](./assets/maps/diffuse/diffuse-a.png)
 
-## 3. 衣服Property：适用于这套MME布局
+**R怎么用：** R是基础颜色红分量，0最低、255最高。
 
-G是反射率，和高光形状、强度、各向异性类别不同。它还会乘材质强度参数；A光滑度进入 `roughness=1−A`，最终有最低粗糙度限制。AO图不等于“深色布料”。
+**G怎么用：** G是基础颜色绿分量，0最低、255最高。
 
-| 衣服Property | 数值减小 | 数值增大 | 端点与例子 |
-| --- | --- | --- | --- |
-| R金属 | 更偏非金属 | 更偏金属 | 0非金属端，255在强度=1时金属端；不是高光总亮度刻度 |
-| G反射率 | 反射率权重降低 | 权重增大 | 0压掉按G相乘的分量，但其它层仍可能反光；255还受强度、分层和光向控制。不是离散类型ID |
-| B AO | 遮蔽更强 | 遮蔽更轻 | 255不加这一项遮蔽，0最重，但高光AO还有 `0.5+0.5B` 等处理，不保证全图变黑；200约0.784，是轻遮蔽练习值，不是缝隙编码 |
-| A光滑度 | 粗糙度升高，高光更散 | 粗糙度降低，高光更集中 | 强度=1时A=0→roughness1，128→约0.498，255→最低0.04。A≥245已触及0.04下限；不是255变成完美镜面 |
+**B怎么用：** B是基础颜色蓝分量，0最低、255最高。
 
-这些方向对应干燥基础材质、正常非负参数。雨水、分层、控制器还会继续改变结果。先保留原图参数，再看你想改的是高光亮度还是高光宽度。
+**A怎么用：** A用途由材质决定，单张Diffuse不能推断透明、发光或ID。
+
+颜色分量不是金属、高光或AO；不要增加新的方向光、投影和高光。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image2>原衣服Property的A层为参考，对照<image1>服装UV，生成单通道光滑度草稿。只把我标出的普通布料A适当调暗，让高光更分散，金属、光滑饰件和未知区域保持原灰度。保持尺寸、UV岛、缝线与扣件边界，不画自然颜色、阴影或文字，只输出A层。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成DiffuseMap / 颜色图的颜色贴图草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是基础颜色红分量，0最低、255最高；G是基础颜色绿分量，0最低、255最高；B是基础颜色蓝分量，0最低、255最高；A用途由材质决定，单张Diffuse不能推断透明、发光或ID。本次明确采用的生成预设：本次生成同UV、不透明Diffuse颜色草稿：R/G/B按我给出的新配色修改，未指定改色时保留上传图的RGB颜色；A固定255，不猜透明、发光或材质ID。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只修改我指定的配色，未指定处保留上传Diffuse的颜色和绘制细节。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-上面的提示词只生成光滑度层。合并到A时，R/G/B从原Property复制，别因为预览颜色变了就把AO一起重画。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-若已经确认用社区BA布局，B光滑度低值更粗、高值更光滑；A AO低值更遮蔽、高值更保留受光。G声称是“高光类型”却没有固定源码，所以不能给你编0～255类型表或强弱方向；它应该保留原编码，直到有对应Shader或实测。
+## 2. 衣服 Property / MME属性图 {#map-property}
 
-**社区BA相反约定的提示词（仅确认后使用）：**
+**对应代码：** [衣服实际计算](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1842-L1852)
+
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
+
+![明日方舟：终末地 衣服 Property / MME属性图 输入、输出与四通道示意](./assets/maps/property/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/property/property.png) · [R灰度层](./assets/maps/property/property-r.png) · [G灰度层](./assets/maps/property/property-g.png) · [B灰度层](./assets/maps/property/property-b.png) · [A灰度层](./assets/maps/property/property-a.png)
+
+**R怎么用：** R金属度0非金属255金属端，受强度控制。
+
+**G怎么用：** G反射率权重增大通常更强，0仍不保证所有层无反射，非离散类型。
+
+**B怎么用：** B AO低值更遮蔽、255不额外遮蔽，高光AO可能用0.5+0.5B。
+
+**A怎么用：** A光滑度，roughness=max((1−A)×强度,0.04)，强度1时245起到下限，不是完美镜面。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>服装UV和<image2>已确认社区BA布局的原属性图，只修补指定B光滑度层，让标出的布料比原值稍暗，其它区域不动。保持画布、UV岛和边界，不画自然颜色、阴影或文字，只输出B灰度草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成衣服 Property / MME属性图的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R金属度0非金属255金属端，受强度控制；G反射率权重增大通常更强，0仍不保证所有层无反射，非离散类型；B AO低值更遮蔽、255不额外遮蔽，高光AO可能用0.5+0.5B；A光滑度，roughness=max((1−A)×强度,0.04)，强度1时245起到下限，不是完美镜面。本次明确采用的生成预设：仅MME布局练习：普通布RGBA(0,100,255,40)、光滑饰件(0,100,255,140)、裸金属(255,180,255,180)、未知(0,100,255,40)，明确结构缝隙只把B降230。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-该段不证明社区表就是你的资产规范。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-## 4. 衣服Normal：RG法线
+![衣服A光滑度与粗糙度示意](./assets/smoothness-values.png)
 
-[RG解包](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L811-L885)支持法线强度与Y方向调整。不能把头发HN的BA双法线方式推广到衣服。
+## 3. 社区 BA 相反的属性图 {#map-community-property}
 
-R/G的线性解码方向仍是0负、128附近零、255正；Y翻转后G方向相反。越白不是越凸。B/A在这条衣服RG法线解包中不用，但可能存在其它资产用途，保留。
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
+
+![明日方舟：终末地 社区 BA 相反的属性图 输入、输出与四通道示意](./assets/maps/community-property/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/community-property/community-property.png) · [R灰度层](./assets/maps/community-property/community-property-r.png) · [G灰度层](./assets/maps/community-property/community-property-g.png) · [B灰度层](./assets/maps/community-property/community-property-b.png) · [A灰度层](./assets/maps/community-property/community-property-a.png)
+
+**R怎么用：** R声称金属度，确认目标后低非金属高金属。
+
+**G怎么用：** G声称高光类型，但无固定源码阈值定义，不能从Diffuse恢复。
+
+**B怎么用：** B该社区布局是光滑度，低粗高滑。
+
+**A怎么用：** A该社区布局是AO，低更遮蔽高保留。
+
+### 完整占位生成提示词（非角色还原）
 
 ```text
-对照<image1>服装UV生成浅法线XY草稿，平坦RG约(128,128)，只在指定缝线、扣件和压边处做连续弱变化。不把颜色明暗当高低，不添噪点、光照或文字，保持尺寸和UV位置，只用于提取RG。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成社区 BA 相反的属性图的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R声称金属度，确认目标后低非金属高金属；G声称高光类型，但无固定源码阈值定义，不能从Diffuse恢复；B该社区布局是光滑度，低粗高滑；A该社区布局是AO，低更遮蔽高保留。本次明确采用的生成预设：仅已确认社区布局的占位练习：R非金属0裸金属255，G0未知类型占位，B布40金属180，A255；不是MME图，不保证G0兼容。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-## 5. 脸Diffuse：Alpha参与AO，独立Skin路径不能外推
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-Face路径已确认A参与AO；独立Skin函数主要读取Diffuse RGB，本次没有找到同样的Diffuse A→AO链路。因此以下“皮肤AO”操作仅在自己的皮肤材质也确认该用途时使用，不把社区经验外推到所有复刻路径。
+## 4. 衣服 NormalMap / RG法线 {#map-normal}
 
-[Face读取AO](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L969-L975)把A作为遮蔽并受指数参数调节。不能把所有颜色图Alpha定义成“透明度”。
+**对应代码：** [RG解包](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L811-L885)
+
+看R和G里的细小变化，方向信息藏在这些梯度里，而不是藏在“蓝紫色外观”里。平坦区域约128；从128向两侧偏移表示向不同切线方向倾斜，不是越白越凸。
+
+![明日方舟：终末地 衣服 NormalMap / RG法线 输入、输出与四通道示意](./assets/maps/normal/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/normal/normal.png) · [R灰度层](./assets/maps/normal/normal-r.png) · [G灰度层](./assets/maps/normal/normal-g.png) · [B灰度层](./assets/maps/normal/normal-b.png) · [A灰度层](./assets/maps/normal/normal-a.png)
+
+**R怎么用：** R编码切线法线X：0负方向、128附近零偏转、255正方向。
+
+**G怎么用：** G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader。
+
+**B怎么用：** B该RG解包未使用，不能当粗糙度。
+
+**A怎么用：** A该RG解包未使用，不能当AO。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-按指定色板修改<image1>脸部Diffuse的RGB，保留尺寸、脸UV、眼鼻嘴和肤色细节，不加新的光源、投影或文字。只输出颜色草稿，Alpha稍后从原图复制。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成衣服 NormalMap / RG法线的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R编码切线法线X：0负方向、128附近零偏转、255正方向；G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader；B该RG解包未使用，不能当粗糙度；A该RG解包未使用，不能当AO。本次明确采用的生成预设：平坦RGBA(128,128,0,255)，只指定结构作浅XY变化；BA占位，不替代原角色未知数据。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。法线细节仅来自我明确指出的浅缝线、压边、扣件和发丝结构，不把Diffuse明暗转成高度，不新增织物噪点；XY解码为2×值/255−1，保持X²+Y²≤1并按目标定义重建或填写Z，不能把方向极值当凹凸强度。
 ```
 
-Face路径按 `AO=(A/255)^强度` 处理：正指数下A越小遮蔽越重，255始终保留1，0趋向0。指数=1时200约保留78.4%；指数=2时约61.5%，所以同样200可能明显更暗。指数为0又是特殊情况，别把这套公式外推给只读RGB的独立Skin路径。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-**单独皮肤AO候选：**
+## 5. 脸部 Diffuse / Alpha AO {#map-face-diffuse}
+
+**对应代码：** [Face读取AO](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L969-L975)
+
+先看输入的蓝色衣片：颜色图里它就该是蓝色，R/G/B是颜色分量。到了控制图，同一片蓝布可能变成红橙色，那不是改了衣服颜色，而是几个控制值叠在一起。
+
+![明日方舟：终末地 脸部 Diffuse / Alpha AO 输入、输出与四通道示意](./assets/maps/face-diffuse/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/face-diffuse/face-diffuse.png) · [R灰度层](./assets/maps/face-diffuse/face-diffuse-r.png) · [G灰度层](./assets/maps/face-diffuse/face-diffuse-g.png) · [B灰度层](./assets/maps/face-diffuse/face-diffuse-b.png) · [A灰度层](./assets/maps/face-diffuse/face-diffuse-a.png)
+
+**R怎么用：** R是脸部颜色红分量，0最低255最高，RGB按sRGB转线性。
+
+**G怎么用：** G是脸部颜色绿分量，0最低255最高。
+
+**B怎么用：** B是脸部颜色蓝分量，0最低255最高，不能把RGB绘制明暗直接当AO。
+
+**A怎么用：** A是Face链AO：正指数时低更暗255保留1；200指数1约78.4%、指数2约61.5%。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>脸部UV和<image2>原Diffuse的Alpha，只在我标出的遮蔽区稍微压暗，其它位置沿用原灰度。不要把腮红当AO，不画方向鼻影，不改画布和UV位置，不加文字，输出A灰度草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成脸部 Diffuse / Alpha AO的颜色贴图草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是脸部颜色红分量，0最低255最高，RGB按sRGB转线性；G是脸部颜色绿分量，0最低255最高；B是脸部颜色蓝分量，0最低255最高，不能把RGB绘制明暗直接当AO；A是Face链AO：正指数时低更暗255保留1；200指数1约78.4%、指数2约61.5%。本次明确采用的生成预设：RGB按用户颜色修改保留眼鼻嘴；A普通255、明确结构遮蔽230，弱过渡；仅Face链练习，不外推独立Skin只读RGB路径。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只修改我指定的配色，未指定处保留上传Diffuse的颜色和绘制细节。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-## 6. 脸SDF与cm_M
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-MME [SDF读取](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L705-L758)包含RG选择与不同诊断/渲染路径，依头部与光向计算；不能用灰度鼻影替代。
+## 6. 脸 cm_M / 控制图 {#map-cmm}
 
-固定MME常规分支把R/G平均后与角度阈值比较：其它参数不变时，提高选中值会提高亮面权重。另一些诊断分支按前光G、背光R选通道，它们不能当成同时生效的最终规范。0/255是场两端，不是“R越白越金属”；B/A核心未确认。
+**对应代码：** [摄像机阴影](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L552-L560) · [SSS](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L602-L621) · [边缘遮罩](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L861-L876)
 
-**SDF：**
+脸图和身体图不能共用解释。图中常量只是把每个通道的位置拆给你看，不代表脸的方向阴影已经恢复；眼鼻嘴的对应关系、视角和材质分支都很重要。
+
+![明日方舟：终末地 脸 cm_M / 控制图 输入、输出与四通道示意](./assets/maps/cmm/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/cmm/cmm.png) · [R灰度层](./assets/maps/cmm/cmm-r.png) · [G灰度层](./assets/maps/cmm/cmm-g.png) · [B灰度层](./assets/maps/cmm/cmm-b.png) · [A灰度层](./assets/maps/cmm/cmm-a.png)
+
+**R怎么用：** R为SSS乘子0关闭该项255最大纹理权重。
+
+**G怎么用：** G在SSS链减弱视角限制、诊断链混SDF/几何、摄像机阴影链提高接收，非统一明暗刻度。
+
+**B怎么用：** B摄像机阴影区域乘子0无这项区域、增大允许更多阴影，最终max(G,区域×B)。
+
+**A怎么用：** A边缘光权重0抑制255最大，另受光侧/视角/宽度限制。
+
+### 完整占位生成提示词（非角色还原）
 
 ```text
-对照<image1>脸UV，只修补<image2>原SDF中标出的破损，沿用原RG方向阈值梯度和镜像关系，不画肤色、普通AO或透明度。保持画布与UV位置，不加文字，输出修补草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成脸 cm_M / 控制图的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R为SSS乘子0关闭该项255最大纹理权重；G在SSS链减弱视角限制、诊断链混SDF/几何、摄像机阴影链提高接收，非统一明暗刻度；B摄像机阴影区域乘子0无这项区域、增大允许更多阴影，最终max(G,区域×B)；A边缘光权重0抑制255最大，另受光侧/视角/宽度限制。本次明确采用的生成预设：非还原性无附加效果占位RGBA(0,0,0,0)，或用户明确启用SSS时脸区R128；不从Diffuse推断原相机遮罩与轮廓场。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-cm_M用途分别见 [摄像机阴影](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L552-L560)、[SSS](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L602-L621)、[边缘遮罩](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L861-L876)。R/G/B/A不是衣服MRO。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-| cm_M通道 | 值小 / 值大的含义 |
-| --- | --- |
-| R | SSS权重乘子，0关闭这项，增大允许更多SSS颜色响应，255最大纹理权重 |
-| G | SSS链中增大会减弱视角限制；选中SDF混合诊断时0用SDF、255用几何N·L；摄像机阴影链中还提高阴影接收权重。三条路径不同，不能一句“越白越亮”概括 |
-| B | 摄像机阴影区域乘子，0不贡献这项区域，增大允许更多场景阴影进入；最终取max(G,摄像机区域×B)，G大时改B可能看不出区别 |
-| A | 脸边缘光权重，0压掉这项，增大允许更多边缘光；还受光侧、视角、宽度指数限制，不是透明度 |
+## 7. 头发 HN / 双法线 {#map-hairnormal}
 
-改SSS先动R，改边缘光先动A；不要为了让脸更亮同时把整张cm_M涂白。
+**对应代码：** [头发读入](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L1231-L1252)
+
+看R和G里的细小变化，方向信息藏在这些梯度里，而不是藏在“蓝紫色外观”里。平坦区域约128；从128向两侧偏移表示向不同切线方向倾斜，不是越白越凸。
+
+![明日方舟：终末地 头发 HN / 双法线 输入、输出与四通道示意](./assets/maps/hairnormal/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/hairnormal/hairnormal.png) · [R灰度层](./assets/maps/hairnormal/hairnormal-r.png) · [G灰度层](./assets/maps/hairnormal/hairnormal-g.png) · [B灰度层](./assets/maps/hairnormal/hairnormal-b.png) · [A灰度层](./assets/maps/hairnormal/hairnormal-a.png)
+
+**R怎么用：** R编码切线法线X：0负方向、128附近零偏转、255正方向。
+
+**G怎么用：** G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader。
+
+**B怎么用：** B是soft法线X：0负128附近零255正，不是Z或AO。
+
+**A怎么用：** A是soft法线Y：0负128附近零255正，不是透明度。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>脸UV和<image2>原cm_M的指定通道，只修补我标出的控制区域，沿用原灰度和边界。保持画布与眼鼻嘴位置，不套衣服金属粗糙度规则，不画照明或文字，输出单通道草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成头发 HN / 双法线的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R编码切线法线X：0负方向、128附近零偏转、255正方向；G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader；B是soft法线X：0负128附近零255正，不是Z或AO；A是soft法线Y：0负128附近零255正，不是透明度。本次明确采用的生成预设：平坦RGBA(128,128,128,128)，RG仅按明确发丝浅凹凸作弱变化，BA128平滑方向占位；真正soft方向需要几何信息，不能从Diffuse恢复。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。法线细节仅来自我明确指出的浅缝线、压边、扣件和发丝结构，不把Diffuse明暗转成高度，不新增织物噪点；XY解码为2×值/255−1，保持X²+Y²≤1并按目标定义重建或填写Z，不能把方向极值当凹凸强度。
 ```
 
-## 7. 头发HN与Property：双法线不能丢Alpha
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-[头发读入](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L1231-L1252)把HN RG作为regular normal、BA作为soft normal，再以P.r作层混合。**HN A不是未用透明通道，直接置255会破坏平滑法线Y。**
+## 8. 头发 Property / P {#map-hairproperty}
+
+**对应代码：** [头发读入](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L1231-L1252)
+
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
+
+![明日方舟：终末地 头发 Property / P 输入、输出与四通道示意](./assets/maps/hairproperty/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/hairproperty/hairproperty.png) · [R灰度层](./assets/maps/hairproperty/hairproperty-r.png) · [G灰度层](./assets/maps/hairproperty/hairproperty-g.png) · [B灰度层](./assets/maps/hairproperty/hairproperty-b.png) · [A灰度层](./assets/maps/hairproperty/hairproperty-a.png)
+
+**R怎么用：** R层法线混合，0偏外层球面/soft，255偏regular；可显式sRGB转换，128不一定半权重。
+
+**G怎么用：** G原生高光路径是highlightMask，另一ORM路径是反射率。
+
+**B怎么用：** B通常AO低更遮蔽高保留，按wrapper。
+
+**A怎么用：** A原生链是发丝线控制，ORM链是光滑度，两者没有统一端点解释。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>头发UV，只修补<image2>原HN的RG常规法线层，沿用原细小连续梯度。保持画布、发丝边界和UV位置，不把BA当Z或透明度，不画头发颜色、光照或文字，只输出用于提取RG的草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成头发 Property / P的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R层法线混合，0偏外层球面/soft，255偏regular；可显式sRGB转换，128不一定半权重；G原生高光路径是highlightMask，另一ORM路径是反射率；B通常AO低更遮蔽高保留，按wrapper；A原生链是发丝线控制，ORM链是光滑度，两者没有统一端点解释。本次明确采用的生成预设：仅独立确认ORM头发练习：R128、G128、B255、A128，明确缝隙B230；原生发丝线链不使用这套预设。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-HN的RG和BA都是XY方向数据：每对128附近零偏转，低值负、高值正。A=255不是“不透明”，而是平滑法线Y极端偏向一侧。两套法线不能用衣服Property的解释。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-头发P.r是混合权重：0更偏外层法线（球面/soft组合），255更偏regular法线；中间值插值后归一化，不是线性提高高光强度。若启用sRGB转换，R=128读入约0.216，并非一半混合。G在原生高光链通常越大权重越多，在另一ORM链是反射率；B的AO通常低值更遮蔽；A在ORM链越大越光滑，在发丝线链则改变线控制。没有一套涵盖所有wrapper的A端点解释，确认路径后再改，不编固定阈值。
+## 9. FaceMap / 脸部方向阴影图 {#map-sdf}
 
-**头发Property：**
+**对应代码：** [SDF读取](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L705-L758)
+
+这里故意展示平场占位，而不画一个看起来像鼻影的假SDF。颜色图没有告诉我们每个脸部像素在哪个光向开始转暗；正确方向场需要额外设计或几何信息。
+
+![明日方舟：终末地 FaceMap / 脸部方向阴影图 输入、输出与四通道示意](./assets/maps/sdf/overview.png)
+
+**图中是不能用于脸阴影还原的常量占位，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/sdf/sdf.png) · [R灰度层](./assets/maps/sdf/sdf-r.png) · [G灰度层](./assets/maps/sdf/sdf-g.png) · [B灰度层](./assets/maps/sdf/sdf-b.png) · [A灰度层](./assets/maps/sdf/sdf-a.png)
+
+**R怎么用：** R方向场，与G平均或按诊断选路，增大通常更偏亮面。
+
+**G怎么用：** G另一方向场，与R配套，不能当皮肤绿颜色。
+
+**B怎么用：** B核心未确认用途。
+
+**A怎么用：** A核心未确认用途。
+
+只上传Diffuse无法唯一确定方向场。下面完整指令仅生成标明用途的占位草稿，不是正确SDF生成配方；要重建必须增加几何/光向设计信息。
+
+### 完整占位生成提示词（非角色还原）
 
 ```text
-对照<image1>头发UV和<image2>原头发Property的指定通道，只修补我标出的区域，沿用原灰度和发丝边界。不要把R当衣服金属度，不改画布或UV位置，不加光照和文字，输出单通道草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成FaceMap / 脸部方向阴影图的占位草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R方向场，与G平均或按诊断选路，增大通常更偏亮面；G另一方向场，与R配套，不能当皮肤绿颜色；B核心未确认用途；A核心未确认用途。本次明确采用的生成预设：非还原占位RGBA(128,128,0,255)，RG平场没有正确转光阴影，BA占位。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-头发G/B/A最终作用还需要查看选定wrapper、宏与对应分支：资产原生高光路径会读G作highlightMask、A作发丝线控制；另一ORM路径读G作反射率、A作光滑度。部分路径还显式将Property RGB做sRGB→线性转换，不能无条件套用“所有控制图一律Non-Color数值直接读”的泛化规则。本页不把所有诊断路径当最终渲染，增加新角色应再审计。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-## 8. RD、RS、查表与微细节
+## 10. Ramp / 漫反射色带 {#map-ramp}
 
-RD在 [衣服路径](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1838-L1844)读A为diffuseWeight；[脸路径](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L765-L788)也以RD A混合明暗。RS、FGD、Skin LUT都不是服装UV。
+看横向色带：它按受光坐标查颜色，不是按衣服UV读。四通道图里白色Alpha可能只是占位，也可能控制混合，要看这一种表的定义。
 
-RD A在所引用的混合路径中，0偏向LUT/暗色端，255偏向绘制的亮面Diffuse端，中间值控制两端混合；RGB是查表颜色，某一色通道增大只是增加该查表颜色分量。RS RGB也是查表数据，Alpha与Skin LUT/FGD的具体参数没有统一强弱方向，没表定义就不动。
+![明日方舟：终末地 Ramp / 漫反射色带 输入、输出与四通道示意](./assets/maps/ramp/overview.png)
 
-**RD：**
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/ramp/ramp.png) · [R灰度层](./assets/maps/ramp/ramp-r.png) · [G灰度层](./assets/maps/ramp/ramp-g.png) · [B灰度层](./assets/maps/ramp/ramp-b.png) · [A灰度层](./assets/maps/ramp/ramp-a.png)
+
+**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+
+**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+
+**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+
+**A怎么用：** A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。
+
+这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原RD为查表模板，只按指定色板修改对应RGB色带，A完整继承原明暗混合权重，保留尺寸、取样行和边界，不放服装UV、不重新绘制人物、不加文字，只输出查表候选供逐坐标取样检查。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成Ramp / 漫反射色带的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；G是查表颜色绿分量，值增大增加所采样绿贡献；B是查表颜色蓝分量，值增大增加所采样蓝贡献；A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。本次明确采用的生成预设：256×16练习色带：每一行相同，左RGB(45,50,65)、中(150,160,180)、右(255,255,255)，A255，沿X平滑变化、不重排成衣服UV。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**RS：**
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 11. MatCap / 球面外观图 {#map-matcap}
+
+这里看的是球面查表外观，不是扣件在UV中的位置。转视角时材质去球面图取样；直接把服装图变成橙色不可能得到正确MatCap。
+
+![明日方舟：终末地 MatCap / 球面外观图 输入、输出与四通道示意](./assets/maps/matcap/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/matcap/matcap.png) · [R灰度层](./assets/maps/matcap/matcap-r.png) · [G灰度层](./assets/maps/matcap/matcap-g.png) · [B灰度层](./assets/maps/matcap/matcap-b.png) · [A灰度层](./assets/maps/matcap/matcap-a.png)
+
+**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+
+**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+
+**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+
+**A怎么用：** A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。
+
+这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原RS为高光查表模板按指定外观修订RGB，严格保留尺寸、行列、取样方向和Alpha，不把它当UV服装贴图、不增加文字或场景，只输出候选并用原高光坐标映射验证。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成MatCap / 球面外观图的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；G是查表颜色绿分量，值增大增加所采样绿贡献；B是查表颜色蓝分量，值增大增加所采样蓝贡献；A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。本次明确采用的生成预设：256×256球面练习图，中心RGB(220,220,220)、边缘(40,40,40)，平滑球面高光，无背景物体；A255，仅用户确认该MatCap路径后试用。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**Skin LUT / FGD：**
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-这类图需要精确参数和网格对应，直接填写数值更可靠。模型的修补草稿不能证明数据已恢复。
+## 12. 发丝线 / 雨水 / 微细节控制图 {#map-microdetail}
+
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+
+**R怎么用：** R用途依独立噪声、发丝线、雨水或唇高光函数。
+
+**G怎么用：** G没有统一用途定义。
+
+**B怎么用：** B没有统一用途定义。
+
+**A怎么用：** A没有统一用途定义。
+
+这些是不同资产，不是一种统一RGBA图；必须先指出具体绑定，不能从Diffuse恢复全部。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
 
 ```text
-以<image1>原Skin LUT或FGD为参考，只修补我标记的视觉破损，保持切片网格、尺寸和其它区域，不新添渐变、物体或文字，输出修补草稿。精确参数稍后在编辑器里填写。
+我只上传了这张明日方舟：终末地角色Diffuse颜色图。我想生成发丝线 / 雨水 / 微细节控制图，但你没有目标采样/参数定义。完整规则是：R用途依独立噪声、发丝线、雨水或唇高光函数；G没有统一用途定义；B没有统一用途定义；A没有统一用途定义。只上传Diffuse无法确定该图的采样布局和阈值，因此不生成声称可替换的四通道图，不自行填RGBA常量；需要取得目标Shader、参数或几何信息。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
 ```
 
-**MatCap：**
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 13. LUT / 参数查表图 {#map-lut}
+
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+
+**R怎么用：** R依表行列存特定参数，没有全图单调强弱方向。
+
+**G怎么用：** G依表行列存特定参数，不能当统一粗糙度。
+
+**B怎么用：** B依表行列存特定参数，不能当统一AO。
+
+**A怎么用：** A依表行列定义，不能统一填255；缺少布局不生成替代图。
+
+这里不伪造一个固定RGBA值就称能用；有些特殊贴图没有单Diffuse生成解。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
 
 ```text
-以<image1>原MatCap为球面采样布局模板，按指定材质外观修改RGB高光、Alpha继承原图，保留中心与边缘结构，不放服装UV或真实背景、不加文字，只输出球面外观候选供转视角和mip采样验证。
+我只上传了这张明日方舟：终末地角色Diffuse颜色图。我想生成LUT / 参数查表图，但你没有目标采样/参数定义。完整规则是：R依表行列存特定参数，没有全图单调强弱方向；G依表行列存特定参数，不能当统一粗糙度；B依表行列存特定参数，不能当统一AO；A依表行列定义，不能统一填255；缺少布局不生成替代图。不生成替代图；仅说明缺少的表尺寸、行列和RGBA参数，让用户用编辑器按规范填写。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
 ```
 
-独立头发噪声、发丝线、唇高光及雨水图由特定宏/采样坐标决定：
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 14. RD / 明暗混合色带 {#map-rd}
+
+**对应代码：** [衣服路径](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1838-L1844) · [脸路径](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L765-L788)
+
+看横向色带：它按受光坐标查颜色，不是按衣服UV读。四通道图里白色Alpha可能只是占位，也可能控制混合，要看这一种表的定义。
+
+![明日方舟：终末地 RD / 明暗混合色带 输入、输出与四通道示意](./assets/maps/rd/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/rd/rd.png) · [R灰度层](./assets/maps/rd/rd-r.png) · [G灰度层](./assets/maps/rd/rd-g.png) · [B灰度层](./assets/maps/rd/rd-b.png) · [A灰度层](./assets/maps/rd/rd-a.png)
+
+**R怎么用：** R色带红分量。
+
+**G怎么用：** G色带绿分量。
+
+**B怎么用：** B色带蓝分量。
+
+**A怎么用：** A混合权重，0偏暗/LUT端、255偏绘制Diffuse亮端。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原微细节贴图的指定通道为参考，只修补我标记的破损区域，沿用原灰度和平铺边界。保持尺寸，不重新设计材质参数，不加文字，输出该层草稿。
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成RD / 明暗混合色带的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R色带红分量；G色带绿分量；B色带蓝分量；A混合权重，0偏暗/LUT端、255偏绘制Diffuse亮端。本次明确采用的生成预设：256×16，RGB从左(45,50,65)到右(255,255,255)，A从左0到右255连续变化；同一行复制到16行，仅练习，布局不能冒充原RD。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-## 9. 可靠性与实机验收
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-公开MME作者也明确自动匹配和检查不能替代实机视觉验收。该复刻是MMD/MME运行时，**不是直接可安装进终末地游戏的Shader**；此文用于解释与生成候选，部署仍要核对原游戏绑定。
+## 15. RS / 高光查表 {#map-rs}
 
-检查Property BA顺序、皮肤Diffuse A、脸SDF RG、cm_M、头发HN双法线与P.r；逐通道、逐材质、不同光向和视角测试。保留源图与宏配置，不把衣服/皮肤/脸/头发各自规则混用。提示词生成不保证数字精度，用外部工具定值与继承通道。
+看横向色带：它按受光坐标查颜色，不是按衣服UV读。四通道图里白色Alpha可能只是占位，也可能控制混合，要看这一种表的定义。
+
+![明日方舟：终末地 RS / 高光查表 输入、输出与四通道示意](./assets/maps/rs/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/rs/rs.png) · [R灰度层](./assets/maps/rs/rs-r.png) · [G灰度层](./assets/maps/rs/rs-g.png) · [B灰度层](./assets/maps/rs/rs-b.png) · [A灰度层](./assets/maps/rs/rs-a.png)
+
+**R怎么用：** R高光查表红。
+
+**G怎么用：** G高光查表绿。
+
+**B怎么用：** B高光查表蓝。
+
+**A怎么用：** A所用链没有统一定义，占位255不声称原值。
+
+### 完整生成提示词（单张Diffuse输入）
+
+```text
+请根据我上传的这一张明日方舟：终末地角色DiffuseMap颜色贴图，生成RS / 高光查表的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R高光查表红；G高光查表绿；B高光查表蓝；A所用链没有统一定义，占位255不声称原值。本次明确采用的生成预设：256×16，RGB由左(0,0,0)到右(255,255,255)，A255，各行相同；只做查表练习。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
+```
+
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 看数值方向，不要只看合成颜色
+
+![0到255如何表示切线方向](./assets/value-directions.png)
+
+## 最后检查：不要只看生成图好不好看
+
+1. 同UV目标用原Diffuse半透明叠加，检查岛边界、细条、镜像和空白；查表图则检查行列与采样坐标。
+2. 拆RGBA取样，确认常量、离散ID和阈值没有被模型偏色、抗锯齿、Gamma改变；ID不做普通模糊渐变。
+3. PNG/TGA用于编辑，中间图不是DDS；BC5仅两路、BC6H没有Alpha且HDR转8位会损失范围，最终格式按游戏加载器要求。
+4. 材质参数、版本、关键词、采样UV一起记录。转光、转视角、远近mip都比较；开关关闭时改通道可能看不出作用。
+
+完整提示词解决表达歧义，不解决Diffuse缺少的数据，也不代替实机验证。SDF、LUT、双法线几何方向仍有明确限制。
+
+## 固定源码证据
+
+- [材质指南](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/USER_GUIDE_CN.md#L67-L75)
+- [衣服实际计算](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1842-L1852)
+- [DanbaidongRP实际读取](https://github.com/danbaidong1111/DanbaidongRP/blob/072b375399e4c38d0cad235a7ec513f981fd5676/Shaders/Material/PBRToon/PBRToonBase.shader#L466-L475)
+- [RG解包](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L811-L885)
+- [Face读取AO](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L969-L975)
+- [SDF读取](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L705-L758)
+- [摄像机阴影](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L552-L560)
+- [SSS](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L602-L621)
+- [边缘遮罩](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L861-L876)
+- [头发读入](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L1231-L1252)
+- [衣服路径](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1838-L1844)
+- [脸路径](https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L765-L788)
+
+[图解输出尺寸与SHA256](./assets/map-manifest.json) · [研究记录](../../../newbie/tools/TextureChannelGuide/Review.md)

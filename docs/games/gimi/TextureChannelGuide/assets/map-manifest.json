@@ -1,0 +1,465 @@
+{
+  "texconv_version": "2024.6.5.1",
+  "texconv_sha256": "9450ba6c551851f8b149efc40fee9c7bbaf5e02fc1430e29e76bad3192874176",
+  "files": [
+    {
+      "file": "maps/diffuse/diffuse-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/diffuse/diffuse-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "71a0aab0c3dd078da1ebd3f61d5df568ea30e11ec166272b1b6ca4cd65b8162c",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/diffuse/diffuse-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c1c383e414fe258dafda8dcc229c2c699bea9e14e302657714ef9046d6c9170c",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/diffuse/diffuse-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "66b33f74dead553c4779553ccf83ca5d38550095ed95a4c60ce63d969ba522b1",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/diffuse/diffuse.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "4f376ad1c37a0e1865092b1b5428613919f30ca9c5a6c7674a7eae310892253a",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/diffuse/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "879215e935e5b707b5d3e96fe95b4c19901bb2e7f9385015cbe7e0a2103f8907",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/lightmap/lightmap-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "1f1f2b478023baf2c4a6743c6ffb98a4f044042f11e06e926de3ed78307bba89",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/lightmap/lightmap-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "12bdad612354a5804c3b99068afbfa4c69589cb85050086ad9d8bce1c39b7ef0",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/lightmap/lightmap-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "8756a74a5850359be0a0c135618fbafefbe45fd09c0204fdd24dd0663de3e0d4",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/lightmap/lightmap-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "0d3fc7dfd20b82b8ae1fa57f1acbfcbc85ff1a0c41c18c7b4daf9be3a1b7045d",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/lightmap/lightmap.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "705af1c1c1d4738644ab3c206d96884e717731aa8383aea494e753454b6a66ab",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/lightmap/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "7498e563947692d9a5592732d23b0b668c792918b5e19083a779d3977dd1e9a9",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/facelight/facelight-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/facelight/facelight-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/facelight/facelight-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/facelight/facelight-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/facelight/facelight.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "01dc667dc80e0fd86df2361488ddba0f2bbbadfdcff9bad2e7b3017fd1fc5794",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/facelight/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "11006b746b0622cfb55f09df36a6bfe7ef914a4aab8f9b4f56c1a813c19a0e6b",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/bump/bump-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/bump/bump-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/bump/bump-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "80073d30169fcad8d3a14aeb470ca7fcfd5fbb678c385a5a0526acfaee51d982",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/bump/bump-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "21a2808c24fcbbbeb7b137d97e2dd02582a9d71afe3d2b4ffe67ff91fd0ff986",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/bump/bump.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "e82102b9f3bb50bb4f2bd89be3896bf2f9f0bf0421567409e702204db816547c",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/bump/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "417d2d5a490705f4ef734038ca6e373b8e1bb3cd89ffc13d02ab1823ced74db7",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/customao/customao-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/customao/customao-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/customao/customao-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/customao/customao-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "7909cf208c2f20e3fe1750347c43c39a795ffbe8fcb7062ea001adf592f4df5e",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/customao/customao.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "69366aa6cdb2c5aa3c4819e39a187130da842fa45df05a12dc03ad44fba37eda",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/customao/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "f770aa2acd4349ba307db120c11104db891c129f3f82f836e4d37f6d8c1ef0ca",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/sdf/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "b123d2ebddce8013f31d0e1adf098f113e6c27617448066c3afe5d30d8ddac43",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/sdf/sdf-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "8756a74a5850359be0a0c135618fbafefbe45fd09c0204fdd24dd0663de3e0d4",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/sdf/sdf-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/sdf/sdf-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/sdf/sdf-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "bef0b2c72fceeb8bc43aa94d098fcaca8ea469f4188c13d0857d20a87763dc19",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/sdf/sdf.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "1348b8c8072e9db8fb97e20d4875986dea8d8606a27e478f63c93e70e1d79c28",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/ramp/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "58d27943aaddfd08510d9b3bf3322f30648d27b99ba0e438d0462a0b1c437634",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/ramp/ramp-a.png",
+      "size": [
+        256,
+        16
+      ],
+      "sha256": "aa5c602b95bbc8326f2cc5c72a963d42ae6c20e338a52263e7c99ab56b352247",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/ramp/ramp-b.png",
+      "size": [
+        256,
+        16
+      ],
+      "sha256": "e61284fc0c8f4c38f618f3bb83ade535a60bb75b83f78cd82ccad0348939b60e",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/ramp/ramp-g.png",
+      "size": [
+        256,
+        16
+      ],
+      "sha256": "67c9946847ad1fc2e5461d4f1b33f1f5a3c7fee48ceebc677f6339e180796862",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/ramp/ramp-r.png",
+      "size": [
+        256,
+        16
+      ],
+      "sha256": "2ed019b1ed4a87d79ba85aa01ebf96e1c198d2df486d97a464e00b7c0680e47e",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/ramp/ramp.png",
+      "size": [
+        256,
+        16
+      ],
+      "sha256": "c95b4477691a57e2bd01e5cd06c17a7f8275204995809f0409be86f06c76381c",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/matcap/matcap-a.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "c7aa824da401b3c226bd9f5192d12f01fead9cb24fffcb1c357c9864bc52e063",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/matcap/matcap-b.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "382ddfd99453193826a7cb09a3d024773026b6c084f590ce1a912cafcfd2f42b",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/matcap/matcap-g.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "382ddfd99453193826a7cb09a3d024773026b6c084f590ce1a912cafcfd2f42b",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/matcap/matcap-r.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "382ddfd99453193826a7cb09a3d024773026b6c084f590ce1a912cafcfd2f42b",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/matcap/matcap.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "382ddfd99453193826a7cb09a3d024773026b6c084f590ce1a912cafcfd2f42b",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "maps/matcap/overview.png",
+      "size": [
+        900,
+        636
+      ],
+      "sha256": "2ff9ce4f3177b1703b77974f7ea3533ffdd83e80e6b2cffeb145581c94b7eb14",
+      "kind": "original educational illustration, not game texture or model output"
+    },
+    {
+      "file": "value-directions.png",
+      "size": [
+        1100,
+        390
+      ],
+      "sha256": "f0449110876bc3df094cdce613af550347ed9618ac2233970fc6d663bde29040",
+      "kind": "original numerical diagram, not game rendering"
+    },
+    {
+      "file": "face-blue-weights.png",
+      "size": [
+        1100,
+        390
+      ],
+      "sha256": "fcbdd47913c394b840a7a3d54e4f32c611cbacf1eee117ec3e67fefd4d4b25e6",
+      "kind": "original numerical diagram, not game rendering"
+    },
+    {
+      "file": "spec-threshold.png",
+      "size": [
+        1100,
+        390
+      ],
+      "sha256": "4f012bbb89a7ad0bf6dfc3eebb0920e9a2d07d9e9dc01183ec45cfb7665834f5",
+      "kind": "original numerical diagram, not game rendering"
+    }
+  ]
+}

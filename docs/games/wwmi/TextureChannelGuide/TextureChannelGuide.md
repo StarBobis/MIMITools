@@ -1,185 +1,412 @@
-# 鸣潮：N、Mask、TypeMask与版本差异详解
+# 鸣潮：逐贴图通道图解与完整生成提示词
 
-鸣潮这份复刻里，界面标签和实际计算有冲突。先别急着把N图当标准PBR图；RG是法线，BA还会触发高光分支。下面告诉你哪些方向能确定，哪些目前只能保留。
+这页可以单独使用。先上传一张自己的Diffuse颜色图到ChatGPT Image等支持图像输入的模型，再复制目标贴图下面的**完整提示词**。不需要上传第二张LightMap，也不用读另一篇基础文章才能知道怎么用。
 
-**怎么用下面的提示词：**先读通道说明，再让模型出草稿。未修改通道请在编辑器里从原图复制，不靠模型保证像素一致；ID和阈值用取色器确认。练习数字不代表该角色的标准参数。
+**先分清两件事：**通道规则来自指定复刻Shader；下面按皮肤、布料、饰件给的数字是明确的生成练习预设，不是从该角色解包得到的原值。提示词写得完整可以减少歧义，但不能保证模型逐像素保持UV或精确执行RGBA。
 
-[通用基础与验收](../../../newbie/tools/TextureChannelGuide/TextureChannelGuide.md)。本页核心证据为 [HoyoToon Wuthering Waves](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl)，固定提交 `d9e5ca2f312bf16fba89dee67d32c08b482dcda4`。它存在近似、待完成路径与标签错误，所以本页明确区分“实际读取”与“从名字推断”。
+本页用“原图/四通道图 → 看图说明 → 每通道数值 → 完整提示词”讲解。教学图都是程序绘制、texconv拆通道的示意，不冒充游戏解包或模型实测。
 
-![鸣潮packed N教学示意](./assets/normal-packed.png)
+本页通道约定主要依据HoyoToon固定提交 `d9e5ca2f312bf16fba89dee67d32c08b482dcda4`，属于公开复刻的已审路径，不是原游戏全版本规范。
 
-::: danger 一个真实标签冲突
-界面写着 `Normal Map(RG)|Roughness(B)|Metallic(G)`，但RG已经用于法线，实际程序另将B/A传入高光/材质计算。**不能因为标签写Metallic(G)就覆盖法线G。** 本页将B/A描述为该复刻中的roughness/metallic命名控制候选及实际高光作用，不保证它与原游戏所有材质的PBR语义相同。
-:::
+## 找到你要生成的贴图
 
-## 下载练习图
+- [DiffuseMap / 颜色图](#map-diffuse)
+- [packed N / 法线与高光控制](#map-normal)
+- [身体 MaskTex](#map-bodymask)
+- [头发 MaskTex / 已确认HM绑定](#map-hairmask)
+- [TypeMask / 类型图](#map-typemask)
+- [Eye EM / 眼部视差与高光](#map-eye-em)
+- [HeightLightMap / 眼高光图](#map-highlight)
+- [FaceMap / 脸部方向阴影图](#map-sdf)
+- [独立 Mask / Stencil图](#map-independent-mask)
+- [HN / HET / RGID / LD / FTM 等未确认资产](#map-unknown-assets)
+- [Ramp / 漫反射色带](#map-ramp)
+- [MatCap / 球面外观图](#map-matcap)
+- [LUT / 参数查表图](#map-lut)
 
-[合成Diffuse](./assets/synthetic-diffuse.png) · [同UV语义分区](./assets/synthetic-regions.png) · [原始RGBA教学数据](./assets/normal-packed-data.png) · [资源来源与边界](./assets/README.md) · [SHA256清单](./assets/manifest.json)
+## 这页怎样读
 
-可以下载旁边的合成图练习拆通道。图中的分区和数值是练习设定，不是从游戏角色测得的参数。
+- 数据值用0～255；线性UNORM中除以255得到0～1。字节128约0.502，若RGB被sRGB解码则约0.216，不能对控制图做自动Gamma或美化。Alpha通常不经过sRGB转换，仍要核对加载路径。
+- 灰度白只意味着数值大：乘子、反向遮罩、材质ID、方向数据的“白”含义不同。下面逐图解释，不用一条规则概括。
+- 只上传Diffuse时，材质分类是猜测。裸金属、丝袜、发光区域最好在文字里指出；不明区域有保守默认值，但它不恢复原角色ID。
+- 合成预览可能受Alpha显示影响；灰度A图是真正的第四通道。下载各层后用取色器看字节，不靠预览颜色判断。
 
-## 1. 总表
+实际清点的HoyoToon仓库主要提供界面装饰图，没有这款游戏的一整套角色Diffuse/LightMap/Normal示例。下面使用原创数据图讲解，不把UI图或渲染截图拆成灰度后冒充角色通道。
 
-| 贴图/核心绑定 | R | G | B | A |
-| --- | --- | --- | --- | --- |
-| Diffuse / MainTex | RGB颜色 | 同左 | 同左 | 可选shadow_mask来源；头发Stencil来源等，不一定透明 |
-| Normal_Roughness_Metallic | 切线法线X | 切线法线Y | high/spec control，标签称roughness，实际还用于MatCap/高光判定 | metallic命名控制候选，实际参加高光与衰减 |
-| MaskTex（身体） | 身体没有确认用途，先保留 | Shadow/AO式控制，可被Diffuse A替代 | 没有确认用途，先保留 | SDF路径可作脸阈值，不能统一称透明 |
-| MaskTex（头发） | 高光控制 | 阴影控制 | 没有确认用途，先保留 | 核心头发路径未确认，保留 |
-| TypeMask | 与顶点R二选一用于皮肤/丝袜/普通区判断 | Face路径传递，但当前核心计算未证明独立效果 | Ramp mask命名输入，当前函数内未实际用于最终混合 | 没有确认用途，先保留 |
-| Mask（独立，不同于MaskTex） | Stencil/眼区遮罩 | 核心未确认 | 同左 | 同左 |
-| Eye EM | 二级眼高光读取 | 眼视差高度读取 | 没有确认用途，先保留 | 眼作用区读取 |
-| HeightLightMap | 当前眼高光链未单独取用，保留 | 同左 | 主要眼高光输入 | 没有确认用途，先保留 |
-| Ramp / MatCap / LUT | 查表颜色或数值，不是服装UV | 依表 | 依表 | 依表 |
+## 1. DiffuseMap / 颜色图 {#map-diffuse}
 
-### 文件名 `_N/_HM/_HN/_HET/_ID/_RGID/_LD/_FTM` 不是统一规范
+先看输入的蓝色衣片：颜色图里它就该是蓝色，R/G/B是颜色分量。到了控制图，同一片蓝布可能变成红橙色，那不是改了衣服颜色，而是几个控制值叠在一起。
 
-[Gacha Setup导入映射](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L11-L32)可见更多命名和节点路径，包含LD(sRGB)、FTM(Non-Color)标识。这证明存在不同工作流，不证明它们各通道与HoyoToon表一一对应。本页不把未知的HN/HET/RGID/LD/FTM硬编成普通R金属/G粗糙/B AO；未获得实际节点或Shader读取时保留原图。
+![鸣潮 DiffuseMap / 颜色图 输入、输出与四通道示意](./assets/maps/diffuse/overview.png)
 
-## 2. packed N：保留BA比猜金属更重要
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
 
-[RG法线与spec来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L109-L149)明确：RG用于法线，`spec = normalmap.zww`。身体分支 [高光](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L169-L181)还乘 `1−A`；[material_basic](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L607-L630)对B/A做非线性与阈值逻辑，不是标准PBR的简单关系。
+[原始RGBA图](./assets/maps/diffuse/diffuse.png) · [R灰度层](./assets/maps/diffuse/diffuse-r.png) · [G灰度层](./assets/maps/diffuse/diffuse-g.png) · [B灰度层](./assets/maps/diffuse/diffuse-b.png) · [A灰度层](./assets/maps/diffuse/diffuse-a.png)
 
-### BA不能写成“越白越粗糙/金属”就结束
+**R怎么用：** R是基础颜色红分量，0最低、255最高。
 
-R/G是法线方向：128附近零偏转，低值负方向、高值正方向；翻转选项会改变方向，BA不要跟着法线重画。
+**G怎么用：** G是基础颜色绿分量，0最低、255最高。
 
-当前身体路径里，B至少有两道门槛：**B≥0.5（线性字节128起）允许第一高光，B≥0.85（217起）进入另一项MatCap/高光判断**。第二高光还判断B≤0.85（216及以下的8位值），所以跨过217并不是平滑加一点“粗糙度”。另有颜色指数 `lerp(0.5,2,B)`，不同底色下屏幕亮度方向也不同。
+**B怎么用：** B是基础颜色蓝分量，0最低、255最高。
 
-A在普通身体最终高光上乘 `1−A`：0保留此项，128约保留49.8%，255压掉此项。同时A还参与非线性高光指数和MatCap处理，不能由此推出“所有反射都随A增大而减弱”。**没有一个对全BA路径有效的单调PBR解释。** 想改BA时先挑一块小区，分开测试；只改凹凸就保留BA。
+**A怎么用：** A用途由材质决定，单张Diffuse不能推断透明、发光或ID。
 
-这些边界以该固定源码及线性采样为前提，不是原游戏全角色规范。
+颜色分量不是金属、高光或AO；不要增加新的方向光、投影和高光。
 
-```text
-对照<image1>服装UV生成浅法线XY草稿，平坦RG约(128,128)，只在指定缝线、压边和扣件处作细小连续变化。不把颜色明暗当凹凸，不添噪点、光照或文字，保持画布和UV位置，只用于提取RG。
-```
-
-另一套真正PBR打包里，B粗糙度0光滑、255粗糙，A金属度0非金属、255金属，中间值混合响应；这只是独立确认该布局后的含义，不适用于上面的复杂BA公式。
-
-**已确认另一套真正RG法线+B粗糙+A金属布局时，才能使用如下通用打包候选：**
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-在已经独立确认目标Shader采用RG法线、B粗糙度、A金属度的前提下，将<image1>服装UV图生成同尺寸技术候选，平坦RG约128、浅缝线弱梯度，B教学值皮肤140、哑光布220、光滑金属60，A非金属0、明确裸金属255，未知材质继承<image2>原图，不按金色油漆猜金属，不把B当法线Z，不保留自然颜色、不加文字、不改变UV，最终由外部工具定值并验证；这不是本页HoyoToon复杂BA路径的直接推荐预设。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成DiffuseMap / 颜色图的颜色贴图草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是基础颜色红分量，0最低、255最高；G是基础颜色绿分量，0最低、255最高；B是基础颜色蓝分量，0最低、255最高；A用途由材质决定，单张Diffuse不能推断透明、发光或ID。本次明确采用的生成预设：本次生成同UV、不透明Diffuse颜色草稿：R/G/B按我给出的新配色修改，未指定改色时保留上传图的RGB颜色；A固定255，不猜透明、发光或材质ID。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只修改我指定的配色，未指定处保留上传Diffuse的颜色和绘制细节。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-## 3. MaskTex身体与头发
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-[shadow_mask选择](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L113-L118)由 `_UseMainTexA` 决定读Diffuse A还是MaskTex G。头发 [material_hair](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L670-L675)把R传入高光，G参与阴影。
+## 2. packed N / 法线与高光控制 {#map-normal}
 
-身体MaskTex G（或启用UseMainTexA时的Diffuse A）作为shadow_mask：普通身体受光计算中越小越容易偏阴影，越大保留更多受光，最终还有饱和和色带处理，G=0也不保证输出黑色。高光内部另判断 `shadow_mask≥0.1`（线性字节26起），低于它会压掉常规贡献，但函数保留0.001下限，不是数学上完全零。R/B及非脸A没有确认一般用途，保留。
+**对应代码：** [RG法线与spec来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L109-L149)
 
-头发R高光遮罩增大通常扩大/增强高光，0不贡献这项；G增大通常提高受光偏移，但还改变Ramp混合。0、255不是一套全头发材质的暗/亮保证，头发B/A未确认。
+看R和G里的细小变化，方向信息藏在这些梯度里，而不是藏在“蓝紫色外观”里。平坦区域约128；从128向两侧偏移表示向不同切线方向倾斜，不是越白越凸。
 
-**身体MaskTex：**
+![鸣潮 packed N / 法线与高光控制 输入、输出与四通道示意](./assets/maps/normal/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/normal/normal.png) · [R灰度层](./assets/maps/normal/normal-r.png) · [G灰度层](./assets/maps/normal/normal-g.png) · [B灰度层](./assets/maps/normal/normal-b.png) · [A灰度层](./assets/maps/normal/normal-a.png)
+
+**R怎么用：** R编码切线法线X：0负方向、128附近零偏转、255正方向。
+
+**G怎么用：** G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader。
+
+**B怎么用：** B在该复刻≥128允许第一高光、≥217触发另一MatCap判断；≤216仍可走第二高光，不是单调粗糙度。
+
+**A怎么用：** A身体普通高光乘1−A，0保留128约49.8%255抑制；同时参与非线性和MatCap，不是全反射单调控制。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>服装UV和<image2>原MaskTex的G层，只在标出的结构缝隙稍微压暗，其它区域沿用原灰度。保持画布、UV边界和小配件，不按布料颜色画AO，不加光照或文字，只输出G层草稿。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成packed N / 法线与高光控制的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R编码切线法线X：0负方向、128附近零偏转、255正方向；G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader；B在该复刻≥128允许第一高光、≥217触发另一MatCap判断；≤216仍可走第二高光，不是单调粗糙度；A身体普通高光乘1−A，0保留128约49.8%255抑制；同时参与非线性和MatCap，不是全反射单调控制。本次明确采用的生成预设：固定复刻普通身体练习：平坦RG128，皮肤/布B=64抑制第一高光、普通饰件B=160允许第一高光，A=128弱权重，未知B64A128。不要把B填标准Z或G填金属。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。法线细节仅来自我明确指出的浅缝线、压边、扣件和发丝结构，不把Diffuse明暗转成高度，不新增织物噪点；XY解码为2×值/255−1，保持X²+Y²≤1并按目标定义重建或填写Z，不能把方向极值当凹凸强度。
 ```
 
-**头发MaskTex / 已确认对应的HM：**
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 3. 身体 MaskTex {#map-bodymask}
+
+**对应代码：** [shadow_mask选择](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L113-L118)
+
+颜色图里的黑色腰带不该自动变成重遮蔽。AO应该对应结构重叠、接缝，而不是布料本身的颜色；灰度较白通常保留更多受光。
+
+![鸣潮 身体 MaskTex 输入、输出与四通道示意](./assets/maps/bodymask/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/bodymask/bodymask.png) · [R灰度层](./assets/maps/bodymask/bodymask-r.png) · [G灰度层](./assets/maps/bodymask/bodymask-g.png) · [B灰度层](./assets/maps/bodymask/bodymask-b.png) · [A灰度层](./assets/maps/bodymask/bodymask-a.png)
+
+**R怎么用：** R身体核心未确认用途。
+
+**G怎么用：** G或Diffuse A按UseMainTexA选择为shadow_mask；增大通常更受光，26起允许常规高光内部门控，函数有下限。
+
+**B怎么用：** B核心未确认用途。
+
+**A怎么用：** A脸路径可作SDF，身体不能当透明度。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>头发UV和<image2>原头发MaskTex的指定R或G层，只修补标出的区域，保持原发丝方向、灰度梯度和UV边界。不重画自然头发颜色，不加光照或文字，输出单通道草稿。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成身体 MaskTex的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R身体核心未确认用途；G或Diffuse A按UseMainTexA选择为shadow_mask；增大通常更受光，26起允许常规高光内部门控，函数有下限；B核心未确认用途；A脸路径可作SDF，身体不能当透明度。本次明确采用的生成预设：仅普通身体同UV练习：R0、B0、A255占位，G普通200、明确缝隙180；UseMainTexA关闭，未确认身体用途不用于成品。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-## 4. TypeMask：分类由阈值与开关决定
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-[skin_type](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L53-L71)在UseSkinMask开启时读TypeMask R，否则读顶点R；头发还会用顶点R覆盖TypeMask R。其判断包含0.05/0.3/0.5/0.9阈值，不能凭“黑=布白=皮肤”忽略代码与边界。
+## 4. 头发 MaskTex / 已确认HM绑定 {#map-hairmask}
 
-这里可以把实际分类拆出来。UseSkinMask开启、线性采样时：
+**对应代码：** [material_hair](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L670-L675)
 
-| TypeMask R字节 | 返回分类权重 | 对应核心路径 |
-| --- | --- | --- |
-| 0～127 | (0,0,1) | 普通区 |
-| 128～229 | (0,1,0) | tight/丝袜区 |
-| 230～255 | (1,0,0) | skin区 |
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
 
-[判断代码](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L53-L71)虽然包含0.05和0.3判断，但继续运算后，**这些中间判断没有产生额外的最终类别**。上表按完整函数逐个核对0～255的结果，而不是把见到的每个阈值都当成一类。增大灰度是普通→丝袜→皮肤，仍不是更强或更亮。关闭UseSkinMask后改这张R可能无效，头发路径还会覆盖输入。G/B在这份核心中没有证实一般独立作用，A未知。
+![鸣潮 头发 MaskTex / 已确认HM绑定 输入、输出与四通道示意](./assets/maps/hairmask/overview.png)
 
-TypeMask B虽传入名为ramp_mask的参数，[函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L384-L408)只赋值而未将该变量用于最终混合；所以不能把“B必然控制Ramp效果”写成已确认功能。
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/hairmask/hairmask.png) · [R灰度层](./assets/maps/hairmask/hairmask-r.png) · [G灰度层](./assets/maps/hairmask/hairmask-g.png) · [B灰度层](./assets/maps/hairmask/hairmask-b.png) · [A灰度层](./assets/maps/hairmask/hairmask-a.png)
+
+**R怎么用：** R高光控制，0无该项、增大扩大或增强。
+
+**G怎么用：** G增大通常提高受光偏移并改变Ramp混合，0/255不是全路径暗亮保证。
+
+**B怎么用：** B核心头发未确认用途。
+
+**A怎么用：** A核心头发未确认用途。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>服装UV和<image2>原TypeMask的R层，只修补标出的分类边界，沿用原区间，不按浅色深色重新分类。保留画布和UV位置，不做渐变、照明或文字，输出R灰度草稿。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成头发 MaskTex / 已确认HM绑定的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R高光控制，0无该项、增大扩大或增强；G增大通常提高受光偏移并改变Ramp混合，0/255不是全路径暗亮保证；B核心头发未确认用途；A核心头发未确认用途。本次明确采用的生成预设：头发岛RGBA(128,180,0,255)，背景(0,0,0,255)，沿发丝方向仅弱连续梯度；不是发丝切线还原。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-## 5. 脸SDF：MaskTex A
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-[face_shadow](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L299-L328)根据头部方向和镜像UV采样MaskTex A。这里A不是透明。
+## 5. TypeMask / 类型图 {#map-typemask}
 
-MaskTex A越大，在同一光向下越容易保留脸亮面；函数内部有一次反相，调用处又反回来，不能只看变量名shadow就说“越大越暗”。背光到头部前向点积低于−0.5时另有朝向门控，高A也不会无限保持亮面。0、255是方向场两端，不是透明开关，RGB保留。
+**对应代码：** [skin_type](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L53-L71)
+
+这张图是分类，不是照明。一个类别应保持在同一安全区间；画得很漂亮的渐变反而可能让像素跨到另一个材质组。
+
+![鸣潮 TypeMask / 类型图 输入、输出与四通道示意](./assets/maps/typemask/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/typemask/typemask.png) · [R灰度层](./assets/maps/typemask/typemask-r.png) · [G灰度层](./assets/maps/typemask/typemask-g.png) · [B灰度层](./assets/maps/typemask/typemask-b.png) · [A灰度层](./assets/maps/typemask/typemask-a.png)
+
+**R怎么用：** R在UseSkinMask=1时：0～127普通、128～229丝袜、230～255皮肤；无强度意义。
+
+**G怎么用：** G传入脸路径但核心未证实一般独立效果。
+
+**B怎么用：** B虽名Ramp mask，当前最终混合没用到它。
+
+**A怎么用：** A未确认用途。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>脸UV，只修补<image2>原MaskTex上标出的破损，保留A方向阈值场、镜像关系和原编码。不画肤色、透明度或静态鼻影，不改变画布和UV位置，不加文字，输出修补草稿。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成TypeMask / 类型图的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R在UseSkinMask=1时：0～127普通、128～229丝袜、230～255皮肤；无强度意义；G传入脸路径但核心未证实一般独立效果；B虽名Ramp mask，当前最终混合没用到它；A未确认用途。本次明确采用的生成预设：普通布与未知R64、用户确认丝袜R180、确认皮肤R240；G0、B0、A255。开启UseSkinMask；没有区域说明不能猜肤色就是皮肤类别。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-## 6. Diffuse Alpha、独立Mask与眼图
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-**Diffuse：**
+## 6. Eye EM / 眼部视差与高光 {#map-eye-em}
+
+**对应代码：** [眼路径](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L678-L751)
+
+脸图和身体图不能共用解释。图中常量只是把每个通道的位置拆给你看，不代表脸的方向阴影已经恢复；眼鼻嘴的对应关系、视角和材质分支都很重要。
+
+![鸣潮 Eye EM / 眼部视差与高光 输入、输出与四通道示意](./assets/maps/eye-em/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/eye-em/eye-em.png) · [R灰度层](./assets/maps/eye-em/eye-em-r.png) · [G灰度层](./assets/maps/eye-em/eye-em-g.png) · [B灰度层](./assets/maps/eye-em/eye-em-b.png) · [A灰度层](./assets/maps/eye-em/eye-em-a.png)
+
+**R怎么用：** R二级高光输入增大通常增强，但被A压制。
+
+**G怎么用：** G用于视差高度比较，位移方向由视角和参数决定，不是越白越凸。
+
+**B怎么用：** B核心未确认用途。
+
+**A怎么用：** A接近255时混回原UV且压二级高光，0更保留视差，不是白作用最大。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-按指定配色修改<image1>角色Diffuse的RGB，保留画布、UV岛和绘制细节，不加新光源、投影或文字。只输出颜色草稿，Alpha稍后从原图复制。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成Eye EM / 眼部视差与高光的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R二级高光输入增大通常增强，但被A压制；G用于视差高度比较，位移方向由视角和参数决定，不是越白越凸；B核心未确认用途；A接近255时混回原UV且压二级高光，0更保留视差，不是白作用最大。本次明确采用的生成预设：眼部无视差安全练习：R0、G128平高度、B0、A255；不要凭Diffuse重建真实虹膜深度。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-独立Mask R在所选Stencil/眼路径作为遮罩输入，最终还经过原UV与视差UV混合；具体裁剪方向和门槛要看使用pass，不能把0/255写成全路径通用的隐藏/显示。已确认的Diffuse A阴影用途见上面的MaskTex章节，其它Alpha用途保留原值。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-**独立Mask R：**
+## 7. HeightLightMap / 眼高光图 {#map-highlight}
+
+**对应代码：** [眼路径](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L678-L751)
+
+这类图通常平铺或沿特定坐标取样。输入Diffuse可以给风格线索，却不能让模型知道原来使用的ST缩放和发丝切线；练习图只演示灰度数据。
+
+![鸣潮 HeightLightMap / 眼高光图 输入、输出与四通道示意](./assets/maps/highlight/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/highlight/highlight.png) · [R灰度层](./assets/maps/highlight/highlight-r.png) · [G灰度层](./assets/maps/highlight/highlight-g.png) · [B灰度层](./assets/maps/highlight/highlight-b.png) · [A灰度层](./assets/maps/highlight/highlight-a.png)
+
+**R怎么用：** R当前眼高光链未单独取用。
+
+**G怎么用：** G当前眼高光链未单独取用。
+
+**B怎么用：** B是主要高光输入，低值弱、高值强。
+
+**A怎么用：** A未确认用途。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image2>同UV原独立Mask为模板对照<image1>，只修补我明确指定的R Stencil或眼部遮罩边界，G/B/A全部保留原值，不与MaskTex的G阴影和A脸SDF混淆，不增加自然颜色光照、不改变UV和尺寸，不加文字，输出R灰度候选供外部合并。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成HeightLightMap / 眼高光图的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R当前眼高光链未单独取用；G当前眼高光链未单独取用；B是主要高光输入，低值弱、高值强；A未确认用途。本次明确采用的生成预设：256×256采样图R0G0A255，B黑底0、用户指定高光斑255柔和边缘；不是整张服装UV。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-[眼路径](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L678-L751)读EM G作高度、A作作用区、R作二级高光；HeightLightMap以变换后的UV采样，主要高光取B。眼视差/高光并不一定按同一坐标。
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-EM R控制二级高光输入，通常越大贡献越多，但会被A压制；G供视差迭代比较，灰度越大改变高度交点，位移方向还看视角与视差参数，不能说“越白越凸”。A接近255时（smoothstep 0.99～1）反而混回原UV并压掉二级高光，0更保留视差图；这不是“白色眼区作用最大”。B未确认。HeightLightMap当前眼高光链主要取B，值增大通常加强该项高光，R/G/A未确认独立作用。
+## 8. FaceMap / 脸部方向阴影图 {#map-sdf}
 
-**Eye EM：**
+**对应代码：** [face_shadow](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L299-L328)
+
+这里故意展示平场占位，而不画一个看起来像鼻影的假SDF。颜色图没有告诉我们每个脸部像素在哪个光向开始转暗；正确方向场需要额外设计或几何信息。
+
+![鸣潮 FaceMap / 脸部方向阴影图 输入、输出与四通道示意](./assets/maps/sdf/overview.png)
+
+**图中是不能用于脸阴影还原的常量占位，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/sdf/sdf.png) · [R灰度层](./assets/maps/sdf/sdf-r.png) · [G灰度层](./assets/maps/sdf/sdf-g.png) · [B灰度层](./assets/maps/sdf/sdf-b.png) · [A灰度层](./assets/maps/sdf/sdf-a.png)
+
+**R怎么用：** R核心脸SDF链未确认用途。
+
+**G怎么用：** G核心脸SDF链未确认用途。
+
+**B怎么用：** B核心脸SDF链未确认用途。
+
+**A怎么用：** A方向场，固定光向增大更偏亮面，头部朝向有门控。
+
+只上传Diffuse无法唯一确定方向场。下面完整指令仅生成标明用途的占位草稿，不是正确SDF生成配方；要重建必须增加几何/光向设计信息。
+
+### 完整占位生成提示词（非角色还原）
 
 ```text
-以<image2>原眼部EM为编码模板，对照<image1>眼UV仅修补指定区域，R保留二级高光控制、G保留视差高度、B未知用途保持原值、A保留眼作用遮罩，不把EM重绘成RGB发光颜色、不按白眼球全涂255，不改变尺寸和眼纹位置、不加文字，只输出指定修改通道的灰度候选外部合并并检验眼视差。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成FaceMap / 脸部方向阴影图的占位草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R核心脸SDF链未确认用途；G核心脸SDF链未确认用途；B核心脸SDF链未确认用途；A方向场，固定光向增大更偏亮面，头部朝向有门控。本次明确采用的生成预设：只做不能用于角色还原的方向场占位：R=0、G=0、B=0、A=128。A全128没有方向梯度，不声称有正确随光阴影。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**HeightLightMap：**
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 9. 独立 Mask / Stencil图 {#map-independent-mask}
+
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+
+**R怎么用：** R为所选Stencil/眼路径遮罩输入，实际裁剪方向和阈值依pass。
+
+**G怎么用：** G核心未确认用途。
+
+**B怎么用：** B核心未确认用途。
+
+**A怎么用：** A核心未确认用途。
+
+这个Mask不是MaskTex；没有pass规则不能把0/255叫全游戏显示/隐藏。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
 
 ```text
-以<image1>原HeightLightMap的B层为参考，只修改我指定的眼高光纹样，保留原尺寸、图案位置和边界。不套服装UV，不画眼睛3D渲染或文字，输出B层草稿。
+我只上传了这张鸣潮角色Diffuse颜色图。我想生成独立 Mask / Stencil图，但你没有目标采样/参数定义。完整规则是：R为所选Stencil/眼路径遮罩输入，实际裁剪方向和阈值依pass；G核心未确认用途；B核心未确认用途；A核心未确认用途。只上传Diffuse无法确定该图的采样布局和阈值，因此不生成声称可替换的四通道图，不自行填RGBA常量；需要取得目标Shader、参数或几何信息。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
 ```
 
-## 7. 其它命名、Ramp、MatCap、LUT
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-仅有 `.blend` 的 [Jonn Shader](https://github.com/fnoji/Blender-WuWa-Jonn-Shader/tree/07529f5aa14546873afff140bd242571fc67880d)未在本次按真实节点图审计，因此不能把它当成R/G/B/A独立交叉确认。HN、HET、RGID、LD、FTM、FX、Skin等名字存在不代表用途已查清。
+## 10. HN / HET / RGID / LD / FTM 等未确认资产 {#map-unknown-assets}
 
-**未知图怎么处理**
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
 
-没有对应Shader时不建议生成替代图。下面只适合修补明确标出的视觉破损，不是恢复未知通道的配方：
+**R怎么用：** R没有取得对应节点或Shader完整读取定义。
+
+**G怎么用：** G没有取得对应读取定义。
+
+**B怎么用：** B没有取得对应读取定义。
+
+**A怎么用：** A没有取得对应读取定义。
+
+这些缩写在导入工作流存在，但仅文件名不证明通道用途；不提供假通用PBR配方。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
 
 ```text
-以<image1>原贴图为参考，只修补我标记的局部破损，沿用原灰度结构、尺寸和采样布局。不根据Diffuse重新设计通道，不画自然颜色或文字，输出修补草稿。
+我只上传了这张鸣潮角色Diffuse颜色图。我想生成HN / HET / RGID / LD / FTM 等未确认资产，但你没有目标采样/参数定义。完整规则是：R没有取得对应节点或Shader完整读取定义；G没有取得对应读取定义；B没有取得对应读取定义；A没有取得对应读取定义。只上传Diffuse无法确定该图的采样布局和阈值，因此不生成声称可替换的四通道图，不自行填RGBA常量；需要取得目标Shader、参数或几何信息。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
 ```
 
-该段不是万能新生成公式，而是每个未知资产在查清用途前的安全策略。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-**Ramp：**
+## 11. Ramp / 漫反射色带 {#map-ramp}
+
+看横向色带：它按受光坐标查颜色，不是按衣服UV读。四通道图里白色Alpha可能只是占位，也可能控制混合，要看这一种表的定义。
+
+![鸣潮 Ramp / 漫反射色带 输入、输出与四通道示意](./assets/maps/ramp/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/ramp/ramp.png) · [R灰度层](./assets/maps/ramp/ramp-r.png) · [G灰度层](./assets/maps/ramp/ramp-g.png) · [B灰度层](./assets/maps/ramp/ramp-b.png) · [A灰度层](./assets/maps/ramp/ramp-a.png)
+
+**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+
+**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+
+**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+
+**A怎么用：** A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。
+
+这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-编辑<image1>原Ramp，只按指定色板修改指定行RGB，保留原尺寸、行坐标、采样边界与Alpha，不放服装UV、不重排行、不生成物体或文字，只输出查表候选供目标RampPosition与材质路径验证。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成Ramp / 漫反射色带的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；G是查表颜色绿分量，值增大增加所采样绿贡献；B是查表颜色蓝分量，值增大增加所采样蓝贡献；A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。本次明确采用的生成预设：256×16练习色带：每一行相同，左RGB(45,50,65)、中(150,160,180)、右(255,255,255)，A255，沿X平滑变化、不重排成衣服UV。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**MatCap：**
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 12. MatCap / 球面外观图 {#map-matcap}
+
+这里看的是球面查表外观，不是扣件在UV中的位置。转视角时材质去球面图取样；直接把服装图变成橙色不可能得到正确MatCap。
+
+![鸣潮 MatCap / 球面外观图 输入、输出与四通道示意](./assets/maps/matcap/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/matcap/matcap.png) · [R灰度层](./assets/maps/matcap/matcap-r.png) · [G灰度层](./assets/maps/matcap/matcap-g.png) · [B灰度层](./assets/maps/matcap/matcap-b.png) · [A灰度层](./assets/maps/matcap/matcap-a.png)
+
+**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+
+**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+
+**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+
+**A怎么用：** A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。
+
+这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原MatCap为球面布局参考，按指定外观修改高光，保留尺寸、中心方向和边缘过渡，不放服装UV、背景物体或文字，只输出外观草稿。
+请根据我上传的这一张鸣潮角色DiffuseMap颜色贴图，生成MatCap / 球面外观图的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；G是查表颜色绿分量，值增大增加所采样绿贡献；B是查表颜色蓝分量，值增大增加所采样蓝贡献；A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。本次明确采用的生成预设：256×256球面练习图，中心RGB(220,220,220)、边缘(40,40,40)，平滑球面高光，无背景物体；A255，仅用户确认该MatCap路径后试用。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**LUT：**
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-精确参数请直接用编辑器填写，不建议靠模型恢复。下面仅用于视觉破损草稿，不能作为查表数值合格的证明。
+## 13. LUT / 参数查表图 {#map-lut}
+
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+
+**R怎么用：** R依表行列存特定参数，没有全图单调强弱方向。
+
+**G怎么用：** G依表行列存特定参数，不能当统一粗糙度。
+
+**B怎么用：** B依表行列存特定参数，不能当统一AO。
+
+**A怎么用：** A依表行列定义，不能统一填255；缺少布局不生成替代图。
+
+这里不伪造一个固定RGBA值就称能用；有些特殊贴图没有单Diffuse生成解。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
 
 ```text
-以<image1>原LUT为参考，只修补我标出的视觉破损，保持原网格、尺寸和其它区域，不添加渐变、物体或文字，输出修补草稿。精确坐标赋值稍后在编辑器里完成。
+我只上传了这张鸣潮角色Diffuse颜色图。我想生成LUT / 参数查表图，但你没有目标采样/参数定义。完整规则是：R依表行列存特定参数，没有全图单调强弱方向；G依表行列存特定参数，不能当统一粗糙度；B依表行列存特定参数，不能当统一AO；A依表行列定义，不能统一填255；缺少布局不生成替代图。不生成替代图；仅说明缺少的表尺寸、行列和RGBA参数，让用户用编辑器按规范填写。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
 ```
 
-## 改完怎么检查与实现缺口
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-固定复刻的glass路径仍含占位clip，部分ramp_mask未生效；这些不能通过模型提示词修好。别把“复刻缺少效果”归咎于自己的图。核心版本、材质类型、顶点色、UseSkinMask、UseMainTexA、NormalFlip、UV/ST要一起记录。
+## 看数值方向，不要只看合成颜色
 
-先检查packed N的RG/BA与Alpha，逐通道A/B测试，尤其头发、脸与眼不能共用身体规则。更新改变Hash/绑定时先修资源对应，不能仅重画纹理。数字与示意是教学，不代表实际游戏渲染已验收。
+![0到255如何表示切线方向](./assets/value-directions.png)
+
+## 最后检查：不要只看生成图好不好看
+
+1. 同UV目标用原Diffuse半透明叠加，检查岛边界、细条、镜像和空白；查表图则检查行列与采样坐标。
+2. 拆RGBA取样，确认常量、离散ID和阈值没有被模型偏色、抗锯齿、Gamma改变；ID不做普通模糊渐变。
+3. PNG/TGA用于编辑，中间图不是DDS；BC5仅两路、BC6H没有Alpha且HDR转8位会损失范围，最终格式按游戏加载器要求。
+4. 材质参数、版本、关键词、采样UV一起记录。转光、转视角、远近mip都比较；开关关闭时改通道可能看不出作用。
+
+完整提示词解决表达歧义，不解决Diffuse缺少的数据，也不代替实机验证。SDF、LUT、双法线几何方向仍有明确限制。
+
+## 固定源码证据
+
+- [HoyoToon Wuthering Waves](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl)
+- [Gacha Setup导入映射](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L11-L32)
+- [RG法线与spec来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L109-L149)
+- [高光](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L169-L181)
+- [material_basic](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L607-L630)
+- [shadow_mask选择](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L113-L118)
+- [material_hair](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L670-L675)
+- [skin_type](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L53-L71)
+- [判断代码](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L53-L71)
+- [函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L384-L408)
+- [face_shadow](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L299-L328)
+- [眼路径](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L678-L751)
+
+[图解输出尺寸与SHA256](./assets/map-manifest.json) · [研究记录](../../../newbie/tools/TextureChannelGuide/Review.md)

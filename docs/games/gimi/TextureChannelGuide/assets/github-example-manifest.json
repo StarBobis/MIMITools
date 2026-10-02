@@ -1,0 +1,167 @@
+{
+  "attribution": "festivities/PrimoToon, GPL-3.0; README Rules explicitly permits redistribution with source link. No claim over game IP.",
+  "examples": [
+    {
+      "source_url": "https://github.com/festivities/PrimoToon/blob/12d42095035edf879a45b3e7a679a6ab86fc081d/Resources/Avatar_Tex_MetalMap.png",
+      "source_sha256": "a361382e23b7ba0c9cdad3ffcde3274d76e3bf76824b83f103d322b360f2d2c1",
+      "outputs": [
+        {
+          "file": "github-examples/Avatar_Tex_MetalMap/Avatar_Tex_MetalMap-a.png",
+          "sha256": "1ddb4d9f9037171d037621ab9bfe4c3c4ee925928ff139f9c3971bb43b45d1be",
+          "size": [
+            256,
+            256
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_MetalMap/Avatar_Tex_MetalMap-b.png",
+          "sha256": "b3b138f18bcf0c21534e7f02ccd684af34be2266597fbf98e0215e41ca804fc4",
+          "size": [
+            256,
+            256
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_MetalMap/Avatar_Tex_MetalMap-g.png",
+          "sha256": "5d910ce8a77b2fd09d93cb7f57478bbc0554de18dc640ef618437daf247e12b1",
+          "size": [
+            256,
+            256
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_MetalMap/Avatar_Tex_MetalMap-r.png",
+          "sha256": "019769ea8270f868665afc6ba40149333a44464390f8f6533c9bd84ebb6e44d7",
+          "size": [
+            256,
+            256
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_MetalMap/Avatar_Tex_MetalMap.png",
+          "sha256": "a994388b8a50a059ac43cdd7b3310157322ae6736801deff5a4ad7512d18922d",
+          "size": [
+            256,
+            256
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_MetalMap/overview.png",
+          "sha256": "29c873d0c15360f9406bad5298c92ee38902853dedd944234c5e972e4b571a42",
+          "size": [
+            900,
+            636
+          ]
+        }
+      ]
+    },
+    {
+      "source_url": "https://github.com/festivities/PrimoToon/blob/12d42095035edf879a45b3e7a679a6ab86fc081d/Resources/Avatar_Tex_Specular_Ramp.png",
+      "source_sha256": "7ad56803d5604edd9962ea0e5acb5fe548a1c2beac3fc18e675982f4a3be74fb",
+      "outputs": [
+        {
+          "file": "github-examples/Avatar_Tex_Specular_Ramp/Avatar_Tex_Specular_Ramp-a.png",
+          "sha256": "77e1f4a377108fa02752eb754f94941c980fce03a979d6b7d8d993662f1492d6",
+          "size": [
+            256,
+            2
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Specular_Ramp/Avatar_Tex_Specular_Ramp-b.png",
+          "sha256": "c54ed6c1dbb4808acfae17255a649212ec5fde7269e24d007fc06e077eb15afd",
+          "size": [
+            256,
+            2
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Specular_Ramp/Avatar_Tex_Specular_Ramp-g.png",
+          "sha256": "c54ed6c1dbb4808acfae17255a649212ec5fde7269e24d007fc06e077eb15afd",
+          "size": [
+            256,
+            2
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Specular_Ramp/Avatar_Tex_Specular_Ramp-r.png",
+          "sha256": "c54ed6c1dbb4808acfae17255a649212ec5fde7269e24d007fc06e077eb15afd",
+          "size": [
+            256,
+            2
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Specular_Ramp/Avatar_Tex_Specular_Ramp.png",
+          "sha256": "c54ed6c1dbb4808acfae17255a649212ec5fde7269e24d007fc06e077eb15afd",
+          "size": [
+            256,
+            2
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Specular_Ramp/overview.png",
+          "sha256": "70fbf7c5a68ecc9de6082723f3b7287381329dcf3a031cc352c7acc25a952422",
+          "size": [
+            900,
+            636
+          ]
+        }
+      ]
+    },
+    {
+      "source_url": "https://github.com/festivities/PrimoToon/blob/12d42095035edf879a45b3e7a679a6ab86fc081d/Resources/Avatar_Tex_Body_Normalmap.png",
+      "source_sha256": "6b885da93ab126c271cc9c54ffdf967c71a65a5ed9602ae02a7b7896a485a0ea",
+      "outputs": [
+        {
+          "file": "github-examples/Avatar_Tex_Body_Normalmap/Avatar_Tex_Body_Normalmap-a.png",
+          "sha256": "9a6356a07305f552506efeb8c2956e77e4bb7dcee095abe8eba3a8d8938dfdea",
+          "size": [
+            250,
+            250
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Body_Normalmap/Avatar_Tex_Body_Normalmap-b.png",
+          "sha256": "4ff878f49af7b93b7b2cfd442c6d49f280d5ef2e1069f8816f898ec4ad2dc8ff",
+          "size": [
+            250,
+            250
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Body_Normalmap/Avatar_Tex_Body_Normalmap-g.png",
+          "sha256": "41c4ae935902a1a00e24f66a7281a75840a7b4650129a788cd97dfab427ffc6b",
+          "size": [
+            250,
+            250
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Body_Normalmap/Avatar_Tex_Body_Normalmap-r.png",
+          "sha256": "41c4ae935902a1a00e24f66a7281a75840a7b4650129a788cd97dfab427ffc6b",
+          "size": [
+            250,
+            250
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Body_Normalmap/Avatar_Tex_Body_Normalmap.png",
+          "sha256": "e8b0bec0ccc5f3161b9e78bfe0cd763de9941077b537b76dba7326bfc8670107",
+          "size": [
+            250,
+            250
+          ]
+        },
+        {
+          "file": "github-examples/Avatar_Tex_Body_Normalmap/overview.png",
+          "sha256": "3defe2ee5383cf2ac9c0d36654750dcbbb5f05c26f1fa904cde5ff406cb42153",
+          "size": [
+            900,
+            636
+          ]
+        }
+      ]
+    }
+  ]
+}

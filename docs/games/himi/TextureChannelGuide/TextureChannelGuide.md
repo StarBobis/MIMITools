@@ -1,171 +1,425 @@
-# 崩坏三：Part 1 / Part 2 贴图通道与生成提示词
+# 崩坏三：逐贴图通道图解与完整生成提示词
 
-改崩坏三贴图，第一件事是分清Part1和Part2。尤其是高光：同一个B通道，在软、硬分支里调大的效果可能相反。下面把这些容易改错的地方放在一起讲。
+这页可以单独使用。先上传一张自己的Diffuse颜色图到ChatGPT Image等支持图像输入的模型，再复制目标贴图下面的**完整提示词**。不需要上传第二张LightMap，也不用读另一篇基础文章才能知道怎么用。
 
-**怎么用下面的提示词：**先读通道说明，再让模型出草稿。未修改通道请在编辑器里从原图复制，不靠模型保证像素一致；ID和阈值用取色器确认。练习数字不代表该角色的标准参数。
+**先分清两件事：**通道规则来自指定复刻Shader；下面按皮肤、布料、饰件给的数字是明确的生成练习预设，不是从该角色解包得到的原值。提示词写得完整可以减少歧义，但不能保证模型逐像素保持UV或精确执行RGBA。
 
-[通道基础与验收](../../../newbie/tools/TextureChannelGuide/TextureChannelGuide.md)。**崩坏三不是一套永远不变的Shader。** 本页分别记录 [HoyoToon Part 1](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl)与 [Part 2](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl)，固定版本 `d9e5ca2f312bf16fba89dee67d32c08b482dcda4`。公开复刻可含近似与新增功能，不等于原游戏全部角色规范。
+本页用“原图/四通道图 → 看图说明 → 每通道数值 → 完整提示词”讲解。教学图都是程序绘制、texconv拆通道的示意，不冒充游戏解包或模型实测。
 
-![崩坏三LightMap教学示意](./assets/lightmap.png)
+本页通道约定主要依据HoyoToon固定提交 `d9e5ca2f312bf16fba89dee67d32c08b482dcda4`，属于公开复刻的已审路径，不是原游戏全版本规范。
 
-## 下载练习图
+## 找到你要生成的贴图
 
-[合成Diffuse](./assets/synthetic-diffuse.png) · [同UV语义分区](./assets/synthetic-regions.png) · [原始RGBA教学数据](./assets/lightmap-data.png) · [资源来源与边界](./assets/README.md) · [SHA256清单](./assets/manifest.json)
+- [DiffuseMap / 颜色图](#map-diffuse)
+- [Part 1 LightMap](#map-lightmap-p1)
+- [Part 2 LightMap](#map-lightmap-p2)
+- [Part 2 BumpMap / 法线](#map-normal)
+- [FacExpTex / FaceExpTex 表情图](#map-expression)
+- [Part 2 SpecularMaskMap / 发丝高光](#map-specmask)
+- [Part 2 JitterMap / 发丝扰动](#map-jitter)
+- [Part 2 HairStripPatterns](#map-hairpattern)
+- [FaceMap / 脸部方向阴影图（Part1 / Part2）](#map-sdf)
+- [MaskDisTex / 溶解控制图](#map-dissolve)
+- [Ramp / 漫反射色带](#map-ramp)
+- [MatCap / 球面外观图](#map-matcap)
+- [LUT / 参数查表图](#map-lut)
 
-可以下载旁边的合成图练习拆通道。图中的分区和数值是练习设定，不是从游戏角色测得的参数。
+## 这页怎样读
 
-## 1. 常见角色图总表
+- 数据值用0～255；线性UNORM中除以255得到0～1。字节128约0.502，若RGB被sRGB解码则约0.216，不能对控制图做自动Gamma或美化。Alpha通常不经过sRGB转换，仍要核对加载路径。
+- 灰度白只意味着数值大：乘子、反向遮罩、材质ID、方向数据的“白”含义不同。下面逐图解释，不用一条规则概括。
+- 只上传Diffuse时，材质分类是猜测。裸金属、丝袜、发光区域最好在文字里指出；不明区域有保守默认值，但它不恢复原角色ID。
+- 合成预览可能受Alpha显示影响；灰度A图是真正的第四通道。下载各层后用取色器看字节，不靠预览颜色判断。
 
-| 贴图 | R | G | B | A |
-| --- | --- | --- | --- | --- |
-| Diffuse（Part 1） | RGB颜色 | 同左 | 同左 | 可选透明/裁剪；另一模式可用作发光阈值 |
-| LightMap（Part 1） | 普通高光强度 | 与顶点数据结合的阴影控制 | 硬高光区域阈值 | 阴影/边缘/发光等参数组选择 |
-| FaceMap（Part 1） | 核心SDF路径未确认，保留 | 同左 | 同左 | 脸部阴影阈值场，镜像读取 |
-| FacExpTex（Part 1） | 脸红层 | 表情阴影层1 | 表情阴影层2 | 反向表情阴影层3：使用1−A |
-| LightMap（Part 2） | 普通高光强度；低R还可触发丝袜分支/部分pass裁剪 | 身体/头发阴影控制 | 高光软硬/区域控制，受UseSoftSpecular影响 | 材质区域与金属阈值路径 |
-| BumpMap（Part 2） | XYZ法线X，函数内翻转X | XYZ法线Y | XYZ法线Z | 核心法线路径未见使用，保留 |
-| FaceMapTex（Part 2） | 核心Face函数未确认，保留 | 同左 | 同左 | 镜像脸部SDF |
-| FaceExpTex（Part 2） | 脸红层 | 表情阴影G | 表情阴影B | 反向表情阴影A；另被部分顶点pass采样 |
-| SpecularMaskMap / JitterMap / HairStripPatterns（Part 2） | 各向异性发丝路径的独立控制 | 按原图/函数 | 按原图/函数 | 按原图/函数 |
+实际清点的HoyoToon仓库主要提供界面装饰图，没有这款游戏的一整套角色Diffuse/LightMap/Normal示例。下面使用原创数据图讲解，不把UI图或渲染截图拆成灰度后冒充角色通道。
 
-**Part 1 法线范围：**此固定核心路径未见Part 2式BumpMap读入，不能由此推断所有老角色没有其它法线纹理。
+## 1. DiffuseMap / 颜色图 {#map-diffuse}
 
-## 2. LightMap Part 1：R强度、B阈值不是一回事
+**对应代码：** [AlphaType分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L216-L240) · [发光来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L153-L158)
 
-[普通高光函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L46-L55)由R乘高光颜色，而B与 `1−pow(N·H,Shininess)` 比较。G进 [hi3_shadow](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L29-L43)，不是单纯物理AO。
+先看输入的蓝色衣片：颜色图里它就该是蓝色，R/G/B是颜色分量。到了控制图，同一片蓝布可能变成红橙色，那不是改了衣服颜色，而是几个控制值叠在一起。
 
-独立旧MME实现 [HI3-Toon-old](https://github.com/Elysia-simp/HI3-Toon-old/blob/8a53d3235f906517e202439aa9ec89dceb1701e0/Sub/materials.fxh#L99-L104)也用R强度与B阈值，但其后续合成还乘B；因此只能说结构相近，不能交换精确数值。该仓库明确标为过时。
+![崩坏三 DiffuseMap / 颜色图 输入、输出与四通道示意](./assets/maps/diffuse/overview.png)
 
-| Part1通道 | 小值与大值 | 特殊情况 |
-| --- | --- | --- |
-| R | 0不贡献普通高光，255给最大纹理乘子；增大主要提高已出现高光的亮度 | 仍需通过B门槛，强度参数为0时无效 |
-| B | 增大会降低 `pow(N·H,Shininess)>1−B` 门槛，扩大高光范围 | B=0在正常N·H范围内不通过；255门槛为0，但N·H=0仍不通过。它不是roughness |
-| G | 输入为 `p=G×顶点R`，分段重映射后与光向比较；段内通常越大越容易受光 | p≤0.5用 `1.25p−0.125`，p>0.5用 `1.2p−0.1`，在0.5附近有小跳变；最终floor使变化呈台阶，不是直接AO乘法 |
-| A | 选择或影响阴影、边缘光、发光参数路径 | 没有通用“越大越金属”；颜色选择范围见下文 |
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
 
-Part1的[颜色选择函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Colors.hlsl#L1-L27)也先给A加0.1：线性字节0～25选颜色1，26～76选颜色2，77～127选颜色3，128～178选颜色4，179～255选颜色5。头发variant_selector=2会固定回颜色1；边缘、阴影、发光各自调用的颜色参数不同。这个颜色分区顺序与Part2相近，**但不表示高光、金属和丝袜规则也相同**，更不是某个编号固定代表皮肤。
+[原始RGBA图](./assets/maps/diffuse/diffuse.png) · [R灰度层](./assets/maps/diffuse/diffuse-r.png) · [G灰度层](./assets/maps/diffuse/diffuse-g.png) · [B灰度层](./assets/maps/diffuse/diffuse-b.png) · [A灰度层](./assets/maps/diffuse/diffuse-a.png)
 
-```text
-以<image2>原Part1 LightMap的R层为参考，对照<image1>服装UV，生成单通道灰度草稿。只把我指定的普通饰件R适当调亮，提高已出现的高光亮度，其它区域保持原灰度。保留画布、UV岛、缝线和扣件位置，不画自然颜色、光照或文字，只输出R层。
-```
+**R怎么用：** R是基础颜色红分量，0最低、255最高。
 
-R/G/B必须外部取样，不同高光公式不能仅凭标签混用。A最好保留原值与原区域，没材质参数时不重编号。
+**G怎么用：** G是基础颜色绿分量，0最低、255最高。
 
-## 3. LightMap Part 2：附加的金属与丝袜路径
+**B怎么用：** B是基础颜色蓝分量，0最低、255最高。
 
-[核心采样与分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L52-L158)会使用A+0.1与金属阈值比较，R≤0.1还能结合EnableStocking触发丝袜路径。不能把“R=0的哑光布”不加条件地用于所有材质。
+**A怎么用：** A用途由材质决定，单张Diffuse不能推断透明、发光或ID。
 
-[material_region](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L69-L86)先对A加0.1再分区；教学安全内部点可选0.05/0.2/0.4/0.6/0.8（字节13/51/102/153/204）。这不是固定物理材质分类，仍应保留原A与材质阈值。两者分区顺序相近，但参数配置不能直接互换。
+颜色分量不是金属、高光或AO；不要增加新的方向光、投影和高光。
 
-[specular_regular](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L291-L332)中B既可参与指数调节也可参与硬阈值，R参与强度与门限；不能把B简单改名“光滑度”。
-
-| Part2通道 | 调小与调大 | 需要记住的边界 |
-| --- | --- | --- |
-| R | 普通高光里，增大会提高进入smoothstep的量；硬分支也更容易通过门槛 | R≤0.1（字节0～25）且开启丝袜时，可切入丝袜；R=0不是随处可用的哑光值。另一个pass还用R<0.45裁剪，不能跨pass共用解释 |
-| G身体 | 受光输入约为 `saturate((N·L+1+Offset)×G)`，增大通常更偏亮面 | G=0输入为0，255仍受光向和参数限制 |
-| G头发 | 用 `G+0.5` 缩放光向项，另有第二阴影颜色选择 | G<0.2（字节0～50）走第二阴影色；从51起通过这项比较，和身体不同 |
-| B硬高光 | 增大降低 `1−B` 门槛，范围扩大 | 比较量还乘R，不只靠B |
-| B软高光 | 增大提高高光指数，在0<N·H<1时使高光更集中、同一点贡献降低 | **方向与硬分支不同**。B=0使指数接近0，不是关闭高光；先确认UseSoftSpecular |
-| A | 先加0.1再分区；也用 `A+0.1≥MetalThreshold` 判金属 | 线性字节0～25→组0，26～76→组1，77～127→组2，128～178→组3，179～255→组4。金属阈值是材质参数，不能固定说某组永远金属 |
-
-软高光要更宽，可能要减B；硬高光要更宽，可能要加B。同叫“高光图”，方向却相反，这就是必须先看开关的原因。
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>服装UV，以<image2>原Part2 LightMap为参考，生成我标出的普通非金属区域R灰度草稿，仅让已有高光稍增强。丝袜、金属和未知区域保持原灰度，保留尺寸、UV岛和小饰件，不画自然颜色、环境光或文字，只输出R层。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成DiffuseMap / 颜色图的颜色贴图草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是基础颜色红分量，0最低、255最高；G是基础颜色绿分量，0最低、255最高；B是基础颜色蓝分量，0最低、255最高；A用途由材质决定，单张Diffuse不能推断透明、发光或ID。本次明确采用的生成预设：本次生成同UV、不透明Diffuse颜色草稿：R/G/B按我给出的新配色修改，未指定改色时保留上传图的RGB颜色；A固定255，不猜透明、发光或材质ID。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只修改我指定的配色，未指定处保留上传Diffuse的颜色和绘制细节。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-## 4. Diffuse与发光
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-Part1 [AlphaType分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L216-L240)分透明和发光阈值；Part2 [发光来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L153-L158)可选择Diffuse A或常量1。不能统一宣称A为发光。
+## 2. Part 1 LightMap {#map-lightmap-p1}
+
+**对应代码：** [普通高光函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L46-L55) · [hi3_shadow](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L29-L43) · [颜色选择函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Colors.hlsl#L1-L27)
+
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
+
+![崩坏三 Part 1 LightMap 输入、输出与四通道示意](./assets/maps/lightmap-p1/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/lightmap-p1/lightmap-p1.png) · [R灰度层](./assets/maps/lightmap-p1/lightmap-p1-r.png) · [G灰度层](./assets/maps/lightmap-p1/lightmap-p1-g.png) · [B灰度层](./assets/maps/lightmap-p1/lightmap-p1-b.png) · [A灰度层](./assets/maps/lightmap-p1/lightmap-p1-a.png)
+
+**R怎么用：** R普通高光强度，0无该项、增大增强已出现高光。
+
+**G怎么用：** G与顶点R相乘p，p≤0.5用1.25p−0.125、p>0.5用1.2p−0.1，再与光向floor；段内增大通常更受光，有台阶。
+
+**B怎么用：** B控制硬高光门槛，pow(N·H,Shininess)>1−B，增大扩范围，0通常不通过。
+
+**A怎么用：** A+0.1选颜色：0～25色1、26～76色2、77～127色3、128～178色4、179～255色5，头发variant2固定色1。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-按指定配色修改<image1>服装Diffuse的RGB，保留原尺寸、UV岛、缝线和装饰，不增加高光、方向投影或文字。输出颜色草稿，Alpha稍后从原图复制。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Part 1 LightMap的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R普通高光强度，0无该项、增大增强已出现高光；G与顶点R相乘p，p≤0.5用1.25p−0.125、p>0.5用1.2p−0.1，再与光向floor；段内增大通常更受光，有台阶；B控制硬高光门槛，pow(N·H,Shininess)>1−B，增大扩范围，0通常不通过；A+0.1选颜色：0～25色1、26～76色2、77～127色3、128～178色4、179～255色5，头发variant2固定色1。本次明确采用的生成预设：普通高光练习：皮肤RGBA(30,128,40,13)、布料(20,128,30,51)、普通饰件(160,128,180,102)、未识别(20,128,30,13)；组别是本次练习参数组，不恢复原角色编号。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-Part1发光模式用 `Diffuse A>0.45` 的开关式判断：线性字节0～114不通过，115～255通过，**180不比115更强**，亮度由其它参数控制。启用AlphaClip时又按A<0.5裁剪，0～127被丢掉。Part2直接从Diffuse A或常量1取发光来源时则不是同一套0.45开关规则，不能混着改。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-**只改已确认的Diffuse A发光层：**
+## 3. Part 2 LightMap {#map-lightmap-p2}
+
+**对应代码：** [核心采样与分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L52-L158) · [material_region](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L69-L86) · [specular_regular](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L291-L332)
+
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
+
+![崩坏三 Part 2 LightMap 输入、输出与四通道示意](./assets/maps/lightmap-p2/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/lightmap-p2/lightmap-p2.png) · [R灰度层](./assets/maps/lightmap-p2/lightmap-p2-r.png) · [G灰度层](./assets/maps/lightmap-p2/lightmap-p2-g.png) · [B灰度层](./assets/maps/lightmap-p2/lightmap-p2-b.png) · [A灰度层](./assets/maps/lightmap-p2/lightmap-p2-a.png)
+
+**R怎么用：** R参与普通高光强度/门槛，≤0.1即0～25且EnableStocking开启可走丝袜；某pass R<0.45裁剪。
+
+**G怎么用：** G身体增大通常更受光，头发G+0.5控制且G<0.2即0～50走第二阴影色。
+
+**B怎么用：** B硬分支增大降低1−B门槛扩大高光；软分支增大提高指数，让高光更集中，方向相反。
+
+**A怎么用：** A+0.1分组：0～25组0、26～76组1、77～127组2、128～178组3、179～255组4；金属由A+0.1≥材质MetalThreshold另判。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-依据<image1>UV位置和我明确标出的发光图案生成单通道灰度发光候选，发光区域255、非发光0并保留细条边界，不把反光金属或白布算作发光、不做光晕或自然颜色，保持原尺寸、不加文字，用于外部替换已确认发光模式的Diffuse A；若该材质用A做透明或裁剪，不应用这张图。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Part 2 LightMap的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R参与普通高光强度/门槛，≤0.1即0～25且EnableStocking开启可走丝袜；某pass R<0.45裁剪；G身体增大通常更受光，头发G+0.5控制且G<0.2即0～50走第二阴影色；B硬分支增大降低1−B门槛扩大高光；软分支增大提高指数，让高光更集中，方向相反；A+0.1分组：0～25组0、26～76组1、77～127组2、128～178组3、179～255组4；金属由A+0.1≥材质MetalThreshold另判。本次明确采用的生成预设：只做普通非金属、关闭丝袜与金属路径、UseSoftSpecular=0的练习：皮肤(120,128,40,13)、布(120,128,30,51)、饰件(160,128,180,102)、未知(120,128,30,13)。R≥115只是避开已知0.45裁剪候选，不保证其它pass安全。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-## 5. FaceMap与表情图
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-脸部 [Part1镜像采样](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L145-L171)配合头部方向与G控制；表情 [RGBA读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L242-L256)含反向Alpha层。Part2表情 [face_exp](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L88-L111)也使用1−A。
+## 4. Part 2 BumpMap / 法线 {#map-normal}
 
-FaceMap A在同一光向下，增大更容易进入亮面，减小更容易进入阴影；0/255是场的两端，不是透明度。Part1还乘脸LightMap G作为AO，G越低遮蔽越重、255不额外削弱；Part2脸函数没有这条同样的G乘法。FaceMap RGB在这条方向场路径未确认用途，保留。
+**对应代码：** [法线函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L21-L29)
 
-**FaceMap：**
+看R和G里的细小变化，方向信息藏在这些梯度里，而不是藏在“蓝紫色外观”里。平坦区域约128；从128向两侧偏移表示向不同切线方向倾斜，不是越白越凸。
+
+![崩坏三 Part 2 BumpMap / 法线 输入、输出与四通道示意](./assets/maps/normal/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/normal/normal.png) · [R灰度层](./assets/maps/normal/normal-r.png) · [G灰度层](./assets/maps/normal/normal-g.png) · [B灰度层](./assets/maps/normal/normal-b.png) · [A灰度层](./assets/maps/normal/normal-a.png)
+
+**R怎么用：** R编码切线法线X：0负方向、128附近零偏转、255正方向。
+
+**G怎么用：** G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader。
+
+**B怎么用：** B标准切线Z：0负Z、128附近零、255正Z，平坦B255。
+
+**A怎么用：** A在核心法线链未确认用途。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>脸UV，只修补<image2>原FaceMap中标出的破损，保留方向阈值场和镜像关系，不重新设计鼻影或肤色。保持画布和UV位置，不加文字，输出修补草稿。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Part 2 BumpMap / 法线的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R编码切线法线X：0负方向、128附近零偏转、255正方向；G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader；B标准切线Z：0负Z、128附近零、255正Z，平坦B255；A在核心法线链未确认用途。本次明确采用的生成预设：平坦RGBA(128,128,255,255)，浅缝线微弱XY变化并保证XYZ单位方向；输出标准XYZ、不预先翻X，由目标online解包翻X，offline不翻。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。法线细节仅来自我明确指出的浅缝线、压边、扣件和发丝结构，不把Diffuse明暗转成高度，不新增织物噪点；XY解码为2×值/255−1，保持X²+Y²≤1并按目标定义重建或填写Z，不能把方向极值当凹凸强度。
 ```
 
-表情R/G/B一般越大越靠近对应设置色，0不贡献；Part1 R带平方、Part2 G/B带平方，所以128不一定是一半效果。A使用 `1−A`：255关闭这一层，0最强，128约半输入后还可能平方到约四分之一。所谓“阴影色”由材质设定，不能保证只会变黑。
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-**表情图：**
+## 5. FacExpTex / FaceExpTex 表情图 {#map-expression}
+
+**对应代码：** [RGBA读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L242-L256)
+
+表情图不是在Diffuse上画腮红，而是存几层表情权重。特别留意Alpha的正反方向：有的实现255关闭这一层，0才最强。
+
+![崩坏三 FacExpTex / FaceExpTex 表情图 输入、输出与四通道示意](./assets/maps/expression/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/expression/expression.png) · [R灰度层](./assets/maps/expression/expression-r.png) · [G灰度层](./assets/maps/expression/expression-g.png) · [B灰度层](./assets/maps/expression/expression-b.png) · [A灰度层](./assets/maps/expression/expression-a.png)
+
+**R怎么用：** R脸红权重，0无贡献；Part1含平方所以中灰不是一半效果。
+
+**G怎么用：** G表情阴影，0无贡献、增大靠近材质色，Part2含平方。
+
+**B怎么用：** B另一表情阴影，0无贡献、增大靠近材质色。
+
+**A怎么用：** A反向表情遮罩，255关闭、0最强；1−A后还可能平方。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>脸UV和<image2>原表情层，按我的表情说明修改指定的单通道灰度层。R/G/B按原遮罩方向，A按反向遮罩方向，未标区不动。保持尺寸、眼鼻嘴和UV位置，不画肤色、SDF或文字。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成FacExpTex / FaceExpTex 表情图的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R脸红权重，0无贡献；Part1含平方所以中灰不是一半效果；G表情阴影，0无贡献、增大靠近材质色，Part2含平方；B另一表情阴影，0无贡献、增大靠近材质色；A反向表情遮罩，255关闭、0最强；1−A后还可能平方。本次明确采用的生成预设：无表情RGBA(0,0,0,255)；只在用户明确要求的脸红区域R=180，G/B保持0，A255。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-## 6. Part2 BumpMap：注意函数翻转X
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-[法线函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L21-L29)解码XYZ、缩放XY并翻转X。它不是ZZZ的“RG法线+B阴影偏置”。
+## 6. Part 2 SpecularMaskMap / 发丝高光 {#map-specmask}
 
-标准XYZ先把0～255解成−1～+1；平坦区约(128,128,255)。这里online函数还翻转X，所以R调大在最终切线X上反而更偏负，G调大更偏正Y，B越接近255越朝正Z。offline函数不翻X；实际选择哪条路径要看调用，不要凭“Part2”就预先多翻一次。A没有在这条法线函数里用到，保留。
+**对应代码：** [完整发丝计算](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406)
+
+先找图中的衣片和扣件，再分别看R/G/B/A。同一位置在不同通道里的灰度可以完全不同：一层选材质，一层管高光，一层管阴影。不要为了让合成预览“像原衣服”而把四层一起涂。
+
+![崩坏三 Part 2 SpecularMaskMap / 发丝高光 输入、输出与四通道示意](./assets/maps/specmask/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/specmask/specmask.png) · [R灰度层](./assets/maps/specmask/specmask-r.png) · [G灰度层](./assets/maps/specmask/specmask-g.png) · [B灰度层](./assets/maps/specmask/specmask-b.png) · [A灰度层](./assets/maps/specmask/specmask-a.png)
+
+**R怎么用：** R按SpecularMaskLerp混合高光权重并参与扰动，开关1时0抑制、255保留。
+
+**G怎么用：** G在高频指数Max/Min间插值，通常Max>Min时增大更宽，反向设置方向相反。
+
+**B怎么用：** B≥0.5即128起允许高频高光、0～127不通过。
+
+**A怎么用：** A在该发丝函数未确认用途。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-对照<image1>服装UV生成浅XYZ法线草稿，平坦区约(128,128,255)，只在指定缝线和扣件处作连续弱变化。不把颜色明暗当高低，不添噪点、照明或文字，保持画布与UV位置。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Part 2 SpecularMaskMap / 发丝高光的技术数据草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R按SpecularMaskLerp混合高光权重并参与扰动，开关1时0抑制、255保留；G在高频指数Max/Min间插值，通常Max>Min时增大更宽，反向设置方向相反；B≥0.5即128起允许高频高光、0～127不通过；A在该发丝函数未确认用途。本次明确采用的生成预设：只做无方向细节练习：头发岛R=128、G=128、B=255，背景R/G/B=0，A=255；不能从Diffuse恢复真实切线高光。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。除上面明确要求的连续阴影或灰度过渡外，每个确认材质区按预设定值填充；材质ID禁止渐变，不要因为白布/黑布就另设控制值。背景和未识别区按本次默认编码，不自行补未给出的游戏规则。
 ```
 
-## 7. 头发专用高光、溶解与查表图
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-Part2 [hair_specular](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L354)分别采样JitterMap R、HairStripPatterns的标量与SpecularMaskMap。平铺与沿UV特定坐标采样使它们不等于服装粗糙度；暂时不清楚参数时先留原图。
+## 7. Part 2 JitterMap / 发丝扰动 {#map-jitter}
 
-[完整发丝计算](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406)还可以说明这些通道：
+**对应代码：** [完整发丝计算](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406)
 
-- **JitterMap R**：在两端扰动方向之间插值，0取一端、255取另一端，128附近处于中间；它移动高光方向，不是越白越亮。G/B/A在这条函数中不用，保留。
-- **HairStripPatterns R**：先变成−1～1，再影响扰动幅度范围；低值取一端、高值取另一端，方向还看Min/Max设置。不是衣服UV遮罩，G/B/A未确认。
-- **SpecularMaskMap R**：MaskLerp=1时0压掉所用高光权重、255完整保留；也参与高频扰动位置，不只强度。MaskLerp=0时不由R遮住高光。
-- **SpecularMaskMap G**：在高频高光指数Max与Min之间插值。通常Max>Min时，增大G降低指数、让高光更宽；参数顺序反过来，效果也反过来。
-- **SpecularMaskMap B**：`B≥0.5` 允许高频高光，线性字节128起通过，0～127不通过这项门控。A在该函数没用到，保留。
+这类图通常平铺或沿特定坐标取样。输入Diffuse可以给风格线索，却不能让模型知道原来使用的ST缩放和发丝切线；练习图只演示灰度数据。
 
-这些都是发丝方向/高光控制，不是普通R金属、G粗糙、B AO。
+![崩坏三 Part 2 JitterMap / 发丝扰动 输入、输出与四通道示意](./assets/maps/jitter/overview.png)
 
-**JitterMap候选：**
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/jitter/jitter.png) · [R灰度层](./assets/maps/jitter/jitter-r.png) · [G灰度层](./assets/maps/jitter/jitter-g.png) · [B灰度层](./assets/maps/jitter/jitter-b.png) · [A灰度层](./assets/maps/jitter/jitter-a.png)
+
+**R怎么用：** R在两端扰动方向间插值，0一端、255另一端，128附近中间，不是强度。
+
+**G怎么用：** G在这条函数未用。
+
+**B怎么用：** B在这条函数未用。
+
+**A怎么用：** A在这条函数未用。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原JitterMap的R层为参考，只修补标出的扰动纹样，沿用原灰度范围、方向和平铺边界，不画自然头发颜色或直接高光。保持尺寸，不加文字，输出R灰度草稿。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Part 2 JitterMap / 发丝扰动的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R在两端扰动方向间插值，0一端、255另一端，128附近中间，不是强度；G在这条函数未用；B在这条函数未用；A在这条函数未用。本次明确采用的生成预设：R基值128并按用户指定发丝走向作110～145弱扰动；G=0、B=0、A=255。采用256×256平铺图，不按衣服UV输出。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**HairStripPatterns：**
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 8. Part 2 HairStripPatterns {#map-hairpattern}
+
+**对应代码：** [完整发丝计算](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406)
+
+这类图通常平铺或沿特定坐标取样。输入Diffuse可以给风格线索，却不能让模型知道原来使用的ST缩放和发丝切线；练习图只演示灰度数据。
+
+![崩坏三 Part 2 HairStripPatterns 输入、输出与四通道示意](./assets/maps/hairpattern/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/hairpattern/hairpattern.png) · [R灰度层](./assets/maps/hairpattern/hairpattern-r.png) · [G灰度层](./assets/maps/hairpattern/hairpattern-g.png) · [B灰度层](./assets/maps/hairpattern/hairpattern-b.png) · [A灰度层](./assets/maps/hairpattern/hairpattern-a.png)
+
+**R怎么用：** R先映射2R−1，再影响Min/Max扰动范围，0−1、128附近0、255+1。
+
+**G怎么用：** G未确认用途。
+
+**B怎么用：** B未确认用途。
+
+**A怎么用：** A未确认用途。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原HairStripPatterns为采样布局模板，沿原条带方向修补明确损坏的灰度高光扰动纹样，保持尺寸、ST映射、边缘连续与全部未修改通道，不把它画成角色UV颜色图，不添加高光渲染或文字，只输出配准候选供指定坐标采样测试。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Part 2 HairStripPatterns的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R先映射2R−1，再影响Min/Max扰动范围，0−1、128附近0、255+1；G未确认用途；B未确认用途；A未确认用途。本次明确采用的生成预设：256×256无缝灰度条带R基值128、范围110～145；G=0、B=0、A=255。用户提供Diffuse只作为发丝风格参考，尺寸不继承衣服UV。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**SpecularMaskMap：**
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 9. FaceMap / 脸部方向阴影图（Part1 / Part2） {#map-sdf}
+
+**对应代码：** [Part1镜像采样](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L145-L171)
+
+这里故意展示平场占位，而不画一个看起来像鼻影的假SDF。颜色图没有告诉我们每个脸部像素在哪个光向开始转暗；正确方向场需要额外设计或几何信息。
+
+![崩坏三 FaceMap / 脸部方向阴影图（Part1 / Part2） 输入、输出与四通道示意](./assets/maps/sdf/overview.png)
+
+**图中是不能用于脸阴影还原的常量占位，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/sdf/sdf.png) · [R灰度层](./assets/maps/sdf/sdf-r.png) · [G灰度层](./assets/maps/sdf/sdf-g.png) · [B灰度层](./assets/maps/sdf/sdf-b.png) · [A灰度层](./assets/maps/sdf/sdf-a.png)
+
+**R怎么用：** R在该核心SDF链未确认用途。
+
+**G怎么用：** G在该核心SDF链未确认用途。
+
+**B怎么用：** B在该核心SDF链未确认用途。
+
+**A怎么用：** A是方向阴影阈值场，固定光向下增大更偏亮面，镜像/头部方向决定采样。
+
+只上传Diffuse无法唯一确定方向场。下面完整指令仅生成标明用途的占位草稿，不是正确SDF生成配方；要重建必须增加几何/光向设计信息。
+
+### 完整占位生成提示词（非角色还原）
 
 ```text
-对照<image1>头发UV和<image2>原SpecularMaskMap的指定通道，只修补我标出的高光控制区域，沿用原灰度和边界。不要重画其它层，不画自然头发颜色、光照或文字，输出该通道灰度草稿。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成FaceMap / 脸部方向阴影图（Part1 / Part2）的占位草稿。生成图片必须与上传Diffuse的像素尺寸、UV岛位置、空白区域、缝线、扣件和所有细条完全对齐，不缩放、镜像、移动或重新排UV。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R在该核心SDF链未确认用途；G在该核心SDF链未确认用途；B在该核心SDF链未确认用途；A是方向阴影阈值场，固定光向下增大更偏亮面，镜像/头部方向决定采样。本次明确采用的生成预设：只做不能用于角色还原的方向场占位：R=0、G=0、B=0、A=128。A全128没有方向梯度，不声称有正确随光阴影。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-**MaskDisTex等溶解图：**
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 10. MaskDisTex / 溶解控制图 {#map-dissolve}
+
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+
+**R怎么用：** R参与溶解Mask计算，方向取决于AlphaPosition、UV和分支。
+
+**G怎么用：** G参与另一溶解Mask与边缘计算，不能统一说越白越消失。
+
+**B怎么用：** B该所审链未确认通用用途。
+
+**A怎么用：** A该所审链未确认通用用途。
+
+溶解阈值是运行时参数。不同采样坐标会改变效果，仅看Diffuse不能推回噪声与溶解场。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
 
 ```text
-以<image1>原溶解控制贴图为模板只修补指定区域和指定通道，严格保留原尺寸、噪声平铺与RGBA编码，不把服装颜色转为未知溶解值，不改变其它通道、不新增文字，输出局部候选；只有取得目标溶解函数和材质参数后才生成新控制场。
+我只上传了这张崩坏三角色Diffuse颜色图。我想生成MaskDisTex / 溶解控制图，但你没有目标采样/参数定义。完整规则是：R参与溶解Mask计算，方向取决于AlphaPosition、UV和分支；G参与另一溶解Mask与边缘计算，不能统一说越白越消失；B该所审链未确认通用用途；A该所审链未确认通用用途。只上传Diffuse无法确定该图的采样布局和阈值，因此不生成声称可替换的四通道图，不自行填RGBA常量；需要取得目标Shader、参数或几何信息。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
 ```
 
-**Ramp类：**
+**拿到结果先看：** 尺寸、UV边界和每通道数值；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 11. Ramp / 漫反射色带 {#map-ramp}
+
+看横向色带：它按受光坐标查颜色，不是按衣服UV读。四通道图里白色Alpha可能只是占位，也可能控制混合，要看这一种表的定义。
+
+![崩坏三 Ramp / 漫反射色带 输入、输出与四通道示意](./assets/maps/ramp/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/ramp/ramp.png) · [R灰度层](./assets/maps/ramp/ramp-r.png) · [G灰度层](./assets/maps/ramp/ramp-g.png) · [B灰度层](./assets/maps/ramp/ramp-b.png) · [A灰度层](./assets/maps/ramp/ramp-a.png)
+
+**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+
+**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+
+**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+
+**A怎么用：** A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。
+
+这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+### 完整生成提示词（单张Diffuse输入）
 
 ```text
-以<image1>原SpecularRamp或其它色带图为模板，仅修改我指定行的RGB色板，保留原行列、采样边界与Alpha，不放衣服UV、不重排行、不生成物体或文字，输出查表候选并按材质区域索引逐行验证。
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成Ramp / 漫反射色带的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；G是查表颜色绿分量，值增大增加所采样绿贡献；B是查表颜色蓝分量，值增大增加所采样蓝贡献；A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。本次明确采用的生成预设：256×16练习色带：每一行相同，左RGB(45,50,65)、中(150,160,180)、右(255,255,255)，A255，沿X平滑变化、不重排成衣服UV。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
 ```
 
-这些保留/修补提示词刻意不编造未知通道。更多特效、眼部纹样及不同年代Shader必须作为独立材质的读取规则研究。
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
 
-## 改完怎么检查
+## 12. MatCap / 球面外观图 {#map-matcap}
 
-记录Part1/Part2、Shader关键词和原材质参数。每次单通道A/B测试；对金属、丝袜和眼部单独检查；表情Alpha方向不得反转。数值、UV、切线与真实渲染四项都过关才部署。配图与数字仅作教学，不是已验证游戏成品。
+这里看的是球面查表外观，不是扣件在UV中的位置。转视角时材质去球面图取样；直接把服装图变成橙色不可能得到正确MatCap。
+
+![崩坏三 MatCap / 球面外观图 输入、输出与四通道示意](./assets/maps/matcap/overview.png)
+
+**图中是原创通道练习图，不是游戏原图。** 输入只用来指出位置；图例不应出现在最终生成贴图中。
+
+[原始RGBA图](./assets/maps/matcap/matcap.png) · [R灰度层](./assets/maps/matcap/matcap-r.png) · [G灰度层](./assets/maps/matcap/matcap-g.png) · [B灰度层](./assets/maps/matcap/matcap-b.png) · [A灰度层](./assets/maps/matcap/matcap-a.png)
+
+**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+
+**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+
+**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+
+**A怎么用：** A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。
+
+这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+### 完整生成提示词（单张Diffuse输入）
+
+```text
+请根据我上传的这一张崩坏三角色DiffuseMap颜色贴图，生成MatCap / 球面外观图的技术数据草稿。这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；G是查表颜色绿分量，值增大增加所采样绿贡献；B是查表颜色蓝分量，值增大增加所采样蓝贡献；A必须按表定义，单Diffuse无法恢复；以下只给不透明练习占位。本次明确采用的生成预设：256×256球面练习图，中心RGB(220,220,220)、边缘(40,40,40)，平滑球面高光，无背景物体；A255，仅用户确认该MatCap路径后试用。不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。这是按给定预设生成的候选，不声称从Diffuse恢复角色原通道；不能输出真实Alpha时明确说明，不用白底预览冒充RGBA文件。
+```
+
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 13. LUT / 参数查表图 {#map-lut}
+
+LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+
+**R怎么用：** R依表行列存特定参数，没有全图单调强弱方向。
+
+**G怎么用：** G依表行列存特定参数，不能当统一粗糙度。
+
+**B怎么用：** B依表行列存特定参数，不能当统一AO。
+
+**A怎么用：** A依表行列定义，不能统一填255；缺少布局不生成替代图。
+
+这里不伪造一个固定RGBA值就称能用；有些特殊贴图没有单Diffuse生成解。
+
+### 单Diffuse输入下的完整处理指令（不伪造替代LUT）
+
+```text
+我只上传了这张崩坏三角色Diffuse颜色图。我想生成LUT / 参数查表图，但你没有目标采样/参数定义。完整规则是：R依表行列存特定参数，没有全图单调强弱方向；G依表行列存特定参数，不能当统一粗糙度；B依表行列存特定参数，不能当统一AO；A依表行列定义，不能统一填255；缺少布局不生成替代图。不生成替代图；仅说明缺少的表尺寸、行列和RGBA参数，让用户用编辑器按规范填写。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；Diffuse只提供颜色和UV，不足以确定这些数据。
+```
+
+**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，不将草稿直接当合格游戏资产。
+
+## 看数值方向，不要只看合成颜色
+
+![0到255如何表示切线方向](./assets/value-directions.png)
+
+## 最后检查：不要只看生成图好不好看
+
+1. 同UV目标用原Diffuse半透明叠加，检查岛边界、细条、镜像和空白；查表图则检查行列与采样坐标。
+2. 拆RGBA取样，确认常量、离散ID和阈值没有被模型偏色、抗锯齿、Gamma改变；ID不做普通模糊渐变。
+3. PNG/TGA用于编辑，中间图不是DDS；BC5仅两路、BC6H没有Alpha且HDR转8位会损失范围，最终格式按游戏加载器要求。
+4. 材质参数、版本、关键词、采样UV一起记录。转光、转视角、远近mip都比较；开关关闭时改通道可能看不出作用。
+
+完整提示词解决表达歧义，不解决Diffuse缺少的数据，也不代替实机验证。SDF、LUT、双法线几何方向仍有明确限制。
+
+## 固定源码证据
+
+- [HoyoToon Part 1](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl)
+- [Part 2](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl)
+- [普通高光函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L46-L55)
+- [hi3_shadow](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L29-L43)
+- [HI3-Toon-old](https://github.com/Elysia-simp/HI3-Toon-old/blob/8a53d3235f906517e202439aa9ec89dceb1701e0/Sub/materials.fxh#L99-L104)
+- [颜色选择函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Colors.hlsl#L1-L27)
+- [核心采样与分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L52-L158)
+- [material_region](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L69-L86)
+- [specular_regular](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L291-L332)
+- [AlphaType分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L216-L240)
+- [发光来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L153-L158)
+- [Part1镜像采样](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L145-L171)
+- [RGBA读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L242-L256)
+- [face_exp](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L88-L111)
+- [法线函数](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L21-L29)
+- [hair_specular](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L354)
+- [完整发丝计算](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406)
+
+[图解输出尺寸与SHA256](./assets/map-manifest.json) · [研究记录](../../../newbie/tools/TextureChannelGuide/Review.md)

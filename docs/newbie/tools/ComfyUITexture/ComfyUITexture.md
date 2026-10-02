@@ -1,6 +1,8 @@
 # 🎨 ComfyUI 贴图工作流
 
-ComfyUI 是一种组织模型与后处理步骤的节点工具，**不是理解游戏通道的替代品，也不是唯一方案**。先读[贴图通道与AI生成：基础与验收](../TextureChannelGuide/TextureChannelGuide.md)，再选择适合自己的生成工具。
+ComfyUI 是一种组织模型与后处理步骤的节点工具，**不是理解游戏通道的替代品，也不是唯一方案**。各游戏教程已经直接提供通道图解和面向ChatGPT等图像模型的单Diffuse输入提示词，不需要使用ComfyUI：
+
+[原神](../../../games/gimi/TextureChannelGuide/TextureChannelGuide.md) · [星穹铁道](../../../games/srmi/TextureChannelGuide/TextureChannelGuide.md) · [崩坏三](../../../games/himi/TextureChannelGuide/TextureChannelGuide.md) · [绝区零](../../../games/zzmi/TextureChannelGuide/TextureChannelGuide.md) · [鸣潮](../../../games/wwmi/TextureChannelGuide/TextureChannelGuide.md) · [终末地](../../../games/efmi/TextureChannelGuide/TextureChannelGuide.md)
 
 ## 什么可以生成
 

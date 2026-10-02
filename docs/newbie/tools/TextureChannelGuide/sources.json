@@ -2,16 +2,24 @@
   "scope": "Pinned public shader references; hash is full retrieved file, not only the cited lines",
   "sources": [
     {
-      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/USER_GUIDE_CN.md#L67-L75",
-      "retrieved_source_sha256": "865ad6dde7f96f90bfd32a5553319564f9be9f81f513383f50e0a1f21f81be1c"
+      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/textures/common/T_actor_common_female_face_01_SDF.png",
+      "retrieved_source_sha256": "76604ffebc687989bd0b373829ed1e076201577b71f743f447f221d54674ea5f"
+    },
+    {
+      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/textures/common/T_actor_common_female_face_01_cm_M.png",
+      "retrieved_source_sha256": "db38cc2209f2069080dbf0f8f324f5b12ee370337a64225b84a2e31b01a97689"
+    },
+    {
+      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/textures/common/T_actor_common_face_01_RD.png",
+      "retrieved_source_sha256": "f92de330ab065af58d4e805b1571aa7b3702c5babd4009abe56bca22b675a4d4"
+    },
+    {
+      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/ASSET_LICENSE_BOUNDARY_CN.md",
+      "retrieved_source_sha256": "6306aa05e570c1ab9fe707e8dbf240da06193e50f7ed64476a010676fc3fbffe"
     },
     {
       "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1842-L1852",
       "retrieved_source_sha256": "d3e1ac5dc97af5f4146bd8e0653b2be1d60207ec1f0a64296e74e980b972614a"
-    },
-    {
-      "url": "https://github.com/danbaidong1111/DanbaidongRP/blob/072b375399e4c38d0cad235a7ec513f981fd5676/Shaders/Material/PBRToon/PBRToonBase.shader#L466-L475",
-      "retrieved_source_sha256": "5e35534f65ce4e2d1548f492a97a3c8364c704708ceacb6dc9e4c2c9e3d392d1"
     },
     {
       "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L811-L885",
@@ -19,10 +27,6 @@
     },
     {
       "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L969-L975",
-      "retrieved_source_sha256": "ca1fcb20c8e90947920d62b00991182ded3c2b0351d674efe4b744db5fe39e2d"
-    },
-    {
-      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L705-L758",
       "retrieved_source_sha256": "ca1fcb20c8e90947920d62b00991182ded3c2b0351d674efe4b744db5fe39e2d"
     },
     {
@@ -42,12 +46,24 @@
       "retrieved_source_sha256": "cc61bda9b76c53ec34278e614257f00bca8a6279cae442dfa5825a8dcd92c1a5"
     },
     {
+      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L705-L758",
+      "retrieved_source_sha256": "ca1fcb20c8e90947920d62b00991182ded3c2b0351d674efe4b744db5fe39e2d"
+    },
+    {
       "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L1838-L1844",
       "retrieved_source_sha256": "d3e1ac5dc97af5f4146bd8e0653b2be1d60207ec1f0a64296e74e980b972614a"
     },
     {
       "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L765-L788",
       "retrieved_source_sha256": "ca1fcb20c8e90947920d62b00991182ded3c2b0351d674efe4b744db5fe39e2d"
+    },
+    {
+      "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/USER_GUIDE_CN.md#L67-L75",
+      "retrieved_source_sha256": "865ad6dde7f96f90bfd32a5553319564f9be9f81f513383f50e0a1f21f81be1c"
+    },
+    {
+      "url": "https://github.com/danbaidong1111/DanbaidongRP/blob/072b375399e4c38d0cad235a7ec513f981fd5676/Shaders/Material/PBRToon/PBRToonBase.shader#L466-L475",
+      "retrieved_source_sha256": "5e35534f65ce4e2d1548f492a97a3c8364c704708ceacb6dc9e4c2c9e3d392d1"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-program.hlsl#L523-L544",
@@ -62,10 +78,6 @@
       "retrieved_source_sha256": "83b29ac462c0bd1f9c574ffa6b7752b7ea6064a868aca9d7bbe514b81352f3e1"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L1-L13",
-      "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
-    },
-    {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L712-L738",
       "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
     },
@@ -76,10 +88,6 @@
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L414-L463",
       "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-program.hlsl#L350-L358",
-      "retrieved_source_sha256": "83b29ac462c0bd1f9c574ffa6b7752b7ea6064a868aca9d7bbe514b81352f3e1"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L367-L402",
@@ -94,11 +102,23 @@
       "retrieved_source_sha256": "83b29ac462c0bd1f9c574ffa6b7752b7ea6064a868aca9d7bbe514b81352f3e1"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl",
+      "url": "https://github.com/festivities/PrimoToon/blob/12d42095035edf879a45b3e7a679a6ab86fc081d/README.md#L44-L48",
+      "retrieved_source_sha256": "7604abdcedb1fb5df8124a8d71b35976cf0907e13fa875abc3f94f11afc86fca"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-common.hlsl#L1-L13",
+      "retrieved_source_sha256": "52c5e0fb5d6ab941c13652648de9eacd784a9ae9fd132048ff2c93d98ceee902"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-program.hlsl#L350-L358",
+      "retrieved_source_sha256": "83b29ac462c0bd1f9c574ffa6b7752b7ea6064a868aca9d7bbe514b81352f3e1"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L216-L240",
       "retrieved_source_sha256": "5ff02667e15ad30822912b00b58bb38b873a6b516ddc7d70229b0938d4ed62f3"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L153-L158",
       "retrieved_source_sha256": "e474ce5fe639e33dd83a08637288943ac3b4e958a8be3bc2c2c7882c26d45342"
     },
     {
@@ -108,10 +128,6 @@
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl#L29-L43",
       "retrieved_source_sha256": "e91ddf82888b2b91aec8fff20449877da48354e584f668b80bd78a1fad0462bc"
-    },
-    {
-      "url": "https://github.com/Elysia-simp/HI3-Toon-old/blob/8a53d3235f906517e202439aa9ec89dceb1701e0/Sub/materials.fxh#L99-L104",
-      "retrieved_source_sha256": "c6c35c728c3060d878ecffe5ab4bdc3cbab15c9c4964952137ec633cd673a02e"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Colors.hlsl#L1-L27",
@@ -130,27 +146,35 @@
       "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L216-L240",
-      "retrieved_source_sha256": "5ff02667e15ad30822912b00b58bb38b873a6b516ddc7d70229b0938d4ed62f3"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl#L153-L158",
-      "retrieved_source_sha256": "e474ce5fe639e33dd83a08637288943ac3b4e958a8be3bc2c2c7882c26d45342"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L145-L171",
-      "retrieved_source_sha256": "5ff02667e15ad30822912b00b58bb38b873a6b516ddc7d70229b0938d4ed62f3"
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L21-L29",
+      "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L242-L256",
       "retrieved_source_sha256": "5ff02667e15ad30822912b00b58bb38b873a6b516ddc7d70229b0938d4ed62f3"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L88-L111",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406",
       "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L21-L29",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl#L145-L171",
+      "retrieved_source_sha256": "5ff02667e15ad30822912b00b58bb38b873a6b516ddc7d70229b0938d4ed62f3"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl",
+      "retrieved_source_sha256": "5ff02667e15ad30822912b00b58bb38b873a6b516ddc7d70229b0938d4ed62f3"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-program.hlsl",
+      "retrieved_source_sha256": "e474ce5fe639e33dd83a08637288943ac3b4e958a8be3bc2c2c7882c26d45342"
+    },
+    {
+      "url": "https://github.com/Elysia-simp/HI3-Toon-old/blob/8a53d3235f906517e202439aa9ec89dceb1701e0/Sub/materials.fxh#L99-L104",
+      "retrieved_source_sha256": "c6c35c728c3060d878ecffe5ab4bdc3cbab15c9c4964952137ec633cd673a02e"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L88-L111",
       "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
     },
     {
@@ -158,19 +182,11 @@
       "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-common.hlsl#L335-L406",
-      "retrieved_source_sha256": "aa0984e427f34385e040ca1572cad2acb7ae2fee4b7cf45ef4682495d39af94b"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L526-L547",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L321-L367",
-      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L499-L506",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
@@ -182,26 +198,6 @@
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L102-L113",
-      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L150-L164",
-      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L526-L547",
-      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L380-L397",
-      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L584-L590",
-      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
-    },
-    {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L789-L805",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
@@ -210,36 +206,44 @@
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L558-L563",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L779-L833",
+      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L584-L590",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L779-L833",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl",
+      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L499-L506",
+      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L102-L113",
       "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-common.hlsl#L150-L164",
+      "retrieved_source_sha256": "73cfb364d017cc3c12a617759b75607aac0902886841c4243c12ac5e400013c2"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L380-L397",
+      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L558-L563",
+      "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-program.hlsl#L369-L377",
       "retrieved_source_sha256": "4c4c03defb2da14bd54d6495d47281777aef1da1d8940c837dfa629d78b4a6ea"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl",
-      "retrieved_source_sha256": "bc49b6458f164f420ff25d0c4accc137271003173d7b3b9da69c95bde6c740b7"
-    },
-    {
-      "url": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L11-L32",
-      "retrieved_source_sha256": "10766bbc253a6f18f39fddf6b8b725495c17b9ec007403453f3c157b47a1c2a7"
-    },
-    {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L109-L149",
       "retrieved_source_sha256": "bc49b6458f164f420ff25d0c4accc137271003173d7b3b9da69c95bde6c740b7"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L169-L181",
-      "retrieved_source_sha256": "bc49b6458f164f420ff25d0c4accc137271003173d7b3b9da69c95bde6c740b7"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L607-L630",
-      "retrieved_source_sha256": "c0237ab8b2b8788d57cb52e94be6cbdb1b1d98123eddf8f6ccdfb3f1a4061586"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L113-L118",
@@ -254,7 +258,7 @@
       "retrieved_source_sha256": "c0237ab8b2b8788d57cb52e94be6cbdb1b1d98123eddf8f6ccdfb3f1a4061586"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L384-L408",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L678-L751",
       "retrieved_source_sha256": "c0237ab8b2b8788d57cb52e94be6cbdb1b1d98123eddf8f6ccdfb3f1a4061586"
     },
     {
@@ -262,31 +266,39 @@
       "retrieved_source_sha256": "c0237ab8b2b8788d57cb52e94be6cbdb1b1d98123eddf8f6ccdfb3f1a4061586"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L678-L751",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl",
+      "retrieved_source_sha256": "bc49b6458f164f420ff25d0c4accc137271003173d7b3b9da69c95bde6c740b7"
+    },
+    {
+      "url": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L11-L32",
+      "retrieved_source_sha256": "10766bbc253a6f18f39fddf6b8b725495c17b9ec007403453f3c157b47a1c2a7"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-program.hlsl#L169-L181",
+      "retrieved_source_sha256": "bc49b6458f164f420ff25d0c4accc137271003173d7b3b9da69c95bde6c740b7"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L607-L630",
       "retrieved_source_sha256": "c0237ab8b2b8788d57cb52e94be6cbdb1b1d98123eddf8f6ccdfb3f1a4061586"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl",
-      "retrieved_source_sha256": "3ad076b8b6aa1abd24768f6d6e1fa4d7971e547c2f5ef38e220253a8d789923a"
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-common.hlsl#L384-L408",
+      "retrieved_source_sha256": "c0237ab8b2b8788d57cb52e94be6cbdb1b1d98123eddf8f6ccdfb3f1a4061586"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L82",
-      "retrieved_source_sha256": "3ad076b8b6aa1abd24768f6d6e1fa4d7971e547c2f5ef38e220253a8d789923a"
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L351-L365",
+      "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L401-L424",
+      "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
     },
     {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L186-L209",
       "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L606-L632",
-      "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
-    },
-    {
       "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L211-L220",
-      "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
-    },
-    {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L351-L365",
       "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
     },
     {
@@ -302,12 +314,20 @@
       "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L455-L461",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl",
       "retrieved_source_sha256": "3ad076b8b6aa1abd24768f6d6e1fa4d7971e547c2f5ef38e220253a8d789923a"
     },
     {
-      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L401-L424",
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L82",
+      "retrieved_source_sha256": "3ad076b8b6aa1abd24768f6d6e1fa4d7971e547c2f5ef38e220253a8d789923a"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L606-L632",
       "retrieved_source_sha256": "de5651cb004b3872ee3f49b774de286aac9c2976e586de91ecbc03fe2a01f719"
+    },
+    {
+      "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L455-L461",
+      "retrieved_source_sha256": "3ad076b8b6aa1abd24768f6d6e1fa4d7971e547c2f5ef38e220253a8d789923a"
     }
   ]
 }
