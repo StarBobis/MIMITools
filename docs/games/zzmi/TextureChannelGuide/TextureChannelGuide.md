@@ -16,9 +16,13 @@
 - [脸部 LightTex](#map-facelight)
 - [SecondaryEmissionMask](#map-secondary-mask)
 - [SecondaryEmissionTex](#map-secondary-emission)
-- [Ramp / 漫反射色带](#map-ramp)
+- [Ramp / 该实现无独立绑定](#map-ramp)
 - [MatCap / 球面外观图](#map-matcap)
-- [LUT / 参数查表图](#map-lut)
+- [LUT / 精确布局与适用范围](#map-lut)
+- [EyeColorMap / 眼色参数表](#map-eye-color)
+- [ScreenTex / 投影叠加](#map-screen-texture)
+- [ScreenMask / 叠加遮罩](#map-screen-mask)
+- [HueMaskTexture / 换色遮罩](#map-hue-mask)
 
 ## 准备参考图
 
@@ -51,9 +55,11 @@
 
 **B怎么用：** B是基础颜色蓝分量，0最低、255最高。
 
-**A怎么用：** A用途由材质决定，单张Diffuse不能推断透明、发光或ID。
+**A怎么用：** A在普通分支参与UseAlpha处理；LegacyOtherData时还复制为辅助R，脸部分支输入鼻线控制，眼影分支乘EyeColorMap.A。不同分支不可统一填255。
 
 颜色分量不是金属、高光或AO；不要增加新的方向光、投影和高光。
+
+**Alpha分支证据：** [apply_alpha](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L124-L136)在AlphaCutoff≤0时才clip(alpha−cutoff)，AlphaCutoff>0时反而执行结果A乘原Alpha。按通常非负Alpha，cutoff=0不会丢弃A=0像素；不要将这段复刻写成“低于任意正Cutoff就裁剪”的标准规则。[鼻线读Diffuse.A](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L168-L169)和[Legacy来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L82)需分别选择。
 
 ### 建议提示词
 
@@ -75,7 +81,7 @@
 完整通道规则：R是基础颜色红分量，0最低、255最高；
 G是基础颜色绿分量，0最低、255最高；
 B是基础颜色蓝分量，0最低、255最高；
-A用途由材质决定，单张Diffuse不能推断透明、发光或ID。
+A在普通分支参与UseAlpha处理；LegacyOtherData时还复制为辅助R，脸部分支输入鼻线控制，眼影分支乘EyeColorMap.A。不同分支不可统一填255。
 
 本次明确采用的生成预设：本次生成同UV、不透明Diffuse颜色草稿：R/G/B按我给出的新配色修改，未指定改色时保留上传图的RGB颜色；
 A固定255，不猜透明、发光或材质ID。
@@ -103,7 +109,7 @@ A固定255，不猜透明、发光或材质ID。
 完整通道规则：R是基础颜色红分量，0最低、255最高；
 G是基础颜色绿分量，0最低、255最高；
 B是基础颜色蓝分量，0最低、255最高；
-A用途由材质决定，单张Diffuse不能推断透明、发光或ID。
+A在普通分支参与UseAlpha处理；LegacyOtherData时还复制为辅助R，脸部分支输入鼻线控制，眼影分支乘EyeColorMap.A。不同分支不可统一填255。
 
 本次明确采用的生成预设：本次生成同UV、不透明Diffuse颜色草稿：R/G/B按我给出的新配色修改，未指定改色时保留上传图的RGB颜色；
 A固定255，不猜透明、发光或材质ID。
@@ -141,11 +147,13 @@ UV 图没有材质标签或几何方向；
 
 **R怎么用：** R编码切线法线X：0负方向、128附近零偏转、255正方向。
 
-**G怎么用：** G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader。
+**G怎么用：** G编码切线法线Y：解包为(2G−1)*BumpScale；此活动函数没有另写G取反，朝向由TBN、tangent.w和正反面决定。
 
 **B怎么用：** B为阴影偏置，无自阴影衰减时输入4B−2+N·L，增大偏亮、减小偏暗，0−2偏置、255+2，128附近0。
 
-**A怎么用：** A新辅助布局未确认一般用途；旧版A是光滑度。
+**A怎么用：** A在新布局的普通身体渲染中未消费（debug可显示）；LegacyOtherData开启时，LightTex.A复制到辅助G作为光滑度。
+
+**采样范围：** [主程序实际RGBA来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L82)、[普通高光读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L186-L219)、[Stencil R分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L226-L237)。上述“未消费”仅指此固定版本正常渲染，调试显示不是材质用途。
 
 ### 建议提示词
 
@@ -165,7 +173,7 @@ UV 图没有材质标签或几何方向；
 通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
 
 完整通道规则：R编码切线法线X：0负方向、128附近零偏转、255正方向；
-G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader；
+G编码切线法线Y：解包为(2G−1)*BumpScale；此活动函数没有另写G取反，朝向由TBN、tangent.w和正反面决定；
 B为阴影偏置，无自阴影衰减时输入4B−2+N·L，增大偏亮、减小偏暗，0−2偏置、255+2，128附近0；
 A新辅助布局未确认一般用途；
 旧版A是光滑度。
@@ -197,7 +205,7 @@ XY解码为2×值/255−1，保持X²+Y²≤1并按目标定义重建或填写Z�
 通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
 
 完整通道规则：R编码切线法线X：0负方向、128附近零偏转、255正方向；
-G编码切线法线Y：0负方向、128附近零偏转、255正方向，最终翻转依Shader；
+G编码切线法线Y：解包为(2G−1)*BumpScale；此活动函数没有另写G取反，朝向由TBN、tangent.w和正反面决定；
 B为阴影偏置，无自阴影衰减时输入4B−2+N·L，增大偏亮、减小偏暗，0−2偏置、255+2，128附近0；
 A新辅助布局未确认一般用途；
 旧版A是光滑度。
@@ -245,7 +253,9 @@ UV 图没有材质标签或几何方向；
 
 **B怎么用：** B普通高光权重/特殊形状门槛，增大可增强扩范围；另按0.2/0.4/0.6/0.8分发光颜色。
 
-**A怎么用：** A新辅助布局未确认一般用途；旧版A是发光。
+**A怎么用：** A在新布局的普通身体渲染中未消费（debug可显示）；LegacyOtherData开启时，OtherDataTex.A复制到辅助B作为发光。
+
+**采样范围：** [主程序实际RGBA来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L82)、[普通高光读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L186-L219)、[Stencil R分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L226-L237)。上述“未消费”仅指此固定版本正常渲染，调试显示不是材质用途。
 
 ### 建议提示词
 
@@ -343,13 +353,15 @@ UV 图没有材质标签或几何方向；
 
 [原始RGBA图](./assets/maps/auxiliary/auxiliary.png) · [R灰度层](./assets/maps/auxiliary/auxiliary-r.png) · [G灰度层](./assets/maps/auxiliary/auxiliary-g.png) · [B灰度层](./assets/maps/auxiliary/auxiliary-b.png) · [A灰度层](./assets/maps/auxiliary/auxiliary-a.png)
 
-**R怎么用：** R可见性，0趋向隐藏、255完整可见，Stencil可能用MinStencilAlpha抬起低值。
+**R怎么用：** R在EnableStencil且MaterialType=4的Stencil分支写结果Alpha=max(R,MinStencilAlpha)；这份代码并未把它用于所有普通身体pass的透明度。
 
 **G怎么用：** G光滑度，(1−G×Glossiness)²，增大通常更集中，0粗糙端255光滑端。
 
 **B怎么用：** B发光，普通按B；重映射saturate(1.25(B−0.2))，0～51无贡献、52起开始。
 
-**A怎么用：** A核心一般用途未确认。
+**A怎么用：** A在此固定实现的正常OtherDataTex2渲染中未消费，debug读取不等于存在材质效果。
+
+**采样范围：** [主程序实际RGBA来源](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L82)、[普通高光读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L186-L219)、[Stencil R分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L226-L237)。上述“未消费”仅指此固定版本正常渲染，调试显示不是材质用途。
 
 ### 建议提示词
 
@@ -368,11 +380,11 @@ UV 图没有材质标签或几何方向；
 
 通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
 
-完整通道规则：R可见性，0趋向隐藏、255完整可见，Stencil可能用MinStencilAlpha抬起低值；
+完整通道规则：R在EnableStencil且MaterialType=4的Stencil分支写结果Alpha=max(R,MinStencilAlpha)；这份代码并未把它用于所有普通身体pass的透明度；
 G光滑度，(1−G×Glossiness)²，增大通常更集中，0粗糙端255光滑端；
 B发光，普通按B；
 重映射saturate(1.25(B−0.2))，0～51无贡献、52起开始；
-A核心一般用途未确认。
+A在此固定实现的正常OtherDataTex2渲染中未消费，debug读取不等于存在材质效果。
 
 本次明确采用的生成预设：不透明新布局练习：R255、A255；
 G皮肤110、布40、金属160、未知40；
@@ -401,11 +413,11 @@ B只有用户明确的灯带255，其它0。不要按白布黑布自行设光滑
 
 通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
 
-完整通道规则：R可见性，0趋向隐藏、255完整可见，Stencil可能用MinStencilAlpha抬起低值；
+完整通道规则：R在EnableStencil且MaterialType=4的Stencil分支写结果Alpha=max(R,MinStencilAlpha)；这份代码并未把它用于所有普通身体pass的透明度；
 G光滑度，(1−G×Glossiness)²，增大通常更集中，0粗糙端255光滑端；
 B发光，普通按B；
 重映射saturate(1.25(B−0.2))，0～51无贡献、52起开始；
-A核心一般用途未确认。
+A在此固定实现的正常OtherDataTex2渲染中未消费，debug读取不等于存在材质效果。
 
 本次明确采用的生成预设：不透明新布局练习：R255、A255；
 G皮肤110、布40、金属160、未知40；
@@ -631,7 +643,9 @@ UV 图没有材质标签或几何方向；
 
 **B怎么用：** B只有选中B时参与，规则同R；本次不选。
 
-**A怎么用：** A该二级发光链未确认用途，本次占位255。
+**A怎么用：** A在二级发光遮罩链未消费，选择器仅索引RGB；保留原值兼容其他实现。
+
+**固定源码证据：** 遮罩与发光图UV变换不同，不可把两图统一重排；[采样及消费1](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L395-L422)。这是固定社区实现的依据，不宣称原游戏全版本通用。
 
 ### 建议提示词
 
@@ -655,7 +669,7 @@ G只有选中G时参与，规则同R；
 本次不选；
 B只有选中B时参与，规则同R；
 本次不选；
-A该二级发光链未确认用途，本次占位255。
+A在二级发光遮罩链未消费，选择器仅索引RGB；保留原值兼容其他实现。
 
 本次明确采用的生成预设：本次选R：明确灯带R255其它0，G0、B0、A255；
 没有灯带说明则RGB全0。
@@ -688,7 +702,7 @@ G只有选中G时参与，规则同R；
 本次不选；
 B只有选中B时参与，规则同R；
 本次不选；
-A该二级发光链未确认用途，本次占位255。
+A在二级发光遮罩链未消费，选择器仅索引RGB；保留原值兼容其他实现。
 
 本次明确采用的生成预设：本次选R：明确灯带R255其它0，G0、B0、A255；
 没有灯带说明则RGB全0。
@@ -733,7 +747,9 @@ UV 图没有材质标签或几何方向；
 
 **B怎么用：** B是彩色模式蓝，灰度模式不单独用。
 
-**A怎么用：** A在所引用二级发光链未确认用途。
+**A怎么用：** A在二级发光纹理链未消费，只取RGB或R复制成灰度。
+
+**固定源码证据：** 独立ST、旋转及时间滚动UV的发光采样；[采样及消费1](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L395-L422)。这是固定社区实现的依据，不宣称原游戏全版本通用。
 
 ### 建议提示词
 
@@ -755,7 +771,7 @@ UV 图没有材质标签或几何方向；
 完整通道规则：R是发光颜色红，或灰度模式唯一来源；
 G是彩色模式绿，灰度模式不单独用；
 B是彩色模式蓝，灰度模式不单独用；
-A在所引用二级发光链未确认用途。
+A在二级发光纹理链未消费，只取RGB或R复制成灰度。
 
 本次明确采用的生成预设：本次彩色模式同UV练习：用户明确灯带用RGB(40,220,255)，其它RGB0，A255；
 不画光晕；
@@ -784,7 +800,7 @@ A在所引用二级发光链未确认用途。
 完整通道规则：R是发光颜色红，或灰度模式唯一来源；
 G是彩色模式绿，灰度模式不单独用；
 B是彩色模式蓝，灰度模式不单独用；
-A在所引用二级发光链未确认用途。
+A在二级发光纹理链未消费，只取RGB或R复制成灰度。
 
 本次明确采用的生成预设：本次彩色模式同UV练习：用户明确灯带用RGB(40,220,255)，其它RGB0，A255；
 不画光晕；
@@ -811,95 +827,19 @@ UV 图没有材质标签或几何方向；
 
 **拿到结果先看：** 尺寸、UV边界和每通道数值，并检查 Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，确认无误后再导出目标格式并测试。
 
-## 9. Ramp / 漫反射色带 {#map-ramp}
+## 9. Ramp / 此角色实现没有独立漫反射色带绑定 {#map-ramp}
 
-看横向色带：它按受光坐标查颜色，不是按衣服UV读。四通道图里白色Alpha可能只是占位，也可能控制混合，要看这一种表的定义。
+此前本节给出的彩色练习Ramp只是通用教学图，不能称作该ZZZ角色shader的确定贴图类型。已核对的HoyoToon ZZZ声明与采样没有独立Ramp纹理；身体阴影使用LightTex、材质ID与颜色属性，脸部使用方向阴影和高光控制，颜色分级另走LUT。
 
-![绝区零 Ramp / 漫反射色带 输入、输出与四通道示意](./assets/maps/ramp/overview.png)
+**R怎么用：** 没有独立Ramp的R采样入口；新增R层不会改变这份shader的阴影色。
 
-**教学示意：** 数字对应本节练习预设，图例不属于贴图数据。
+**G怎么用：** 没有独立Ramp的G采样入口；不是该实现的粗糙度。
 
-[原始RGBA图](./assets/maps/ramp/ramp.png) · [R灰度层](./assets/maps/ramp/ramp-r.png) · [G灰度层](./assets/maps/ramp/ramp-g.png) · [B灰度层](./assets/maps/ramp/ramp-b.png) · [A灰度层](./assets/maps/ramp/ramp-a.png)
+**B怎么用：** 没有独立Ramp的B采样入口；不是该实现的AO。
 
-**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+**A怎么用：** 没有独立Ramp的A采样入口；不存在统一Ramp Alpha混合规则。
 
-**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
-
-**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
-
-**A怎么用：** A必须按表定义，仅凭 Diffuse 无法恢复；以下只给不透明练习占位。
-
-这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
-
-### 建议提示词
-
-这类图不沿服装 UV 排列，双图模板也保持指定的查表/平铺结构。
-
-::: tabs
-
-== 只有 DiffuseMap
-
-![单图模板的参考输入示意](./assets/reference-inputs/diffuse-only.png)
-
-```text
-请根据我上传的这一张绝区零角色DiffuseMap颜色贴图，生成Ramp / 漫反射色带的技术数据草稿。
-
-这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。
-
-通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
-
-完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；
-G是查表颜色绿分量，值增大增加所采样绿贡献；
-B是查表颜色蓝分量，值增大增加所采样蓝贡献；
-A必须按表定义，仅凭 Diffuse 无法恢复；
-以下只给不透明练习占位。
-
-本次明确采用的生成预设：256×16练习色带：每一行相同，左RGB(45,50,65)、中(150,160,180)、右(255,255,255)，A255，沿X平滑变化、不重排成衣服UV。
-
-不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；
-只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。
-
-输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。
-
-这是按给定预设生成的候选，不视为角色原始通道的还原；
-不能输出真实Alpha时明确说明，不要以白底预览代替 RGBA 文件。
-```
-
-== DiffuseMap＋UV 分布图
-
-![双图模板的参考输入示意](./assets/reference-inputs/diffuse-and-uv.png)
-
-```text
-我上传了两张参考图：第一张是绝区零角色 DiffuseMap 颜色贴图，第二张是 Blender 导出的同一材质 UV 分布图。请结合这两张参考图，生成Ramp / 漫反射色带的技术数据草稿。
-
-这是查表或平铺纹理，不是衣服UV图，按下面指定尺寸和坐标结构输出，不把衣服轮廓放进图里。
-
-通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
-
-完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；
-G是查表颜色绿分量，值增大增加所采样绿贡献；
-B是查表颜色蓝分量，值增大增加所采样蓝贡献；
-A必须按表定义，仅凭 Diffuse 无法恢复；
-以下只给不透明练习占位。
-
-本次明确采用的生成预设：256×16练习色带：每一行相同，左RGB(45,50,65)、中(150,160,180)、右(255,255,255)，A255，沿X平滑变化、不重排成衣服UV。
-
-不要把自然衣服颜色、RGB明暗或金色油漆直接当成金属、AO或高光值；
-只按我文字确认的材质区域分类，无法判断的区域使用上述未知默认值，没有默认时使用本次占位规则而不推断原游戏数据。
-
-输出只有目标贴图，不加文字、通道标签、图例、拼图、背景场景、3D渲染或光晕。
-
-这是按给定预设生成的候选，不视为角色原始通道的还原；
-不能输出真实Alpha时明确说明，不要以白底预览代替 RGBA 文件。
-
-UV 图仅作为材质关联参考，不作为输出布局；
-查表、球面或平铺图仍严格按上面的尺寸与坐标结构生成。
-```
-
-:::
-
-
-**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，确认无误后再导出目标格式并测试。
+这是“本实现未绑定”，不证明其他ZZZ节点／原生版本没有Ramp。若确有该资产，必须补充材质槽和采样代码后单独定义；不继续提供声称能直接替换该shader的泛用Ramp提示词。证据：[全部纹理声明](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L1-L23)、[主程序采样及阴影调用](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L73-L182)。
 
 ## 10. MatCap / 球面外观图 {#map-matcap}
 
@@ -911,15 +851,17 @@ UV 图仅作为材质关联参考，不作为输出布局；
 
 [原始RGBA图](./assets/maps/matcap/matcap.png) · [R灰度层](./assets/maps/matcap/matcap-r.png) · [G灰度层](./assets/maps/matcap/matcap-g.png) · [B灰度层](./assets/maps/matcap/matcap-b.png) · [A灰度层](./assets/maps/matcap/matcap-a.png)
 
-**R怎么用：** R是查表颜色红分量，值增大增加所采样红贡献。
+**R怎么用：** R为所选MatCap的红色外观分量，与对应Tint.R和ColorBurst调制后参与Alpha混合／加法／Overlay。
 
-**G怎么用：** G是查表颜色绿分量，值增大增加所采样绿贡献。
+**G怎么用：** G为所选MatCap的绿色外观分量，受Tint.G与混合模式影响，不是粗糙度。
 
-**B怎么用：** B是查表颜色蓝分量，值增大增加所采样蓝贡献。
+**B怎么用：** B为所选MatCap的蓝色外观分量，受Tint.B与混合模式影响，不是AO。
 
-**A怎么用：** A必须按表定义，仅凭 Diffuse 无法恢复；以下只给不透明练习占位。
+**A怎么用：** A为MatCap自身混合权重，先算saturate(A*材质遮罩)，再受AlphaBurst控制；0抑制对应层，1保留遮罩权重。不是角色整体透明度。
 
 这是查表坐标图，不使用衣服UV；Diffuse只提供配色/风格线索，不能推回原查表参数。
+
+**五张独立外观表：** `_MatCapTex`…`_MatCapTex5`分别按材质和开关选择，可有独立平移、折射和混合参数。[RGBA及三个混合分支](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L1090-L1147)。`_MatCapTexFallback`在声明中存在，但此固定实现没有采样它；不可凭名字声称存在fallback表输出。
 
 ### 建议提示词
 
@@ -938,11 +880,10 @@ UV 图仅作为材质关联参考，不作为输出布局；
 
 通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
 
-完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；
-G是查表颜色绿分量，值增大增加所采样绿贡献；
-B是查表颜色蓝分量，值增大增加所采样蓝贡献；
-A必须按表定义，仅凭 Diffuse 无法恢复；
-以下只给不透明练习占位。
+完整通道规则：R为所选MatCap的红色外观分量，与对应Tint.R和ColorBurst调制后参与Alpha混合／加法／Overlay；
+G为所选MatCap的绿色外观分量，受Tint.G与混合模式影响，不是粗糙度；
+B为所选MatCap的蓝色外观分量，受Tint.B与混合模式影响，不是AO；
+A为MatCap自身混合权重，先算saturate(A*材质遮罩)，再受AlphaBurst控制；0抑制对应层，1保留遮罩权重。不是角色整体透明度。
 
 本次明确采用的生成预设：256×256球面练习图，中心RGB(220,220,220)、边缘(40,40,40)，平滑球面高光，无背景物体；
 A255，仅用户确认该MatCap路径后试用。
@@ -967,11 +908,10 @@ A255，仅用户确认该MatCap路径后试用。
 
 通道数值采用8位0～255，不做Gamma、自动对比度、美化或预乘Alpha。
 
-完整通道规则：R是查表颜色红分量，值增大增加所采样红贡献；
-G是查表颜色绿分量，值增大增加所采样绿贡献；
-B是查表颜色蓝分量，值增大增加所采样蓝贡献；
-A必须按表定义，仅凭 Diffuse 无法恢复；
-以下只给不透明练习占位。
+完整通道规则：R为所选MatCap的红色外观分量，与对应Tint.R和ColorBurst调制后参与Alpha混合／加法／Overlay；
+G为所选MatCap的绿色外观分量，受Tint.G与混合模式影响，不是粗糙度；
+B为所选MatCap的蓝色外观分量，受Tint.B与混合模式影响，不是AO；
+A为MatCap自身混合权重，先算saturate(A*材质遮罩)，再受AlphaBurst控制；0抑制对应层，1保留遮罩权重。不是角色整体透明度。
 
 本次明确采用的生成预设：256×256球面练习图，中心RGB(220,220,220)、边缘(40,40,40)，平滑球面高光，无背景物体；
 A255，仅用户确认该MatCap路径后试用。
@@ -993,61 +933,92 @@ UV 图仅作为材质关联参考，不作为输出布局；
 
 **拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，确认无误后再导出目标格式并测试。
 
-## 11. LUT / 参数查表图 {#map-lut}
+## 11. LUT / 颜色分级表 {#map-lut}
 
-LUT的一个像素可能就是一个精确参数。它不必有衣服形状，也没有一张图通用的“越白越强”；没有表定义时不能靠生成模型补出可替换文件。
+这里的 LUT 是**颜色变换表**，不是服装 UV 图，也不是金属度／粗糙度／AO 的四通道打包。输入颜色决定取样坐标；像素 RGB 存取样后输出的颜色。
 
-**R怎么用：** R依表行列存特定参数，没有全图单调强弱方向。
+**R怎么用：** R 存输出颜色的红分量；提高某个表格像素的 R，只改变落在该颜色区间的红色输出，不是增加材质金属度。
 
-**G怎么用：** G依表行列存特定参数，不能当统一粗糙度。
+**G怎么用：** G 存输出颜色的绿分量；不是粗糙度，也不是受光遮罩。
 
-**B怎么用：** B依表行列存特定参数，不能当统一AO。
+**B怎么用：** B 存输出颜色的蓝分量；不是 AO、法线 Z 或材质编号。
 
-**A怎么用：** A依表行列定义，不能统一填255；缺少布局不生成替代图。
+**A怎么用：** 以下固定版本的颜色 LUT 采样只取 `.rgb`，A 不进入颜色变换。保留原 Alpha 便于兼容其他工具；在这一已核对路径中新建 A=255 不会改变 RGB 结果。这不适用于材质参数 LUT。
 
-这类贴图需要明确的采样与参数定义；仅有 Diffuse 或 UV 图还不足以制作可替换文件。
+### 输入编码和切片坐标
 
-### 建议提示词（需补充定义）
-
-UV 能帮助对齐边界，但不能补齐这类贴图的参数定义。
-
-::: tabs
-
-== 只有 DiffuseMap
-
-![单图模板的参考输入示意](./assets/reference-inputs/diffuse-only.png)
+先把输入颜色按 **B、R、G** 重排，逐分量算：
 
 ```text
-我只上传了这张绝区零角色Diffuse颜色图。我想生成LUT / 参数查表图，但你没有目标采样/参数定义。完整规则是：R依表行列存特定参数，没有全图单调强弱方向；
-G依表行列存特定参数，不能当统一粗糙度；
-B依表行列存特定参数，不能当统一AO；
-A依表行列定义，不能统一填255；
-缺少布局不生成替代图。不生成替代图；
-仅说明缺少的表尺寸、行列和RGBA参数，让用户用编辑器按规范填写。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；
-Diffuse 提供颜色与位置线索，但不足以确定这些数据。
+q = clamp(log2(color.brg * 5.55555582 + 0.0479959995)
+          * 0.0734997839 + 0.386036009, 0, 1)
+p = q * (N-1)
+s = floor(p.x)
+u0 = s/N + p.y/(N*N) + 0.5/(N*N)
+v  = p.z/N + 0.5/N
+u1 = u0 + 1/N
+outputRGB = lerp(LUT(u0,v).rgb, LUT(u1,v).rgb, frac(p.x))
 ```
 
-== DiffuseMap＋UV 分布图
+`N=32` 时对应 32 个水平切片，每片 32×32，整体 1024×32。**B 控制切片编号，R 控制片内横坐标，G 控制片内纵坐标**；此处 B/R/G 指经过上式编码的输入分量，不是纹理输出通道。实际函数用材质中的 `_Lut2DTexParam.xy` 代替上式精确倒数，默认近似 `(0.00098,0.03125,31,0)`，应保留目标材质参数。采样使用线性 Clamp，在两片之间插值；不能按材质 ID 列去画这个表。
 
-![双图模板的参考输入示意](./assets/reference-inputs/diffuse-and-uv.png)
+数值经加载器解码后再取样，不能把纹理字节和输出线性颜色直接等同。需要确认 sRGB 导入设置和最终显示变换；这张表也不是“原始颜色输入＝输出”的普通 RGB 恒等渐变。
 
-```text
-我上传了两张参考图：第一张是绝区零角色 DiffuseMap，第二张是 Blender 导出的对应 UV 分布图。我想生成LUT / 参数查表图，但你没有目标采样/参数定义。完整规则是：R依表行列存特定参数，没有全图单调强弱方向；
-G依表行列存特定参数，不能当统一粗糙度；
-B依表行列存特定参数，不能当统一AO；
-A依表行列定义，不能统一填255；
-缺少布局不生成替代图。不生成替代图；
-仅说明缺少的表尺寸、行列和RGBA参数，让用户用编辑器按规范填写。不要编RGBA常量或行列，说明还缺哪些尺寸、采样UV、通道和阈值参数；
-Diffuse 提供颜色与位置线索，但不足以确定这些数据。
+**证据与适用范围：** [ZZZ 的 LUT_2D](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L454-L486)，[参数默认值](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/HoyoToonZenlessZoneZero.shader#L374-L376)。仅针对 HoyoToon 此固定版本；后续还有完整材质渲染，不能把 LUT 输出称作最终屏幕颜色。
 
-UV 图只用来核对坐标，不包含采样函数或参数表；
-若还缺定义，请先列出需要补充的信息，不猜测替代数据。
-```
+### 如何制作或修改
 
-:::
+Diffuse 和 UV 不决定完整的颜色变换：请提供原 LUT、目标调色及目标着色器。用脚本／颜色查表工具按上述坐标生成，或对原表逐像素修改 RGB；不要让图像模型画衣服形状、自动改对比度或跨切片涂抹。先测试黑、白、灰、红、绿、蓝和高亮输入，再比较启用／关闭 LUT 的渲染。这个步骤需要准确数值文件，不提供声称能从一张 Diffuse 还原原表的 AI 提示词。
 
+## 12. EyeColorMap / 16×16眼色与眼影参数表 {#map-eye-color}
 
-**拿到结果先看：** 尺寸、查表/平铺布局和边缘连续性；再按上面的规则检查Alpha、常量与阈值。模型输出有偏色或渐变时，用通道编辑器精确赋值，确认无误后再导出目标格式并测试。
+不是眼睛UV图。顶点颜色R先乘255并转uint：`index=uint(vertexColor.r*255)`，`x=index&15`，`y=15−(index>>4)`。使用整数 `Load(x,y,0)` 查表，**没有双线性混合**；字节0读(0,15)，15读(15,15)，16读(0,14)，255读(15,0)。顶点字节和查表行列必须匹配，图片查看器的上下方向不能凭印象决定。
+
+**R怎么用：** 表像素R乘2成为眼色／眼影的红色乘子，MaterialType=5或6时再乘MainTex.R。不是虹膜UV位置。
+
+**G怎么用：** 表像素G乘2成为绿色乘子，同样与MainTex.G相乘。
+
+**B怎么用：** 表像素B乘2成为蓝色乘子，同样与MainTex.B相乘。RGB=0.5约为一倍乘色，1为两倍，0清零对应颜色项；还可能经过LUT和Lighting。
+
+**A怎么用：** 表像素A不乘2，但眼／眼影分支是完整float4相乘，所以结果Alpha=MainTex.A×表A。这里Alpha确实被返回，不能写成“未使用”。最终可见透明还取决于pass Blend／深度设置。
+
+**适用范围与证据：** [顶点索引及RGBA倍率](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L555-L566)、[顶点阶段查表](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L44)、[眼材质完整乘法与返回](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L96-L109)。MaterialType=2分支不做此眼影乘法，不能推广到所有眼部材质。修改表时按实际索引逐像素赋值，不从Diffuse用AI猜表。
+
+## 13. ScreenTex / 屏幕或空间投影叠加图 {#map-screen-texture}
+
+**R怎么用：** 屏幕图的红色输出分量，乘ScreenColor.R、可选基础颜色乘子和Blink，再加到原颜色。
+
+**G怎么用：** 对应绿色输出分量；不是位移或粗糙度。
+
+**B怎么用：** 对应蓝色输出分量；不是AO或深度。
+
+**A怎么用：** 此函数只采`.xyz`，不消费ScreenTex.A；覆盖权重来自另一个ScreenMask.R，不来自该图Alpha。
+
+UVSource选择屏幕坐标、世界坐标或指定模型UV；非模型UV源先除screen_pos.w，再乘ScreenScale、按RotationAxis旋转，并加时间滚动。该函数**没有使用声明的ScreenTex_ST**，不要误把ST当已经生效的缩放。只有指定模型UV源才可按该层布局编辑，屏幕／空间投影图应保持平铺结构。证据：[坐标、RGB及叠加](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L433-L450)、[UV源选择](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L214-L224)。
+
+## 14. ScreenMask / 屏幕叠加区域 {#map-screen-mask}
+
+**R怎么用：** 主UV或UV2上的叠加遮罩，最后 `lerp(color,color+screen_color,R*ScreenImage)`；R=0无叠加，1保留ScreenImage给出的完整权重。ScreenImage和色彩参数决定实际增色。
+
+**G怎么用：** 此采样仅取R，G未消费。
+
+**B怎么用：** 此采样仅取R，B未消费。
+
+**A怎么用：** 此采样仅取R，A未消费；不是整体透明度。
+
+ScreenMaskUV选择uv_a／uv_b；此实现没有使用声明的ScreenMask_ST。ScreenTex与Mask可以不同坐标体系，不要把两图强行放在同一个服装UV布局。证据：[ScreenMask.R读取](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L438-L450)。
+
+## 15. HueMaskTexture / 可选RGBA换色遮罩 {#map-hue-mask}
+
+**R怎么用：** selector=0时作为相应换色效果的遮罩；0保留原色，1应用完整目标色相偏移，前提是消费该mask的分支真正开启。
+
+**G怎么用：** selector=1时承担同样的遮罩用途，不是绿材质参数。
+
+**B怎么用：** selector=2时承担同样的遮罩用途，不是AO。
+
+**A怎么用：** selector=3时承担同样的遮罩用途；是第四个可选遮罩，不是透明度。UseHueMask关闭时改用常数1。
+
+Diffuse／Rim／Emission／Outline各自有MaskSource选择，可复用或独立打包四层。**这份版本Diffuse分支虽然读取mask，但调用hue_shift时实参写死为1，DiffuseMaskSource的纹理结果没有生效**；Rim、Emission及Outline分支则传入所选mask。函数没有默认分支，selector必须为0…3。证据：[通道选择](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L66-L76)、[Diffuse未传mask](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L83-L89)、[Rim传mask](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L194-L198)、[Emission传mask](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-common.hlsl#L366-L370)、[Outline传mask](https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-program.hlsl#L500-L505)。
 
 ## 看数值方向，不要只看合成颜色
 
@@ -1094,3 +1065,24 @@ texconv.exe -m 1 -f R8G8B8A8_UNORM -ft png -swizzle aaa1 -sx -a -o output input.
 
 - [微软 DirectXTex / texconv 下载](https://github.com/microsoft/DirectXTex/releases)
 - [Blender UV 布局导出说明](https://docs.blender.org/manual/en/latest/addons/import_export/mesh_uv_layout.html)
+
+## 导入器别名与消费端边界 {#importer-aliases}
+
+以下核对Gacha Setup固定版本的分类/JSON绑定代码：**导入器找到图片，只能证明图片被分配给某个节点，不能证明通道含义与HoyoToon或MME相同**。模糊文件名、角色特例、材质分支仍须看实际消费节点。
+
+| 导入槽或属性 | 对应说明 | 核对源码 |
+| --- | --- | --- |
+| `_MainTex` | [消费端与通道边界](#map-diffuse) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_EyeColorMap` | [消费端与通道边界](#map-eye-color) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_OtherDataTex` | [消费端与通道边界](#map-material) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_OtherDataTex2` | [消费端与通道边界](#map-auxiliary) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_LightTex` | [消费端与通道边界](#map-normal) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_BumpMap` | [消费端与通道边界](#map-normal) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_FaceLightMap` | [消费端与通道边界](#map-normal) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_MatCapTex` | [消费端与通道边界](#map-matcap) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_MatCapTex2` | [消费端与通道边界](#map-matcap) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_MatCapTex3` | [消费端与通道边界](#map-matcap) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_MatCapTex4` | [消费端与通道边界](#map-matcap) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+| `_MatCapTex5` | [消费端与通道边界](#map-matcap) | [固定版本绑定](https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L565-L578) |
+
+`_EyeColorMap`与`_MainTex`都可能归入d，仍是不同消费契约：前者16×16按顶点字节查表，不是角色UV漫反射。`_BumpMap`/`_FaceLightMap`只是此导入器接受的normal/lightmap别名，当前HoyoToon角色声明没有这两个同名槽；不得因此把它们当成已验证的游戏统一RGBA布局。

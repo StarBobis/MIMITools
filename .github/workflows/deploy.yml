@@ -29,8 +29,17 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Validate complete texture channel evidence
+        run: |
+          bun run test:channels --complete
+          bun run test:channel-sources
+          bun run test:channel-scope
+
       - name: Build VitePress site
         run: bun run docs:build
+
+      - name: Validate built channel pages
+        run: bun run test:channel-site
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

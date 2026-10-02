@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "scope": "All HLSL/shader/fxsub files in the pinned source prefixes, including zero-declaration files. Generated from GitHub recursive trees and original blob bytes. Other languages, generic external engine includes and native game binaries are outside this declaration contract.",
+  "repositories": [
+    {
+      "repository": "Hoyotoon/HoyoToon",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "prefix": "Shaders/",
+      "extensions": [
+        ".hlsl",
+        ".shader",
+        ".fxsub"
+      ],
+      "files": [
+        {
+          "path": "Shaders/Genshin Impact/HoyoToonGenshin.shader",
+          "blob_sha": "2b6214e4df78d2a5c6a4aefd1e523c7fdcb277e2",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-common.hlsl",
+          "blob_sha": "794b49dd7e16b4574a170c689354d6c14fadd3c4",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+          "blob_sha": "70f40a44710558dac7a4ed3cd471b05c50d7b193",
+          "texture_names": [
+            "_BlockHighlightMask",
+            "_BrightLineMask",
+            "_BumpMap",
+            "_ClipAlphaTex",
+            "_CloudTex",
+            "_ColorPaletteTex",
+            "_ConstellationTex",
+            "_CustomAO",
+            "_CustomEmissionTex",
+            "_DissolveNoise",
+            "_EyeMask",
+            "_EyeMaskCustom",
+            "_FaceMapTex",
+            "_FakePointNoiseTex",
+            "_FakePointNoiseTex2",
+            "_FakePointNoiseTex3",
+            "_FlowMap",
+            "_FlowMap02",
+            "_FlowMask",
+            "_GlassSpecularTex",
+            "_HighlightMaskTex",
+            "_HighlightMaskTex2",
+            "_HueMaskTexture",
+            "_LeatherLaserRamp",
+            "_LeatherReflect",
+            "_LerpTexture",
+            "_LightMapTex",
+            "_MTMap",
+            "_MTSpecularRamp",
+            "_MainTex",
+            "_Mask",
+            "_MaterialMasksTex",
+            "_NbrRefTex",
+            "_NoiseMap",
+            "_NoiseTex01",
+            "_NoiseTex02",
+            "_NyxStateOutlineColorRamp",
+            "_NyxStateOutlineNoise",
+            "_OutlineTex",
+            "_PackedShadowRampTex",
+            "_PosTex_A",
+            "_ScanPatternTex",
+            "_Star02Tex",
+            "_StarMask",
+            "_StarTex",
+            "_StockingsDetailTex",
+            "_TempNyxStatePaintMaskTex",
+            "_VertTex",
+            "_VertexTex",
+            "_VerticalRampTex",
+            "_VerticalRampTex2",
+            "_WeaponDissolveTex",
+            "_WeaponPatternTex"
+          ]
+        },
+        {
+          "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-inputs.hlsl",
+          "blob_sha": "791a319806ab4010750cc00bf4d2c8cadd2646c7",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-program.hlsl",
+          "blob_sha": "c77ca11bd29c718e0dd1506c28181e47535c3cb9",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/HoyoToonHonkaiImpact.shader",
+          "blob_sha": "4a7140f5f2ef81c2e113b48c4b3d6ad426ce4c12",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/HoyoToonHonkaiImpactPart2.shader",
+          "blob_sha": "ab3876bf6cb34fc0ca75ce683229b274bd61e37b",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Colors.hlsl",
+          "blob_sha": "106d2af4934f816ae835ec6e9b4d9dd8b564536e",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Common.hlsl",
+          "blob_sha": "d2d589ff36adcc6eecfa6568acc53ba24e9caacc",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+          "blob_sha": "4ef69874546366de8ce056f1f8e1a5a32099bb14",
+          "texture_names": [
+            "_EyeEffectTex",
+            "_FacExpTex",
+            "_FaceMapTex",
+            "_LightMapTex",
+            "_MainTex",
+            "_MainTex2",
+            "_MaskDisTex",
+            "_NoiseTex"
+          ]
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Import.hlsl",
+          "blob_sha": "5919560c50d1ca8bc3f08e8e935fad7b51758a88",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Program.hlsl",
+          "blob_sha": "f4f3027ffee88d68be30cf0cb3435182aa18f980",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/Part2-common.hlsl",
+          "blob_sha": "64e769fe4cc6eab20cf3b5fd22514c79bc695c34",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+          "blob_sha": "bdec35815e99b7aaea6d6780553ff520b5f32ab0",
+          "texture_names": [
+            "_BumpMap",
+            "_FaceExpTex",
+            "_FaceMapTex",
+            "_HairStripPatternsTex",
+            "_JitterMap",
+            "_LightMapTex",
+            "_MTMap",
+            "_MainTex",
+            "_NormalMap",
+            "_RampMap",
+            "_RampTex",
+            "_SpecularMaskMap",
+            "_StockingMap",
+            "_StockingRampTex"
+          ]
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/Part2-inputs.hlsl",
+          "blob_sha": "aa88b734e528448ceb599cdfc0447cd9a44374d5",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Impact/Includes/Part2-program.hlsl",
+          "blob_sha": "cb34a324c00a1c0e43f3e355e0acdd54e9c2bf02",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Star Rail/HoyoToonStarRail.shader",
+          "blob_sha": "18decdefa07e183001cebe493fa4898aa9d01e5b",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-common.hlsl",
+          "blob_sha": "36980e15e350bd7e8e5a1fc07f46e9a8617f14c5",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+          "blob_sha": "a586e5cb4ee689a0686ab52e0ab10999ee60adef",
+          "texture_names": [
+            "_AlphaTex",
+            "_CausTexture",
+            "_CubeMap",
+            "_DiffuseCoolRampMultiTex",
+            "_DiffuseRampMultiTex",
+            "_DisTex",
+            "_DissolveMap",
+            "_DissolveMask",
+            "_EmissionTex",
+            "_FaceExpression",
+            "_FaceMap",
+            "_HueMaskTexture",
+            "_LightMap",
+            "_Lut2DTex",
+            "_MainTex",
+            "_MaskTex",
+            "_MatCapMaskTex",
+            "_MatCapTex",
+            "_MaterialValuesPackLUT",
+            "_NoiseTex",
+            "_OutlineColorTex",
+            "_SecondaryDiff",
+            "_SkyMask",
+            "_SkyStarMaskTex",
+            "_SkyStarTex",
+            "_SkyTex",
+            "_StockRangeTex"
+          ]
+        },
+        {
+          "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-program.hlsl",
+          "blob_sha": "7dec1f696bfbdcb6ac5a4e2be56de66905de1c6f",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Particles/HoyoToonParticlesGenshin.shader",
+          "blob_sha": "e63619e26500f58666f576f24df33fc873b598dd",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesCommon.hlsl",
+          "blob_sha": "0ccc91eb4cc09cb4442d5fbb6597a84a49d6c9b5",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+          "blob_sha": "60829bc4a1fbdfbb9c06586a3b15b69cff1a0120",
+          "texture_names": [
+            "_BaseTex",
+            "_CameraDepthTexture",
+            "_DissolveTex",
+            "_Fire02_Tex",
+            "_FireNoiseTex",
+            "_FireTex",
+            "_HighlightTex",
+            "_LiquidTex",
+            "_Mask2",
+            "_MaskTex",
+            "_Matcap",
+            "_NoiseTex",
+            "_Noise_Tex",
+            "_Normalmap",
+            "_RampTexStrong",
+            "_RampTexWeak",
+            "_TextureMask"
+          ]
+        },
+        {
+          "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesImport.hlsl",
+          "blob_sha": "ef554cd18e3cda5a962d4b68b9f202f231b85fd6",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesProgram.hlsl",
+          "blob_sha": "e33e7c53eb4415cae7ef35db1f4836793c2d8800",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Post Processing/HoyoToonPostBloom.shader",
+          "blob_sha": "6f2ff733f1b8b3f3da1c6188612e2a20f674cfbe",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Post Processing/Includes/BloomCommon.hlsl",
+          "blob_sha": "2e50293539ac4853f6582d68b1157d1f772aeca0",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+          "blob_sha": "f94ad161bee1f643ce0890b5e4bbd3b6c9eb6b2c",
+          "texture_names": [
+            "_BloomAH",
+            "_BloomAV",
+            "_BloomAtlas",
+            "_BloomBH",
+            "_BloomBV",
+            "_BloomCH",
+            "_BloomCV",
+            "_BloomH",
+            "_BloomV",
+            "_CharacterMask",
+            "_FinalImage",
+            "_HDRTexture",
+            "_LayerRT",
+            "_LayerTex",
+            "_Lut2DTex",
+            "_MHYBloomTex",
+            "_MainTex",
+            "_OriginalTexture",
+            "_PreFilter"
+          ]
+        },
+        {
+          "path": "Shaders/Post Processing/Includes/BloomProgram.hlsl",
+          "blob_sha": "49763c184e04bf64b99e03a0747a998420f88fbf",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/HoyoToonWutheringWaves.shader",
+          "blob_sha": "20365e96bdce76123a8f295343a93618787481de",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-common.hlsl",
+          "blob_sha": "e5694d4769403bbcec5e96c2ab450bac1a151f3a",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+          "blob_sha": "b40c27de5eff568e03fc536bce465ff2c7c2097f",
+          "texture_names": [
+            "_CommonNoiseMap",
+            "_D",
+            "_EM",
+            "_HeightLightMap",
+            "_HeightLightTex",
+            "_Lut2DTex",
+            "_MainTex",
+            "_Mask",
+            "_MaskTex",
+            "_MatCapTex",
+            "_Noise",
+            "_Noise02",
+            "_Normal_Roughness_Metallic",
+            "_OutlineTexture",
+            "_Ramp",
+            "_SDF",
+            "_Second_RGB",
+            "_ShakeNoise",
+            "_TypeMask"
+          ]
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-input.hlsl",
+          "blob_sha": "67b13e740fbb29a7615fb9dd9708ebe0a32da5ec",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-program.hlsl",
+          "blob_sha": "b5088e56102c48163a526ef318d4b1ff03c2d436",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/ZenlessZoneZero/HoyoToonZenlessZoneZero.shader",
+          "blob_sha": "4efab77c66c28f11aaff5f52f150413fd79dc1ee",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/ZenlessZoneZero/Include/zzz-common.hlsl",
+          "blob_sha": "40bb99599ad7426e5956bf18f6b6fd026cd8c4d4",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+          "blob_sha": "df8acf9043b1c0ce223572b756fd7be754e9afbb",
+          "texture_names": [
+            "_EyeColorMap",
+            "_HueMaskTexture",
+            "_LightTex",
+            "_Lut2DTex",
+            "_MainTex",
+            "_MatCapTex",
+            "_MatCapTex2",
+            "_MatCapTex3",
+            "_MatCapTex4",
+            "_MatCapTex5",
+            "_MatCapTexFallback",
+            "_OtherDataTex",
+            "_OtherDataTex2",
+            "_ScreenMask",
+            "_ScreenTex",
+            "_SecondaryEmissionMaskTex",
+            "_SecondaryEmissionTex"
+          ]
+        },
+        {
+          "path": "Shaders/ZenlessZoneZero/Include/zzz-inputs.hlsl",
+          "blob_sha": "b72e80b4d4b555682cedc7bc9cad5476d01d985e",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/ZenlessZoneZero/Include/zzz-program.hlsl",
+          "blob_sha": "5cc44ef04605acc88425a2eabccd48499438c6ae",
+          "texture_names": []
+        }
+      ]
+    },
+    {
+      "repository": "chris0214/Arknights-Endfield-MME-Shader",
+      "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+      "prefix": "EndfieldMME/internal/",
+      "extensions": [
+        ".hlsl",
+        ".shader",
+        ".fxsub"
+      ],
+      "files": [
+        {
+          "path": "EndfieldMME/internal/endfield_camera_light.hlsl",
+          "blob_sha": "4179858a99837d6799036f327fa240aaf323803e",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+          "blob_sha": "57d27d209712dac46fee40efa7c79e3c0e7e8aba",
+          "texture_names": [
+            "EF_CLOTH_SHADOW_VIEWPORT_MAP",
+            "EfClothEnvTexture",
+            "EfClothFgdTexture",
+            "EfClothLutTexture",
+            "EfClothMainTexture",
+            "EfClothManualMatcapTexture",
+            "EfClothMatcapTexture",
+            "EfClothNormalTexture",
+            "EfClothPropertyTexture",
+            "EfClothRainDropPhaseTexture",
+            "EfClothRainDropTexture",
+            "EfClothRainTexture",
+            "EfClothRdTexture",
+            "EfClothRsTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye.hlsl",
+          "blob_sha": "178fd41868681ac768597b4f5f2dcf97e60f7d99",
+          "texture_names": [
+            "EfEyeIrisMatcap05Texture",
+            "EfEyeIrisMatcap07Texture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye_highlight.hlsl",
+          "blob_sha": "a90ced8ac3c344b76a8c9e1b931150c2cb889a35",
+          "texture_names": [
+            "EfEyeHlTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye_through_capture_core.fxsub",
+          "blob_sha": "41c263ff254515f919787a25409d6d1e81b52202",
+          "texture_names": [
+            "EfEyeCaptureIrisTexture",
+            "EfEyeCaptureMaterialTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye_white.hlsl",
+          "blob_sha": "a08aade9129626af253c5df1237603fefb700e48",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_face.hlsl",
+          "blob_sha": "815f348b3c5070d303a28adc71e946c72353d11c",
+          "texture_names": [
+            "EF_FACE_SHADOW_VIEWPORT_MAP",
+            "EfFaceCmmTexture",
+            "EfFaceLipSpecularTexture",
+            "EfFaceMainTexture",
+            "EfFaceRdTexture",
+            "EfFaceSdfTexture",
+            "EfFaceSkinLutTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_face_depth_capture_core.fxsub",
+          "blob_sha": "36ae27c54c658ed644282c39636482eb56cffdf4",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_facial.hlsl",
+          "blob_sha": "c5e18e7a90bf43fa98107701b45ed4f373cc20a6",
+          "texture_names": [
+            "EF_FACIAL_OVERLAY_DEPTH_MAP",
+            "EfFacialMainTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_global_shadow_scale.hlsl",
+          "blob_sha": "411c827fd2027620236c7a0d24430bc39baa3191",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_ggx.hlsl",
+          "blob_sha": "c1bd925d060b8cc701582eab0916bbdc23633210",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_goo_position.hlsl",
+          "blob_sha": "6232f2021b9362fc54be76682c2f91b2f2c39fdf",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_specular.hlsl",
+          "blob_sha": "1a881da225e8e2217a5f773c30541ab2313b3d63",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_visibility_capture_core.fxsub",
+          "blob_sha": "773a42b41305b656c89a6bb2e3f228827d6f5e1b",
+          "texture_names": [
+            "EfHairVisibilityMaterialTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hidden.hlsl",
+          "blob_sha": "c39ee8e1fb24edac3b4ff119b9d82ea54d63f554",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_lighting.hlsl",
+          "blob_sha": "7090fd3331fb7f05900d3270e18716cfb5c3aa27",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_outline.hlsl",
+          "blob_sha": "d9d3f903365e17b50ac21be42ea13e7ceb45c3c2",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_post.fxsub",
+          "blob_sha": "a9ed644f26c826222d644c3aaa226b63e12ecba0",
+          "texture_names": [
+            "EfPostBloom0",
+            "EfPostBloom1",
+            "EfPostBloom2",
+            "EfPostBloom3",
+            "EfPostBloom4",
+            "EfPostBloomBlur",
+            "EfPostBloomBlurTemp",
+            "EfPostBloomUp0",
+            "EfPostBloomUp1",
+            "EfPostBloomUp2",
+            "EfPostBloomUp3",
+            "EfPostDepthBuffer",
+            "EfPostSceneMap",
+            "EfPostToneMap"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_shader.hlsl",
+          "blob_sha": "958a5273b139ac5a532f6d6d66fca35954d8403f",
+          "texture_names": [
+            "EF_SHADOW_VIEWPORT_MAP",
+            "EfHairAnisoNoiseTexture",
+            "EfHairLineTexture",
+            "EfHairSpecTexture",
+            "EfMainTexture",
+            "EfNormalTexture",
+            "EfOrmTexture",
+            "EfRampTexture",
+            "EndfieldFaceDepth_RT",
+            "EndfieldHairVisibility_RT"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_skin.hlsl",
+          "blob_sha": "1667e38fd0a3130fda1846569835e29abf6af815",
+          "texture_names": [
+            "EF_SKIN_SHADOW_VIEWPORT_MAP",
+            "EfSkinLutTexture",
+            "EfSkinMainTexture",
+            "EfSkinRdTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_specular.hlsl",
+          "blob_sha": "f9b02024fe5c406fde861e725fe40f381314272d",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/snow_camera_light.hlsl",
+          "blob_sha": "99156bb0135616ec8694ccc79acf59bd40adbc12",
+          "texture_names": []
+        }
+      ]
+    }
+  ]
+}

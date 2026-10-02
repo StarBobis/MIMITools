@@ -1,0 +1,3784 @@
+{
+  "schema_version": 1,
+  "scope": "Explicit shader texture declarations in pinned community implementations; not an exhaustive claim about every native game build. Pending bindings must be reviewed before final coverage acceptance.",
+  "games": [
+    {
+      "game": "gimi",
+      "implementation": "HoyoToon Genshin Impact",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "bindings": [
+        {
+          "name": "_MainTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 2,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L2"
+            },
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse",
+          "additional_guide_anchors": [
+            "map-post-color"
+          ]
+        },
+        {
+          "name": "_LightMapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 3,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L3"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lightmap"
+        },
+        {
+          "name": "_FaceMapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L5"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sdf"
+        },
+        {
+          "name": "_PackedShadowRampTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L8"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-ramp"
+        },
+        {
+          "name": "_CustomAO",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 11,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L11"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-customao"
+        },
+        {
+          "name": "_BumpMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 15,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L15"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-bump"
+        },
+        {
+          "name": "_MTMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 18,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L18"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_MTSpecularRamp",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-metal-specular-ramp"
+        },
+        {
+          "name": "_MaterialMasksTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 22,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L22"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-material-masks"
+        },
+        {
+          "name": "_CustomEmissionTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 24,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L24"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-custom-emission"
+        },
+        {
+          "name": "_StarTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 26,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L26"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-texture"
+        },
+        {
+          "name": "_Star02Tex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 28,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L28"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-secondary"
+        },
+        {
+          "name": "_NoiseTex01",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 29,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L29"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-noise"
+        },
+        {
+          "name": "_NoiseTex02",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 30,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L30"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-noise"
+        },
+        {
+          "name": "_ColorPaletteTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 31,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L31"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-palette"
+        },
+        {
+          "name": "_ConstellationTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 32,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L32"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-constellation"
+        },
+        {
+          "name": "_CloudTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 33,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L33"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-cloud"
+        },
+        {
+          "name": "_StarMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 36,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L36"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-mask"
+        },
+        {
+          "name": "_BlockHighlightMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 37,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L37"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-blocks"
+        },
+        {
+          "name": "_BrightLineMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 38,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L38"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-star-bright-line"
+        },
+        {
+          "name": "_FlowMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 41,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L41"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-flow-textures"
+        },
+        {
+          "name": "_FlowMap02",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 42,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L42"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-flow-textures"
+        },
+        {
+          "name": "_NoiseMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 43,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L43"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-flow-noise"
+        },
+        {
+          "name": "_FlowMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 44,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L44"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-flow-mask"
+        },
+        {
+          "name": "_Mask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 48,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L48"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-arm-mask"
+        },
+        {
+          "name": "_LeatherReflect",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 51,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L51"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-leather-reflect"
+        },
+        {
+          "name": "_LeatherLaserRamp",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 52,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L52"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-leather-laser-ramp"
+        },
+        {
+          "name": "_StockingsDetailTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 55,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L55"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-stockings-detail"
+        },
+        {
+          "name": "_GlassSpecularTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 58,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L58"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-glass-specular"
+        },
+        {
+          "name": "_TempNyxStatePaintMaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 61,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L61"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-nyx-body-mask"
+        },
+        {
+          "name": "_NyxStateOutlineColorRamp",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 62,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L62"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-nyx-color-ramp"
+        },
+        {
+          "name": "_NyxStateOutlineNoise",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 63,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L63"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-nyx-noise"
+        },
+        {
+          "name": "_ClipAlphaTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 68,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L68"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_HueMaskTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 70,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L70"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hue-mask"
+        },
+        {
+          "name": "_WeaponDissolveTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 73,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L73"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-weapon-dissolve"
+        },
+        {
+          "name": "_WeaponPatternTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 74,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L74"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-weapon-pattern"
+        },
+        {
+          "name": "_ScanPatternTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 75,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L75"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-weapon-scan"
+        },
+        {
+          "name": "_OutlineTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 78,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L78"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-outline-width"
+        },
+        {
+          "name": "_LerpTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 81,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L81"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-vat-color-lerp"
+        },
+        {
+          "name": "_VertexTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 82,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L82"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-vertex-noise"
+        },
+        {
+          "name": "_VertTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 83,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L83"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-fragment-noise"
+        },
+        {
+          "name": "_PosTex_A",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 84,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L84"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-position-vat"
+        },
+        {
+          "name": "_VerticalRampTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 85,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L85"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-vat-vertical-ramp"
+        },
+        {
+          "name": "_VerticalRampTex2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 86,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L86"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-vat-vertical-ramp"
+        },
+        {
+          "name": "_HighlightMaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 87,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L87"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-vat-highlight-masks"
+        },
+        {
+          "name": "_HighlightMaskTex2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 88,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L88"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-vat-highlight-masks"
+        },
+        {
+          "name": "_EyeMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 100,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L100"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-stencil"
+        },
+        {
+          "name": "_EyeMaskCustom",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 101,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L101"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-stencil"
+        },
+        {
+          "name": "_FakePointNoiseTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 104,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L104"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-fake-point-noise"
+        },
+        {
+          "name": "_FakePointNoiseTex2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 105,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L105"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_FakePointNoiseTex3",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 106,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L106"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_DissolveNoise",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 108,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L108"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-death-noise"
+        },
+        {
+          "name": "_NbrRefTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Genshin Impact/Includes/HoyoToonGenshin-declarations.hlsl",
+              "line": 111,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Genshin%20Impact/Includes/HoyoToonGenshin-declarations.hlsl#L111"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-nbr-reflect"
+        },
+        {
+          "name": "_BaseTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 2,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L2"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-base"
+        },
+        {
+          "name": "_Normalmap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 3,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L3"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-normal"
+        },
+        {
+          "name": "_LiquidTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 4,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L4"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-liquid"
+        },
+        {
+          "name": "_TextureMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L5"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-particle-unused"
+        },
+        {
+          "name": "_MaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 6,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L6"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-masktex"
+        },
+        {
+          "name": "_Noise_Tex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 7,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L7"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-particle-unused"
+        },
+        {
+          "name": "_NoiseTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L8"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-noise"
+        },
+        {
+          "name": "_Matcap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 9,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L9"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-matcap"
+        },
+        {
+          "name": "_Mask2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 10,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L10"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-mask2"
+        },
+        {
+          "name": "_HighlightTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 11,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L11"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-highlighttex"
+        },
+        {
+          "name": "_FireNoiseTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 12,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L12"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-firenoisetex"
+        },
+        {
+          "name": "_FireTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 13,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L13"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-firetex"
+        },
+        {
+          "name": "_Fire02_Tex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 14,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L14"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-fire02-tex"
+        },
+        {
+          "name": "_RampTexWeak",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 15,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L15"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-ramps"
+        },
+        {
+          "name": "_RampTexStrong",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 16,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L16"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-ramps"
+        },
+        {
+          "name": "_DissolveTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 17,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L17"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-dissolvetex"
+        },
+        {
+          "name": "_CameraDepthTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Particles/Include/HoyoToonGI-ParticlesDeclaration.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-particle-depth"
+        },
+        {
+          "name": "_CharacterMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 35,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L35"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_MHYBloomTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 36,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L36"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_HDRTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 37,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L37"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-color"
+        },
+        {
+          "name": "_OriginalTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 38,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L38"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-color"
+        },
+        {
+          "name": "_PreFilter",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 39,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L39"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 40,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L40"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 41,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L41"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 42,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L42"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 43,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L43"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomBH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 44,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L44"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomBV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 45,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L45"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomCH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 46,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L46"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomCV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 47,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L47"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAtlas",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 48,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L48"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_FinalImage",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 49,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L49"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_Lut2DTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 75,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L75"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-lut"
+        },
+        {
+          "name": "_LayerRT",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 90,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L90"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_LayerTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 94,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L94"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-layer"
+        }
+      ]
+    },
+    {
+      "game": "himi",
+      "implementation": "HoyoToon Honkai Impact",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "bindings": [
+        {
+          "name": "_MainTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 1,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L1"
+            },
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L5"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse"
+        },
+        {
+          "name": "_FaceMapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 3,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L3"
+            },
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 10,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L10"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sdf"
+        },
+        {
+          "name": "_EyeEffectTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 4,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L4"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-effect"
+        },
+        {
+          "name": "_FacExpTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L5"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-expression"
+        },
+        {
+          "name": "_MaskDisTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 7,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L7"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-dissolve"
+        },
+        {
+          "name": "_LightMapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L8"
+            },
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 9,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L9"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lightmap-p1"
+        },
+        {
+          "name": "_NoiseTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 10,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L10"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-dissolve-noise"
+        },
+        {
+          "name": "_MainTex2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl",
+              "line": 11,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/HoyoToonHonkaiImpact-Declarations.hlsl#L11"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-secondary-diffuse"
+        },
+        {
+          "name": "_BumpMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 7,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L7"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-normal"
+        },
+        {
+          "name": "_NormalMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L8"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_RampTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 11,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L11"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-ramp"
+        },
+        {
+          "name": "_MTMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 12,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L12"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_SpecularMaskMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 13,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L13"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-specmask"
+        },
+        {
+          "name": "_RampMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 14,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L14"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-specular-ramp"
+        },
+        {
+          "name": "_JitterMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 15,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L15"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-jitter"
+        },
+        {
+          "name": "_HairStripPatternsTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 16,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L16"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hairpattern"
+        },
+        {
+          "name": "_FaceExpTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 17,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L17"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-expression"
+        },
+        {
+          "name": "_StockingMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 18,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L18"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_StockingRampTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Impact/Includes/Part2-declarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Impact/Includes/Part2-declarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-stocking-ramp"
+        }
+      ]
+    },
+    {
+      "game": "srmi",
+      "implementation": "HoyoToon Honkai Star Rail",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "bindings": [
+        {
+          "name": "_MainTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L5"
+            },
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse",
+          "additional_guide_anchors": [
+            "map-post-color"
+          ]
+        },
+        {
+          "name": "_SecondaryDiff",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L8"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-secondary-diffuse"
+        },
+        {
+          "name": "_LightMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 10,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L10"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lightmap"
+        },
+        {
+          "name": "_DiffuseRampMultiTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 12,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L12"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-ramp"
+        },
+        {
+          "name": "_DiffuseCoolRampMultiTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 13,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L13"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-ramp"
+        },
+        {
+          "name": "_StockRangeTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 16,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L16"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-stock"
+        },
+        {
+          "name": "_FaceMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sdf"
+        },
+        {
+          "name": "_FaceExpression",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 20,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L20"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-expression"
+        },
+        {
+          "name": "_MaterialValuesPackLUT",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 22,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L22"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut"
+        },
+        {
+          "name": "_EmissionTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 24,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L24"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-emission"
+        },
+        {
+          "name": "_CausTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 27,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L27"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-caustic"
+        },
+        {
+          "name": "_DissolveMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 30,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L30"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-dissolve-map"
+        },
+        {
+          "name": "_DissolveMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 31,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L31"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-dissolve-mask"
+        },
+        {
+          "name": "_HueMaskTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 34,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L34"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hue-mask"
+        },
+        {
+          "name": "_OutlineColorTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 37,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L37"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-outline-color"
+        },
+        {
+          "name": "_AlphaTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 40,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L40"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-alphatex"
+        },
+        {
+          "name": "_Lut2DTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 43,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L43"
+            },
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 75,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L75"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut",
+          "additional_guide_anchors": [
+            "map-post-lut"
+          ]
+        },
+        {
+          "name": "_DisTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 46,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L46"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-swirl"
+        },
+        {
+          "name": "_MaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 47,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L47"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-swirl"
+        },
+        {
+          "name": "_NoiseTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 48,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L48"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-swirl"
+        },
+        {
+          "name": "_SkyTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 410,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L410"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sky-color"
+        },
+        {
+          "name": "_SkyMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 412,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L412"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sky-mask"
+        },
+        {
+          "name": "_SkyStarTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 416,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L416"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sky-star"
+        },
+        {
+          "name": "_SkyStarMaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 421,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L421"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sky-star-mask"
+        },
+        {
+          "name": "_MatCapMaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 549,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L549"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap-mask"
+        },
+        {
+          "name": "_MatCapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 550,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L550"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_CubeMap",
+          "kind": "TextureCube",
+          "declarations": [
+            {
+              "path": "Shaders/Honkai Star Rail/Includes/HoyoToonStarRail-declarations.hlsl",
+              "line": 551,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Honkai%20Star%20Rail/Includes/HoyoToonStarRail-declarations.hlsl#L551"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-cubemap"
+        },
+        {
+          "name": "_CharacterMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 35,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L35"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_MHYBloomTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 36,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L36"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_HDRTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 37,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L37"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-color"
+        },
+        {
+          "name": "_OriginalTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 38,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L38"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-color"
+        },
+        {
+          "name": "_PreFilter",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 39,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L39"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 40,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L40"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 41,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L41"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 42,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L42"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 43,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L43"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomBH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 44,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L44"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomBV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 45,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L45"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomCH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 46,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L46"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomCV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 47,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L47"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAtlas",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 48,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L48"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_FinalImage",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 49,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L49"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_LayerRT",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 90,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L90"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_LayerTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 94,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L94"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-layer"
+        }
+      ]
+    },
+    {
+      "game": "zzmi",
+      "implementation": "HoyoToon ZenlessZoneZero",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "bindings": [
+        {
+          "name": "_MainTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 2,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L2"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse"
+        },
+        {
+          "name": "_LightTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 3,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L3"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-normal"
+        },
+        {
+          "name": "_OtherDataTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 4,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L4"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-material"
+        },
+        {
+          "name": "_OtherDataTex2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L5"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-auxiliary"
+        },
+        {
+          "name": "_MatCapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L8"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_MatCapTex2",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 9,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L9"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_MatCapTex3",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 10,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L10"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_MatCapTex4",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 11,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L11"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_MatCapTex5",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 12,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L12"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_MatCapTexFallback",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 13,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L13"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_EyeColorMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 15,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L15"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-color"
+        },
+        {
+          "name": "_SecondaryEmissionTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 16,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L16"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-secondary-emission"
+        },
+        {
+          "name": "_SecondaryEmissionMaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 17,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L17"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-secondary-mask"
+        },
+        {
+          "name": "_ScreenTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 18,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L18"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-screen-texture"
+        },
+        {
+          "name": "_ScreenMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-screen-mask"
+        },
+        {
+          "name": "_Lut2DTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 21,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L21"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut"
+        },
+        {
+          "name": "_HueMaskTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl",
+              "line": 23,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/ZenlessZoneZero/Include/zzz-declarations.hlsl#L23"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hue-mask"
+        }
+      ]
+    },
+    {
+      "game": "wwmi",
+      "implementation": "HoyoToon Wuthering Waves",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "bindings": [
+        {
+          "name": "_MainTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 2,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L2"
+            },
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse",
+          "additional_guide_anchors": [
+            "map-post-color"
+          ]
+        },
+        {
+          "name": "_OutlineTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 3,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L3"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-outline-color"
+        },
+        {
+          "name": "_Normal_Roughness_Metallic",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 4,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L4"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-normal"
+        },
+        {
+          "name": "_MaskTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 5,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L5"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-bodymask"
+        },
+        {
+          "name": "_TypeMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 6,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L6"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-typemask"
+        },
+        {
+          "name": "_Mask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 7,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L7"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-independent-mask"
+        },
+        {
+          "name": "_Ramp",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 8,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L8"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-ramp"
+        },
+        {
+          "name": "_MatCapTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 9,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L9"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "_HeightLightMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 10,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L10"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-highlight"
+        },
+        {
+          "name": "_HeightLightTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 11,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L11"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-glass-highlight"
+        },
+        {
+          "name": "_EM",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 12,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L12"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-em"
+        },
+        {
+          "name": "_D",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 13,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L13"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-tacet-field"
+        },
+        {
+          "name": "_SDF",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 14,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L14"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_Noise",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 15,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L15"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-tacet-noise"
+        },
+        {
+          "name": "_Noise02",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 16,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L16"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-tacet-noise"
+        },
+        {
+          "name": "_ShakeNoise",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 17,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L17"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-unused-slots"
+        },
+        {
+          "name": "_Second_RGB",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 18,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L18"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-secondary-stars"
+        },
+        {
+          "name": "_CommonNoiseMap",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 19,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L19"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-aurora-noise"
+        },
+        {
+          "name": "_Lut2DTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+              "line": 20,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Wuthering%20Waves/Include/HoyoToonWutheringWaves-declaration.hlsl#L20"
+            },
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 75,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L75"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut",
+          "additional_guide_anchors": [
+            "map-post-lut"
+          ]
+        },
+        {
+          "name": "_CharacterMask",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 35,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L35"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_MHYBloomTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 36,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L36"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_HDRTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 37,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L37"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-color"
+        },
+        {
+          "name": "_OriginalTexture",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 38,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L38"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-color"
+        },
+        {
+          "name": "_PreFilter",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 39,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L39"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 40,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L40"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 41,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L41"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 42,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L42"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 43,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L43"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomBH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 44,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L44"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomBV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 45,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L45"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomCH",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 46,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L46"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomCV",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 47,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L47"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom"
+        },
+        {
+          "name": "_BloomAtlas",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 48,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L48"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_FinalImage",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 49,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L49"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_LayerRT",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 90,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L90"
+            }
+          ],
+          "review_status": "verified_unused",
+          "guide_anchor": "map-post-unused"
+        },
+        {
+          "name": "_LayerTex",
+          "kind": "Texture2D",
+          "declarations": [
+            {
+              "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+              "line": 94,
+              "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+              "url": "https://github.com/Hoyotoon/HoyoToon/blob/d9e5ca2f312bf16fba89dee67d32c08b482dcda4/Shaders/Post%20Processing/Includes/BloomDeclarations.hlsl#L94"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-layer"
+        }
+      ]
+    },
+    {
+      "game": "efmi",
+      "implementation": "Endfield MME internal HLSL/fxsub including render targets and expanded bloom declarations; AKE nodes supplemental",
+      "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+      "bindings": [
+        {
+          "name": "EfClothMainTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 526,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L526"
+            },
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 530,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L530"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse"
+        },
+        {
+          "name": "EfClothNormalTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 545,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L545"
+            },
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 549,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L549"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-normal"
+        },
+        {
+          "name": "EfClothRainTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 564,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L564"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rain-flow"
+        },
+        {
+          "name": "EfClothRainDropTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 577,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L577"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rain-drops"
+        },
+        {
+          "name": "EfClothRainDropPhaseTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 589,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L589"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rain-phase"
+        },
+        {
+          "name": "EfClothPropertyTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 605,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L605"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-property"
+        },
+        {
+          "name": "EfClothRdTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 620,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L620"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rd"
+        },
+        {
+          "name": "EfClothLutTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 634,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L634"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut"
+        },
+        {
+          "name": "EfClothRsTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 648,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L648"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rs"
+        },
+        {
+          "name": "EfClothEnvTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 689,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L689"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-environment-rgbm"
+        },
+        {
+          "name": "EfClothMatcapTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 703,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L703"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-matcap"
+        },
+        {
+          "name": "EfClothManualMatcapTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 715,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L715"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-manual-matcap"
+        },
+        {
+          "name": "EfClothFgdTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 730,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L730"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-fgd"
+        },
+        {
+          "name": "EF_CLOTH_SHADOW_VIEWPORT_MAP",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+              "line": 744,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_cloth.hlsl#L744"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-shadow-viewport-rt"
+        },
+        {
+          "name": "EfEyeIrisMatcap05Texture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_eye.hlsl",
+              "line": 77,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_eye.hlsl#L77"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-matcap05"
+        },
+        {
+          "name": "EfEyeIrisMatcap07Texture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_eye.hlsl",
+              "line": 91,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_eye.hlsl#L91"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-matcap07"
+        },
+        {
+          "name": "EfEyeHlTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_eye_highlight.hlsl",
+              "line": 64,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_eye_highlight.hlsl#L64"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-highlight"
+        },
+        {
+          "name": "EfEyeCaptureMaterialTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_eye_through_capture_core.fxsub",
+              "line": 100,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_eye_through_capture_core.fxsub#L100"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-capture-source"
+        },
+        {
+          "name": "EfEyeCaptureIrisTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_eye_through_capture_core.fxsub",
+              "line": 111,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_eye_through_capture_core.fxsub#L111"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-eye-capture-source"
+        },
+        {
+          "name": "EfFaceCmmTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 291,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L291"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-cmm"
+        },
+        {
+          "name": "EF_FACE_SHADOW_VIEWPORT_MAP",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 302,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L302"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-shadow-viewport-rt"
+        },
+        {
+          "name": "EfFaceRdTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 329,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L329"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rd"
+        },
+        {
+          "name": "EfFaceSkinLutTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 340,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L340"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut"
+        },
+        {
+          "name": "EfFaceLipSpecularTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 351,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L351"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lip-highlight"
+        },
+        {
+          "name": "EfFaceMainTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 373,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L373"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-face-diffuse"
+        },
+        {
+          "name": "EfFaceSdfTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_face.hlsl",
+              "line": 384,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_face.hlsl#L384"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-sdf"
+        },
+        {
+          "name": "EfFacialMainTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_facial.hlsl",
+              "line": 137,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_facial.hlsl#L137"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-facial-main"
+        },
+        {
+          "name": "EF_FACIAL_OVERLAY_DEPTH_MAP",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_facial.hlsl",
+              "line": 151,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_facial.hlsl#L151"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-shadow-viewport-rt"
+        },
+        {
+          "name": "EfHairVisibilityMaterialTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_hair_visibility_capture_core.fxsub",
+              "line": 17,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_hair_visibility_capture_core.fxsub#L17"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hair-capture-source"
+        },
+        {
+          "name": "EfPostSceneMap",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 41,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L41"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-scene-rt"
+        },
+        {
+          "name": "EfPostToneMap",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 56,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L56"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-scene-rt"
+        },
+        {
+          "name": "EfPostDepthBuffer",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 71,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L71"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-depth-buffer"
+        },
+        {
+          "name": "EfPostBloom0",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 91,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L91"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloom1",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 92,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L92"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloom2",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 93,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L93"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloom3",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 94,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L94"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloom4",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 95,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L95"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloomBlurTemp",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 96,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L96"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloomBlur",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 97,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L97"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloomUp3",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 98,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L98"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloomUp2",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 99,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L99"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloomUp1",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 100,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L100"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfPostBloomUp0",
+          "kind": "texture2D_macro",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_post.fxsub",
+              "line": 101,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_post.fxsub#L101"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-post-bloom-rt"
+        },
+        {
+          "name": "EfMainTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 925,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L925"
+            },
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 927,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L927"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-diffuse"
+        },
+        {
+          "name": "EfOrmTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 936,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L936"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hairproperty"
+        },
+        {
+          "name": "EfNormalTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 945,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L945"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hairnormal"
+        },
+        {
+          "name": "EfRampTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 953,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L953"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-ramp"
+        },
+        {
+          "name": "EfHairSpecTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 960,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L960"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-rs"
+        },
+        {
+          "name": "EfHairAnisoNoiseTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 967,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L967"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hairst"
+        },
+        {
+          "name": "EfHairLineTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 976,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L976"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-hairline"
+        },
+        {
+          "name": "EF_SHADOW_VIEWPORT_MAP",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 986,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L986"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-shadow-viewport-rt"
+        },
+        {
+          "name": "EndfieldHairVisibility_RT",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 995,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L995"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-packed-depth-rt"
+        },
+        {
+          "name": "EndfieldFaceDepth_RT",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_shader.hlsl",
+              "line": 1004,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_shader.hlsl#L1004"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-packed-depth-rt"
+        },
+        {
+          "name": "EfSkinMainTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_skin.hlsl",
+              "line": 207,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_skin.hlsl#L207"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-skin-diffuse"
+        },
+        {
+          "name": "EfSkinRdTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_skin.hlsl",
+              "line": 220,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_skin.hlsl#L220"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-skin-rd"
+        },
+        {
+          "name": "EfSkinLutTexture",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_skin.hlsl",
+              "line": 232,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_skin.hlsl#L232"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-lut"
+        },
+        {
+          "name": "EF_SKIN_SHADOW_VIEWPORT_MAP",
+          "kind": "texture2D",
+          "declarations": [
+            {
+              "path": "EndfieldMME/internal/endfield_skin.hlsl",
+              "line": 245,
+              "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+              "url": "https://github.com/chris0214/Arknights-Endfield-MME-Shader/blob/f9e90932a25678101e3e28a8d91663fa0706a4ed/EndfieldMME/internal/endfield_skin.hlsl#L245"
+            }
+          ],
+          "review_status": "verified_scoped",
+          "guide_anchor": "map-shadow-viewport-rt"
+        }
+      ],
+      "review_status": "verified_scoped"
+    }
+  ]
+}

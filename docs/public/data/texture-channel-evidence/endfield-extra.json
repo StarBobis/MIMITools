@@ -1,0 +1,5950 @@
+{
+  "commit": "3e40423dbec489368696c4f89a2bfb285662cdc1",
+  "scope": "Compact original tree-index topology of E/M and two custom face masks. Numeric node IDs avoid encoding-corrupted labels in the old inspection cache; no image pixels or original paths. Custom engine nodes are topology evidence only.",
+  "trees": [
+    {
+      "name": "Arknights: Endfield_PBRToonBase",
+      "starts": [
+        264,
+        265,
+        266
+      ],
+      "nodes": [
+        {
+          "id": 89,
+          "type": "ShaderNodeMix",
+          "blend_type": "ADD",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 134,
+          "type": "NodeGroupOutput",
+          "inputs": [
+            {
+              "id": "Output_0",
+              "value": null
+            },
+            {
+              "id": "Output_25",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": "Socket_70",
+              "value": null
+            },
+            {
+              "id": "__extend__",
+              "value": null
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "id": 158,
+          "type": "ShaderNodeGroup",
+          "group": "ShaderOutput.001",
+          "inputs": [
+            {
+              "id": "Input_0",
+              "value": 0.5
+            },
+            {
+              "id": "Input_3",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output_1"
+          ]
+        },
+        {
+          "id": 209,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 210,
+          "type": "ShaderNodeMix",
+          "blend_type": "ADD",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 211,
+          "type": "ShaderNodeMath",
+          "operation": "MULTIPLY",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.5
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 219,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 222,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 223,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 224,
+          "type": "ShaderNodeMix",
+          "blend_type": "LIGHTEN",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                10.0,
+                0.09467363357543945,
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 227,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 238,
+          "type": "ShaderNodeClamp",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Min",
+              "value": 0.0
+            },
+            {
+              "id": "Max",
+              "value": 1.0
+            }
+          ],
+          "outputs": [
+            "Result"
+          ]
+        },
+        {
+          "id": 241,
+          "type": "ShaderNodeHueSaturation",
+          "inputs": [
+            {
+              "id": "Hue",
+              "value": 0.5
+            },
+            {
+              "id": "Saturation",
+              "value": 1.0
+            },
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Fac",
+              "value": 1.0
+            },
+            {
+              "id": "Color",
+              "value": [
+                0.800000011920929,
+                0.800000011920929,
+                0.800000011920929,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Color"
+          ]
+        },
+        {
+          "id": 243,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 244,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 250,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 252,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 264,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 265,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 266,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 267,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 297,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 299,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 323,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 324,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 416,
+          "type": "ShaderNodeMixShader",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 0.5
+            },
+            {
+              "id": "Shader",
+              "value": null
+            },
+            {
+              "id": "Shader_001",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Shader"
+          ]
+        },
+        {
+          "id": 426,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 493,
+          "type": "ShaderNodeMixShader",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 0.5
+            },
+            {
+              "id": "Shader",
+              "value": null
+            },
+            {
+              "id": "Shader_001",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Shader"
+          ]
+        },
+        {
+          "id": 494,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 496,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 571,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 575,
+          "type": "ShaderNodeBsdfGlass",
+          "inputs": [
+            {
+              "id": "Color",
+              "value": [
+                2.0,
+                2.0,
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": "Roughness",
+              "value": 0.013000000268220901
+            },
+            {
+              "id": "IOR",
+              "value": 1.2300000190734863
+            },
+            {
+              "id": "Normal",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Weight",
+              "value": 0.0
+            },
+            {
+              "id": "Thin Film Thickness",
+              "value": 0.0
+            },
+            {
+              "id": "Thin Film IOR",
+              "value": 1.3300000429153442
+            }
+          ],
+          "outputs": [
+            "BSDF"
+          ]
+        },
+        {
+          "id": 576,
+          "type": "ShaderNodeMixShader",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 0.5
+            },
+            {
+              "id": "Shader",
+              "value": null
+            },
+            {
+              "id": "Shader_001",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Shader"
+          ]
+        },
+        {
+          "id": 577,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 578,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 579,
+          "type": "ShaderNodeMixShader",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 0.5
+            },
+            {
+              "id": "Shader",
+              "value": null
+            },
+            {
+              "id": "Shader_001",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Shader"
+          ]
+        },
+        {
+          "id": 580,
+          "type": "ShaderNodeMixShader",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 0.5
+            },
+            {
+              "id": "Shader",
+              "value": null
+            },
+            {
+              "id": "Shader_001",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Shader"
+          ]
+        },
+        {
+          "id": 581,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 582,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 583,
+          "type": "ShaderNodeMath",
+          "operation": "MULTIPLY",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.30000001192092896
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 586,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": null
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 593,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_28",
+            "Socket_3",
+            "Socket_4",
+            "Input_29",
+            "Socket_50",
+            "Socket_51",
+            "Socket_13",
+            "Socket_18",
+            "Socket_24",
+            "Socket_19",
+            "Socket_17",
+            "Input_30",
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_1",
+            "Input_5",
+            "Input_6",
+            "Socket_6",
+            "Socket_15",
+            "Socket_7",
+            "Input_7",
+            "Socket_1",
+            "Socket_2",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Input_31",
+            "Input_32",
+            "Input_11",
+            "Input_12",
+            "Socket_0",
+            "Input_13",
+            "Input_14",
+            "Input_15",
+            "Input_16",
+            "Input_17",
+            "Input_19",
+            "Input_18",
+            "Input_20",
+            "Input_21",
+            "Input_24",
+            "Input_22",
+            "Input_23",
+            "Input_33",
+            "Socket_5",
+            "Socket_9",
+            "Socket_10",
+            "Socket_11",
+            "Socket_12",
+            "Socket_14",
+            "Socket_20",
+            "Socket_21",
+            "Socket_23",
+            "Socket_44",
+            "Socket_45",
+            "Socket_46",
+            "Socket_49",
+            "Socket_71",
+            "Socket_76",
+            "Socket_62",
+            "Socket_53",
+            "Socket_54",
+            "Socket_55",
+            "Socket_78",
+            "Socket_56",
+            "Socket_57",
+            "Socket_59",
+            "Socket_58",
+            "Socket_60",
+            "Socket_61",
+            "Socket_63",
+            "Socket_68",
+            "Socket_66",
+            "Socket_67",
+            "Socket_69",
+            "Socket_74",
+            "Socket_75",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 594,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 595,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.7422208786010742,
+                0.7422208786010742,
+                0.7422208786010742,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": 89,
+          "out": "Result_Color",
+          "to": 210,
+          "in": "A_Color"
+        },
+        {
+          "from": 209,
+          "out": "Result_Color",
+          "to": 210,
+          "in": "B_Color"
+        },
+        {
+          "from": 219,
+          "out": "Output",
+          "to": 209,
+          "in": "A_Color"
+        },
+        {
+          "from": 211,
+          "out": "Value",
+          "to": 158,
+          "in": "Input_0"
+        },
+        {
+          "from": 324,
+          "out": "Output",
+          "to": 223,
+          "in": "A_Color"
+        },
+        {
+          "from": 323,
+          "out": "Output",
+          "to": 224,
+          "in": "A_Color"
+        },
+        {
+          "from": 224,
+          "out": "Result_Color",
+          "to": 223,
+          "in": "B_Color"
+        },
+        {
+          "from": 238,
+          "out": "Result",
+          "to": 241,
+          "in": "Saturation"
+        },
+        {
+          "from": 227,
+          "out": "Result_Color",
+          "to": 243,
+          "in": "A_Color"
+        },
+        {
+          "from": 244,
+          "out": "Result_Color",
+          "to": 243,
+          "in": "B_Color"
+        },
+        {
+          "from": 250,
+          "out": "Socket_13",
+          "to": 223,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 252,
+          "out": "Socket_24",
+          "to": 243,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 264,
+          "out": "Socket_6",
+          "to": 219,
+          "in": "Input"
+        },
+        {
+          "from": 265,
+          "out": "Socket_15",
+          "to": 227,
+          "in": "B_Color"
+        },
+        {
+          "from": 266,
+          "out": "Socket_15",
+          "to": 244,
+          "in": "A_Color"
+        },
+        {
+          "from": 267,
+          "out": "Socket_7",
+          "to": 209,
+          "in": "B_Color"
+        },
+        {
+          "from": 297,
+          "out": "Socket_14",
+          "to": 224,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 299,
+          "out": "Socket_20",
+          "to": 244,
+          "in": "B_Color"
+        },
+        {
+          "from": 222,
+          "out": "Result_Color",
+          "to": 227,
+          "in": "A_Color"
+        },
+        {
+          "from": 243,
+          "out": "Result_Color",
+          "to": 224,
+          "in": "B_Color"
+        },
+        {
+          "from": 210,
+          "out": "Result_Color",
+          "to": 323,
+          "in": "Input"
+        },
+        {
+          "from": 323,
+          "out": "Output",
+          "to": 324,
+          "in": "Input"
+        },
+        {
+          "from": 426,
+          "out": "Output",
+          "to": 416,
+          "in": "Shader_001"
+        },
+        {
+          "from": 158,
+          "out": "Output_1",
+          "to": 416,
+          "in": "Shader"
+        },
+        {
+          "from": 223,
+          "out": "Result_Color",
+          "to": 241,
+          "in": "Color"
+        },
+        {
+          "from": 571,
+          "out": "Output",
+          "to": 416,
+          "in": "Fac"
+        },
+        {
+          "from": 494,
+          "out": "Socket_62",
+          "to": 493,
+          "in": "Fac"
+        },
+        {
+          "from": 577,
+          "out": "Output",
+          "to": 493,
+          "in": "Shader_001"
+        },
+        {
+          "from": 158,
+          "out": "Output_1",
+          "to": 493,
+          "in": "Shader"
+        },
+        {
+          "from": 493,
+          "out": "Shader",
+          "to": 496,
+          "in": "Input"
+        },
+        {
+          "from": 575,
+          "out": "BSDF",
+          "to": 576,
+          "in": "Shader_001"
+        },
+        {
+          "from": 583,
+          "out": "Value",
+          "to": 576,
+          "in": "Fac"
+        },
+        {
+          "from": 416,
+          "out": "Shader",
+          "to": 577,
+          "in": "Input"
+        },
+        {
+          "from": 586,
+          "out": "Output",
+          "to": 576,
+          "in": "Shader"
+        },
+        {
+          "from": 578,
+          "out": "Socket_76",
+          "to": 579,
+          "in": "Fac"
+        },
+        {
+          "from": 576,
+          "out": "Shader",
+          "to": 579,
+          "in": "Shader_001"
+        },
+        {
+          "from": 158,
+          "out": "Output_1",
+          "to": 579,
+          "in": "Shader"
+        },
+        {
+          "from": 581,
+          "out": "Input_28",
+          "to": 580,
+          "in": "Fac"
+        },
+        {
+          "from": 579,
+          "out": "Shader",
+          "to": 580,
+          "in": "Shader_001"
+        },
+        {
+          "from": 496,
+          "out": "Output",
+          "to": 580,
+          "in": "Shader"
+        },
+        {
+          "from": 582,
+          "out": "Output",
+          "to": 134,
+          "in": "Output_0"
+        },
+        {
+          "from": 580,
+          "out": "Shader",
+          "to": 582,
+          "in": "Input"
+        },
+        {
+          "from": 158,
+          "out": "Output_1",
+          "to": 586,
+          "in": "Input"
+        },
+        {
+          "from": 593,
+          "out": "Socket_76",
+          "to": 594,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 241,
+          "out": "Color",
+          "to": 594,
+          "in": "A_Color"
+        },
+        {
+          "from": 241,
+          "out": "Color",
+          "to": 595,
+          "in": "A_Color"
+        },
+        {
+          "from": 595,
+          "out": "Result_Color",
+          "to": 594,
+          "in": "B_Color"
+        },
+        {
+          "from": 594,
+          "out": "Result_Color",
+          "to": 158,
+          "in": "Input_3"
+        }
+      ]
+    },
+    {
+      "name": "Arknights: Endfield_PBRToonBaseFace",
+      "starts": [
+        263,
+        271
+      ],
+      "nodes": [
+        {
+          "id": 85,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 89,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 90,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 91,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 93,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 95,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 97,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 101,
+          "type": "ShaderNodeVectorMath",
+          "operation": "MULTIPLY",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Vector_001",
+              "value": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "Vector_002",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Scale",
+              "value": 1.0
+            }
+          ],
+          "outputs": [
+            "Vector",
+            "Value"
+          ]
+        },
+        {
+          "id": 104,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.7166666388511658
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 130,
+          "type": "ShaderNodeCombineXYZ",
+          "inputs": [
+            {
+              "id": "X",
+              "value": 0.0
+            },
+            {
+              "id": "Y",
+              "value": 0.5
+            },
+            {
+              "id": "Z",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Vector"
+          ]
+        },
+        {
+          "id": 131,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 132,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 144,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 145,
+          "type": "ShaderNodeMath",
+          "operation": "MINIMUM",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.5
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 146,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 156,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 158,
+          "type": "ShaderNodeTexImage",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Color",
+            "Alpha"
+          ]
+        },
+        {
+          "id": 163,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 164,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 165,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "FLOAT",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.5
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 166,
+          "type": "ShaderNodeVectorMath",
+          "operation": "ADD",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Vector_001",
+              "value": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "Vector_002",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Scale",
+              "value": 1.0
+            }
+          ],
+          "outputs": [
+            "Vector",
+            "Value"
+          ]
+        },
+        {
+          "id": 167,
+          "type": "ShaderNodeGroup",
+          "group": "SmoothStep.001",
+          "inputs": [
+            {
+              "id": "Input_0",
+              "value": 0.0
+            },
+            {
+              "id": "Input_2",
+              "value": 1.0
+            },
+            {
+              "id": "Input_3",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output_1"
+          ]
+        },
+        {
+          "id": 168,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 169,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 170,
+          "type": "ShaderNodeClamp",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Min",
+              "value": 0.0
+            },
+            {
+              "id": "Max",
+              "value": 1.0
+            }
+          ],
+          "outputs": [
+            "Result"
+          ]
+        },
+        {
+          "id": 171,
+          "type": "ShaderNodeMix",
+          "blend_type": "ADD",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.05954478681087494,
+                0.05954478681087494,
+                0.05954478681087494,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 181,
+          "type": "ShaderNodeMix",
+          "blend_type": "ADD",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.05954478681087494,
+                0.05954478681087494,
+                0.05954478681087494,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 189,
+          "type": "ShaderNodeGroup",
+          "group": "directLighting_diffuse.001",
+          "inputs": [
+            {
+              "id": "Input_4",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Input_2",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Input_0",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "Input_1",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output_3"
+          ]
+        },
+        {
+          "id": 190,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.05954478681087494,
+                0.05954478681087494,
+                0.05954478681087494,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 220,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 221,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 222,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 238,
+          "type": "ShaderNodeMix",
+          "blend_type": "ADD",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 239,
+          "type": "ShaderNodeEmission",
+          "inputs": [
+            {
+              "id": "Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "Strength",
+              "value": 1.149999976158142
+            },
+            {
+              "id": "Weight",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Emission"
+          ]
+        },
+        {
+          "id": 240,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 241,
+          "type": "NodeGroupOutput",
+          "inputs": [
+            {
+              "id": "Output_0",
+              "value": null
+            },
+            {
+              "id": "Output_25",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": "__extend__",
+              "value": null
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "id": 242,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 248,
+          "type": "ShaderNodeMath",
+          "operation": "MINIMUM",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.5
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 258,
+          "type": "ShaderNodeMath",
+          "operation": "LESS_THAN",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.008999999612569809
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 261,
+          "type": "ShaderNodeValToRGB",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Color",
+            "Alpha"
+          ]
+        },
+        {
+          "id": 262,
+          "type": "ShaderNodeMath",
+          "operation": "LESS_THAN",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.009999999776482582
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 263,
+          "type": "ShaderNodeTexImage",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Color",
+            "Alpha"
+          ]
+        },
+        {
+          "id": 264,
+          "type": "ShaderNodeMath",
+          "operation": "GREATER_THAN",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.009999999776482582
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 266,
+          "type": "ShaderNodeMath",
+          "operation": "MINIMUM",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.009999999776482582
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 267,
+          "type": "ShaderNodeMath",
+          "operation": "SUBTRACT",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Value_001",
+              "value": 0.009999999776482582
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 268,
+          "type": "ShaderNodeMath",
+          "operation": "ADD",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Value_001",
+              "value": 0.10000000149011612
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 269,
+          "type": "ShaderNodeMath",
+          "operation": "MAXIMUM",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Value_001",
+              "value": 0.0
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 270,
+          "type": "ShaderNodeSeparateXYZ",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        {
+          "id": 271,
+          "type": "ShaderNodeTexImage",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Color",
+            "Alpha"
+          ]
+        },
+        {
+          "id": 272,
+          "type": "ShaderNodeSeparateXYZ",
+          "inputs": [
+            {
+              "id": "Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        {
+          "id": 273,
+          "type": "ShaderNodeMath",
+          "operation": "GREATER_THAN",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.5
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 274,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "FLOAT",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.5
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 1.149999976158142
+            },
+            {
+              "id": "B_Float",
+              "value": 1.2999999523162842
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 276,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.5
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 1.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 280,
+          "type": "ShaderNodeMath",
+          "operation": "MAXIMUM",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.0
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 285,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "FLOAT",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.5
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 1.0
+            },
+            {
+              "id": "B_Float",
+              "value": 1.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 289,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 290,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 295,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 301,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 306,
+          "type": "ShaderNodeMix",
+          "blend_type": "ADD",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 307,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 308,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 309,
+          "type": "ShaderNodeMath",
+          "operation": "MAXIMUM",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.4000000059604645
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 320,
+          "type": "ShaderNodeHueSaturation",
+          "inputs": [
+            {
+              "id": "Hue",
+              "value": 0.5
+            },
+            {
+              "id": "Saturation",
+              "value": 1.0
+            },
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Fac",
+              "value": 1.0
+            },
+            {
+              "id": "Color",
+              "value": [
+                0.800000011920929,
+                0.800000011920929,
+                0.800000011920929,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Color"
+          ]
+        },
+        {
+          "id": 321,
+          "type": "ShaderNodeGroup",
+          "group": "DeSaturation.001",
+          "inputs": [
+            {
+              "id": "Socket_0",
+              "value": 0.0
+            },
+            {
+              "id": "Socket_1",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Socket_2"
+          ]
+        },
+        {
+          "id": 322,
+          "type": "ShaderNodeClamp",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 1.0
+            },
+            {
+              "id": "Min",
+              "value": 0.0
+            },
+            {
+              "id": "Max",
+              "value": 1.0
+            }
+          ],
+          "outputs": [
+            "Result"
+          ]
+        },
+        {
+          "id": 323,
+          "type": "ShaderNodeMath",
+          "operation": "ADD",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.0
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        },
+        {
+          "id": 324,
+          "type": "NodeReroute",
+          "inputs": [
+            {
+              "id": "Input",
+              "value": 0.0
+            }
+          ],
+          "outputs": [
+            "Output"
+          ]
+        },
+        {
+          "id": 331,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.5
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 1.149999976158142
+            },
+            {
+              "id": "B_Float",
+              "value": 1.2999999523162842
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 332,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 1.149999976158142
+            },
+            {
+              "id": "B_Float",
+              "value": 1.2999999523162842
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.8576030731201172,
+                0.9766955971717834,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 333,
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            "Input_2",
+            "Input_27",
+            "Input_4",
+            "Input_7",
+            "Input_8",
+            "Input_9",
+            "Input_10",
+            "Socket_2",
+            "Socket_3",
+            "Input_31",
+            "Input_32",
+            "Input_38",
+            "Input_40",
+            "Input_39",
+            "Input_11",
+            "Input_37",
+            "Input_13",
+            "Input_22",
+            "Input_41",
+            "Input_33",
+            "Input_36",
+            "Socket_0",
+            "Socket_1",
+            "Socket_4",
+            "Socket_5",
+            "Socket_7",
+            "__extend__"
+          ]
+        },
+        {
+          "id": 334,
+          "type": "ShaderNodeRGBCurve",
+          "inputs": [
+            {
+              "id": "Fac",
+              "value": 1.0
+            },
+            {
+              "id": "Color",
+              "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Color"
+          ]
+        },
+        {
+          "id": 336,
+          "type": "ShaderNodeMix",
+          "blend_type": "MULTIPLY",
+          "data_type": "RGBA",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 1.0
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 0.0
+            },
+            {
+              "id": "B_Float",
+              "value": 0.0
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 337,
+          "type": "ShaderNodeMix",
+          "blend_type": "MIX",
+          "data_type": "FLOAT",
+          "inputs": [
+            {
+              "id": "Factor_Float",
+              "value": 0.5
+            },
+            {
+              "id": "Factor_Vector",
+              "value": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "id": "A_Float",
+              "value": 1.149999976158142
+            },
+            {
+              "id": "B_Float",
+              "value": 1.2999999523162842
+            },
+            {
+              "id": "A_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Vector",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "A_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "B_Color",
+              "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+              ]
+            },
+            {
+              "id": "A_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": "B_Rotation",
+              "value": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "outputs": [
+            "Result_Float",
+            "Result_Vector",
+            "Result_Color",
+            "Result_Rotation"
+          ]
+        },
+        {
+          "id": 338,
+          "type": "ShaderNodeGroup",
+          "group": "Rain",
+          "inputs": [],
+          "outputs": [
+            "Socket_1",
+            "Socket_2"
+          ]
+        },
+        {
+          "id": 339,
+          "type": "ShaderNodeMath",
+          "operation": "MULTIPLY",
+          "inputs": [
+            {
+              "id": "Value",
+              "value": 0.5
+            },
+            {
+              "id": "Value_001",
+              "value": 0.800000011920929
+            },
+            {
+              "id": "Value_002",
+              "value": 0.5
+            }
+          ],
+          "outputs": [
+            "Value"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": 145,
+          "out": "Value",
+          "to": 130,
+          "in": "X"
+        },
+        {
+          "from": 130,
+          "out": "Vector",
+          "to": 144,
+          "in": "Input"
+        },
+        {
+          "from": 146,
+          "out": "Output",
+          "to": 145,
+          "in": "Value"
+        },
+        {
+          "from": 85,
+          "out": "Output",
+          "to": 104,
+          "in": "A_Color"
+        },
+        {
+          "from": 90,
+          "out": "Output",
+          "to": 89,
+          "in": "Input"
+        },
+        {
+          "from": 189,
+          "out": "Output_3",
+          "to": 97,
+          "in": "Input"
+        },
+        {
+          "from": 166,
+          "out": "Vector",
+          "to": 171,
+          "in": "A_Color"
+        },
+        {
+          "from": 190,
+          "out": "Result_Color",
+          "to": 171,
+          "in": "B_Color"
+        },
+        {
+          "from": 171,
+          "out": "Result_Color",
+          "to": 181,
+          "in": "A_Color"
+        },
+        {
+          "from": 168,
+          "out": "Output",
+          "to": 222,
+          "in": "B_Color"
+        },
+        {
+          "from": 131,
+          "out": "Output",
+          "to": 85,
+          "in": "Input"
+        },
+        {
+          "from": 85,
+          "out": "Output",
+          "to": 167,
+          "in": "Input_3"
+        },
+        {
+          "from": 167,
+          "out": "Output_1",
+          "to": 170,
+          "in": "Max"
+        },
+        {
+          "from": 169,
+          "out": "Output",
+          "to": 167,
+          "in": "Input_0"
+        },
+        {
+          "from": 170,
+          "out": "Result",
+          "to": 168,
+          "in": "Input"
+        },
+        {
+          "from": 93,
+          "out": "Output",
+          "to": 189,
+          "in": "Input_0"
+        },
+        {
+          "from": 91,
+          "out": "Output",
+          "to": 189,
+          "in": "Input_2"
+        },
+        {
+          "from": 89,
+          "out": "Output",
+          "to": 189,
+          "in": "Input_4"
+        },
+        {
+          "from": 95,
+          "out": "Output",
+          "to": 189,
+          "in": "Input_1"
+        },
+        {
+          "from": 144,
+          "out": "Output",
+          "to": 158,
+          "in": "Vector"
+        },
+        {
+          "from": 158,
+          "out": "Alpha",
+          "to": 131,
+          "in": "Input"
+        },
+        {
+          "from": 132,
+          "out": "Output",
+          "to": 90,
+          "in": "Input"
+        },
+        {
+          "from": 156,
+          "out": "Output",
+          "to": 165,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 163,
+          "out": "Output",
+          "to": 165,
+          "in": "A_Float"
+        },
+        {
+          "from": 164,
+          "out": "Output",
+          "to": 165,
+          "in": "B_Float"
+        },
+        {
+          "from": 165,
+          "out": "Result_Float",
+          "to": 145,
+          "in": "Value_001"
+        },
+        {
+          "from": 222,
+          "out": "Result_Color",
+          "to": 238,
+          "in": "B_Color"
+        },
+        {
+          "from": 336,
+          "out": "Result_Color",
+          "to": 221,
+          "in": "Input"
+        },
+        {
+          "from": 221,
+          "out": "Output",
+          "to": 238,
+          "in": "A_Color"
+        },
+        {
+          "from": 238,
+          "out": "Result_Color",
+          "to": 240,
+          "in": "A_Color"
+        },
+        {
+          "from": 242,
+          "out": "Output",
+          "to": 240,
+          "in": "B_Color"
+        },
+        {
+          "from": 97,
+          "out": "Output",
+          "to": 166,
+          "in": "Vector_001"
+        },
+        {
+          "from": 270,
+          "out": "X",
+          "to": 264,
+          "in": "Value_001"
+        },
+        {
+          "from": 248,
+          "out": "Value",
+          "to": 266,
+          "in": "Value_001"
+        },
+        {
+          "from": 266,
+          "out": "Value",
+          "to": 163,
+          "in": "Input"
+        },
+        {
+          "from": 262,
+          "out": "Value",
+          "to": 267,
+          "in": "Value_001"
+        },
+        {
+          "from": 267,
+          "out": "Value",
+          "to": 268,
+          "in": "Value"
+        },
+        {
+          "from": 268,
+          "out": "Value",
+          "to": 269,
+          "in": "Value"
+        },
+        {
+          "from": 263,
+          "out": "Color",
+          "to": 270,
+          "in": "Vector"
+        },
+        {
+          "from": 271,
+          "out": "Color",
+          "to": 272,
+          "in": "Vector"
+        },
+        {
+          "from": 273,
+          "out": "Value",
+          "to": 274,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 272,
+          "out": "Y",
+          "to": 273,
+          "in": "Value"
+        },
+        {
+          "from": 270,
+          "out": "Z",
+          "to": 276,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 261,
+          "out": "Color",
+          "to": 276,
+          "in": "A_Color"
+        },
+        {
+          "from": 276,
+          "out": "Result_Color",
+          "to": 264,
+          "in": "Value"
+        },
+        {
+          "from": 264,
+          "out": "Value",
+          "to": 262,
+          "in": "Value_001"
+        },
+        {
+          "from": 258,
+          "out": "Value",
+          "to": 262,
+          "in": "Value"
+        },
+        {
+          "from": 280,
+          "out": "Value",
+          "to": 285,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 285,
+          "out": "Result_Float",
+          "to": 266,
+          "in": "Value"
+        },
+        {
+          "from": 269,
+          "out": "Value",
+          "to": 285,
+          "in": "B_Float"
+        },
+        {
+          "from": 289,
+          "out": "Output",
+          "to": 274,
+          "in": "A_Float"
+        },
+        {
+          "from": 290,
+          "out": "Output",
+          "to": 274,
+          "in": "B_Float"
+        },
+        {
+          "from": 295,
+          "out": "Output",
+          "to": 181,
+          "in": "B_Color"
+        },
+        {
+          "from": 101,
+          "out": "Vector",
+          "to": 166,
+          "in": "Vector"
+        },
+        {
+          "from": 239,
+          "out": "Emission",
+          "to": 241,
+          "in": "Output_0"
+        },
+        {
+          "from": 181,
+          "out": "Result_Color",
+          "to": 222,
+          "in": "A_Color"
+        },
+        {
+          "from": 240,
+          "out": "Result_Color",
+          "to": 306,
+          "in": "A_Color"
+        },
+        {
+          "from": 301,
+          "out": "Result_Color",
+          "to": 307,
+          "in": "A_Color"
+        },
+        {
+          "from": 145,
+          "out": "Value",
+          "to": 308,
+          "in": "Input"
+        },
+        {
+          "from": 308,
+          "out": "Output",
+          "to": 309,
+          "in": "Value"
+        },
+        {
+          "from": 309,
+          "out": "Value",
+          "to": 307,
+          "in": "B_Color"
+        },
+        {
+          "from": 307,
+          "out": "Result_Color",
+          "to": 306,
+          "in": "B_Color"
+        },
+        {
+          "from": 306,
+          "out": "Result_Color",
+          "to": 320,
+          "in": "Color"
+        },
+        {
+          "from": 323,
+          "out": "Value",
+          "to": 322,
+          "in": "Value"
+        },
+        {
+          "from": 321,
+          "out": "Socket_2",
+          "to": 323,
+          "in": "Value"
+        },
+        {
+          "from": 324,
+          "out": "Output",
+          "to": 323,
+          "in": "Value_001"
+        },
+        {
+          "from": 90,
+          "out": "Output",
+          "to": 321,
+          "in": "Socket_1"
+        },
+        {
+          "from": 322,
+          "out": "Result",
+          "to": 320,
+          "in": "Saturation"
+        },
+        {
+          "from": 221,
+          "out": "Output",
+          "to": 241,
+          "in": "Output_25"
+        },
+        {
+          "from": 273,
+          "out": "Value",
+          "to": 331,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 320,
+          "out": "Color",
+          "to": 331,
+          "in": "A_Color"
+        },
+        {
+          "from": 320,
+          "out": "Color",
+          "to": 332,
+          "in": "A_Color"
+        },
+        {
+          "from": 332,
+          "out": "Result_Color",
+          "to": 331,
+          "in": "B_Color"
+        },
+        {
+          "from": 331,
+          "out": "Result_Color",
+          "to": 239,
+          "in": "Color"
+        },
+        {
+          "from": 333,
+          "out": "Socket_7",
+          "to": 332,
+          "in": "B_Color"
+        },
+        {
+          "from": 158,
+          "out": "Color",
+          "to": 334,
+          "in": "Color"
+        },
+        {
+          "from": 334,
+          "out": "Color",
+          "to": 132,
+          "in": "Input"
+        },
+        {
+          "from": 220,
+          "out": "Result_Color",
+          "to": 336,
+          "in": "A_Color"
+        },
+        {
+          "from": 145,
+          "out": "Value",
+          "to": 336,
+          "in": "B_Color"
+        },
+        {
+          "from": 338,
+          "out": "Socket_1",
+          "to": 337,
+          "in": "Factor_Float"
+        },
+        {
+          "from": 274,
+          "out": "Result_Float",
+          "to": 337,
+          "in": "A_Float"
+        },
+        {
+          "from": 274,
+          "out": "Result_Float",
+          "to": 339,
+          "in": "Value"
+        },
+        {
+          "from": 339,
+          "out": "Value",
+          "to": 337,
+          "in": "B_Float"
+        },
+        {
+          "from": 337,
+          "out": "Result_Float",
+          "to": 239,
+          "in": "Strength"
+        }
+      ]
+    }
+  ]
+}
