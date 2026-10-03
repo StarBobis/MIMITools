@@ -46,4 +46,3 @@ https://gamebanana.com/games/20357
 
 - 如果使用 Mod **大额盈利**，推荐使用 **WWMI-Tools**。
 - 如果仅制作健康、阳光、正能量的 Mod 用于娱乐，且需要舒适的轮椅工作流体验，推荐使用 **MMT + MIMIBlender**。
-- MMT中没有内置对于鸣潮引擎修改LOD的ini文件，所以实战中一般使用XXMI-Launcher启动器 + MMT提取模型 + MIMIBlender生成Mod流程（我懒得加那个引擎ini的替换，也懒得维护那个，直接在MMT里把3Dmigoto目录选到XXMI-Launcher的WWMI目录下就行了）

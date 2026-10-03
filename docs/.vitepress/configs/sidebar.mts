@@ -191,8 +191,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         { text: '基础信息', link: '/games/wwmi/BaseInfo/BaseInfo' },
         { text: '贴图通道详解与生成提示词', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
-        { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' },
-        { text: '一键启动路径配置', link: '/games/wwmi/ProcessPathConfig/ProcessPathConfig' }
+        { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
       ]
     }
   ],
