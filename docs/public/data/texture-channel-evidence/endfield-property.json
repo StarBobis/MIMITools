@@ -1,0 +1,3247 @@
+{
+  "commit": "3e40423dbec489368696c4f89a2bfb285662cdc1",
+  "tree": "Arknights: Endfield_PBRToonBase",
+  "nodes": [
+    {
+      "name": "混合.002",
+      "type": "ShaderNodeMix",
+      "inputs": [
+        {
+          "name": "Factor",
+          "id": "Factor_Float",
+          "value": 0.5
+        },
+        {
+          "name": "Factor",
+          "id": "Factor_Vector",
+          "value": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Float",
+          "value": 0.0
+        },
+        {
+          "name": "B",
+          "id": "B_Float",
+          "value": 0.0
+        },
+        {
+          "name": "A",
+          "id": "A_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "id": "Result_Float"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Vector"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Color"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Rotation"
+        }
+      ],
+      "blend_type": "MIX"
+    },
+    {
+      "name": "分离 XYZ.001",
+      "type": "ShaderNodeSeparateXYZ",
+      "inputs": [
+        {
+          "name": "Vector",
+          "id": "Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X",
+          "id": "X"
+        },
+        {
+          "name": "Y",
+          "id": "Y"
+        },
+        {
+          "name": "Z",
+          "id": "Z"
+        }
+      ]
+    },
+    {
+      "name": "混合.001",
+      "type": "ShaderNodeMix",
+      "inputs": [
+        {
+          "name": "Factor",
+          "id": "Factor_Float",
+          "value": 0.5
+        },
+        {
+          "name": "Factor",
+          "id": "Factor_Vector",
+          "value": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Float",
+          "value": 0.0
+        },
+        {
+          "name": "B",
+          "id": "B_Float",
+          "value": 0.0
+        },
+        {
+          "name": "A",
+          "id": "A_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "id": "Result_Float"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Vector"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Color"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Rotation"
+        }
+      ],
+      "blend_type": "MIX"
+    },
+    {
+      "name": "转接点.007",
+      "type": "NodeReroute",
+      "inputs": [
+        {
+          "name": "Input",
+          "id": "Input",
+          "value": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "id": "Output"
+        }
+      ]
+    },
+    {
+      "name": "转接点.008",
+      "type": "NodeReroute",
+      "inputs": [
+        {
+          "name": "Input",
+          "id": "Input",
+          "value": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "id": "Output"
+        }
+      ]
+    },
+    {
+      "name": "转接点.006",
+      "type": "NodeReroute",
+      "inputs": [
+        {
+          "name": "Input",
+          "id": "Input",
+          "value": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "id": "Output"
+        }
+      ]
+    },
+    {
+      "name": "转接点.005",
+      "type": "NodeReroute",
+      "inputs": [
+        {
+          "name": "Input",
+          "id": "Input",
+          "value": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "id": "Output"
+        }
+      ]
+    },
+    {
+      "name": "混合.014",
+      "type": "ShaderNodeMix",
+      "inputs": [
+        {
+          "name": "Factor",
+          "id": "Factor_Float",
+          "value": 0.5
+        },
+        {
+          "name": "Factor",
+          "id": "Factor_Vector",
+          "value": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Float",
+          "value": 0.0
+        },
+        {
+          "name": "B",
+          "id": "B_Float",
+          "value": 0.0
+        },
+        {
+          "name": "A",
+          "id": "A_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "id": "Result_Float"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Vector"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Color"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Rotation"
+        }
+      ],
+      "blend_type": "MIX"
+    },
+    {
+      "name": "混合.015",
+      "type": "ShaderNodeMix",
+      "inputs": [
+        {
+          "name": "Factor",
+          "id": "Factor_Float",
+          "value": 0.5
+        },
+        {
+          "name": "Factor",
+          "id": "Factor_Vector",
+          "value": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Float",
+          "value": 0.0
+        },
+        {
+          "name": "B",
+          "id": "B_Float",
+          "value": 0.0
+        },
+        {
+          "name": "A",
+          "id": "A_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "id": "Result_Float"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Vector"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Color"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Rotation"
+        }
+      ],
+      "blend_type": "MIX"
+    },
+    {
+      "name": "Group Input.016",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "Group Input.017",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "分离 XYZ.002",
+      "type": "ShaderNodeSeparateXYZ",
+      "inputs": [
+        {
+          "name": "Vector",
+          "id": "Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X",
+          "id": "X"
+        },
+        {
+          "name": "Y",
+          "id": "Y"
+        },
+        {
+          "name": "Z",
+          "id": "Z"
+        }
+      ]
+    },
+    {
+      "name": "Group Input.058",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "转接点.011",
+      "type": "NodeReroute",
+      "inputs": [
+        {
+          "name": "Input",
+          "id": "Input",
+          "value": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "id": "Output"
+        }
+      ]
+    },
+    {
+      "name": "混合.022",
+      "type": "ShaderNodeMix",
+      "inputs": [
+        {
+          "name": "Factor",
+          "id": "Factor_Float",
+          "value": 0.5
+        },
+        {
+          "name": "Factor",
+          "id": "Factor_Vector",
+          "value": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Float",
+          "value": 1.0
+        },
+        {
+          "name": "B",
+          "id": "B_Float",
+          "value": 0.0
+        },
+        {
+          "name": "A",
+          "id": "A_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "id": "Result_Float"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Vector"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Color"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Rotation"
+        }
+      ],
+      "blend_type": "MIX"
+    },
+    {
+      "name": "群组.021",
+      "type": "ShaderNodeGroup",
+      "inputs": [
+        {
+          "name": "smoothness",
+          "id": "Input_0",
+          "value": 0.5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "perceptualRoughness",
+          "id": "Output_1"
+        }
+      ]
+    },
+    {
+      "name": "群组.023",
+      "type": "ShaderNodeGroup",
+      "inputs": [
+        {
+          "name": "smoothness",
+          "id": "Input_0",
+          "value": 0.5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "perceptualRoughness",
+          "id": "Output_1"
+        }
+      ]
+    },
+    {
+      "name": "Group Input.022",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "Group Input.023",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "Group Input.024",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "Group Input.025",
+      "type": "NodeGroupInput",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Is Skin?",
+          "id": "Input_28"
+        },
+        {
+          "name": "Use anisotropy?",
+          "id": "Socket_3"
+        },
+        {
+          "name": "Use Toonaniso?",
+          "id": "Socket_4"
+        },
+        {
+          "name": "Use NormalTex?",
+          "id": "Input_29"
+        },
+        {
+          "name": "Use Rimlimitation?",
+          "id": "Socket_50"
+        },
+        {
+          "name": "Reverse Rimlimitation",
+          "id": "Socket_51"
+        },
+        {
+          "name": "Use RS_Eff?",
+          "id": "Socket_13"
+        },
+        {
+          "name": "Use Simple transmission？",
+          "id": "Socket_18"
+        },
+        {
+          "name": "RS Model",
+          "id": "Socket_24"
+        },
+        {
+          "name": "Simple transmission Value",
+          "id": "Socket_19"
+        },
+        {
+          "name": "RS_Index",
+          "id": "Socket_17"
+        },
+        {
+          "name": "RampIndex",
+          "id": "Input_30"
+        },
+        {
+          "name": "_D(sRGB)R.G.B",
+          "id": "Input_2"
+        },
+        {
+          "name": "_D(sRGB).A",
+          "id": "Input_27"
+        },
+        {
+          "name": "BaseColor",
+          "id": "Input_4"
+        },
+        {
+          "name": "_N(非色彩Non_Color)",
+          "id": "Input_1"
+        },
+        {
+          "name": "_P(非色彩Non_Color)R.G.B",
+          "id": "Input_5"
+        },
+        {
+          "name": "_P(非色彩Non_Color)A",
+          "id": "Input_6"
+        },
+        {
+          "name": "_E（非色彩）",
+          "id": "Socket_6"
+        },
+        {
+          "name": "_M（非色彩）",
+          "id": "Socket_15"
+        },
+        {
+          "name": "Emission Color",
+          "id": "Socket_7"
+        },
+        {
+          "name": "SmoothnessMax",
+          "id": "Input_7"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxT",
+          "id": "Socket_1"
+        },
+        {
+          "name": "Aniso_SmoothnessMaxB",
+          "id": "Socket_2"
+        },
+        {
+          "name": "MetallicMax",
+          "id": "Input_8"
+        },
+        {
+          "name": "RemaphalfLambert_center",
+          "id": "Input_9"
+        },
+        {
+          "name": "RemaphalfLambert_sharp",
+          "id": "Input_10"
+        },
+        {
+          "name": "CastShadow_center",
+          "id": "Input_31"
+        },
+        {
+          "name": "CastShadow_sharp",
+          "id": "Input_32"
+        },
+        {
+          "name": "dirLight_lightColor",
+          "id": "Input_11"
+        },
+        {
+          "name": "directOcclusionColor",
+          "id": "Input_12"
+        },
+        {
+          "name": "AmbientLightColorTint",
+          "id": "Socket_0"
+        },
+        {
+          "name": "SpecularColor",
+          "id": "Input_13"
+        },
+        {
+          "name": "NormalStrength",
+          "id": "Input_14"
+        },
+        {
+          "name": "fresnelInsideColor",
+          "id": "Input_15"
+        },
+        {
+          "name": "fresnelOutsideColor",
+          "id": "Input_16"
+        },
+        {
+          "name": "ToonfresnelPow",
+          "id": "Input_17"
+        },
+        {
+          "name": "_ToonfresnelSMO_L",
+          "id": "Input_19"
+        },
+        {
+          "name": "_ToonfresnelSMO_H",
+          "id": "Input_18"
+        },
+        {
+          "name": "Rim_DirLightAtten",
+          "id": "Input_20"
+        },
+        {
+          "name": "Rim_width_X",
+          "id": "Input_21"
+        },
+        {
+          "name": "Rim_width_Y",
+          "id": "Input_24"
+        },
+        {
+          "name": "Rim_Color",
+          "id": "Input_22"
+        },
+        {
+          "name": "Rim_ColorStrength",
+          "id": "Input_23"
+        },
+        {
+          "name": "GlobalShadowBrightnessAdjustment",
+          "id": "Input_33"
+        },
+        {
+          "name": "Anisotropic mask",
+          "id": "Socket_5"
+        },
+        {
+          "name": "Alpha",
+          "id": "Socket_9"
+        },
+        {
+          "name": "Layer weight Value",
+          "id": "Socket_10"
+        },
+        {
+          "name": "Layer weight Value Offset",
+          "id": "Socket_11"
+        },
+        {
+          "name": "RS Strength",
+          "id": "Socket_12"
+        },
+        {
+          "name": "RS Multiply Value",
+          "id": "Socket_14"
+        },
+        {
+          "name": "RS ColorTint",
+          "id": "Socket_20"
+        },
+        {
+          "name": "Color desaturation in shaded areas attenuation",
+          "id": "Socket_21"
+        },
+        {
+          "name": "specularFGD Strength",
+          "id": "Socket_23"
+        },
+        {
+          "name": "FresnelRimSmo_L",
+          "id": "Socket_44"
+        },
+        {
+          "name": "FresnelRimSmo_H",
+          "id": "Socket_45"
+        },
+        {
+          "name": "FresnelRimRimColor",
+          "id": "Socket_46"
+        },
+        {
+          "name": "Matcap Environmental Reflection Strength",
+          "id": "Socket_49"
+        },
+        {
+          "name": "CubeMap Environmental Reflection Strength",
+          "id": "Socket_71"
+        },
+        {
+          "name": "Skin Rain On",
+          "id": "Socket_76"
+        },
+        {
+          "name": "Rain On",
+          "id": "Socket_62"
+        },
+        {
+          "name": "MipD",
+          "id": "Socket_53"
+        },
+        {
+          "name": "MipN",
+          "id": "Socket_54"
+        },
+        {
+          "name": "Rain  Flow Scale",
+          "id": "Socket_55"
+        },
+        {
+          "name": "Second Rain  Flow Scale",
+          "id": "Socket_78"
+        },
+        {
+          "name": "Rain Flow Normal Strength",
+          "id": "Socket_56"
+        },
+        {
+          "name": "Rain  Flow Strength",
+          "id": "Socket_57"
+        },
+        {
+          "name": "Rain Flow Spped",
+          "id": "Socket_59"
+        },
+        {
+          "name": "Raindrop Normal Strength",
+          "id": "Socket_58"
+        },
+        {
+          "name": "Raindrop Speed",
+          "id": "Socket_60"
+        },
+        {
+          "name": "Raindrop Strength",
+          "id": "Socket_61"
+        },
+        {
+          "name": "Rain Stain ColorA",
+          "id": "Socket_63"
+        },
+        {
+          "name": "Rain Stain ColorB",
+          "id": "Socket_68"
+        },
+        {
+          "name": "Raindrop Scale",
+          "id": "Socket_66"
+        },
+        {
+          "name": "Raindrop UV Model",
+          "id": "Socket_67"
+        },
+        {
+          "name": "RainSmoothnessOffset",
+          "id": "Socket_69"
+        },
+        {
+          "name": "Skin Raindrop Normal Strength",
+          "id": "Socket_74"
+        },
+        {
+          "name": "Skin NormalStrength",
+          "id": "Socket_75"
+        },
+        {
+          "name": "",
+          "id": "__extend__"
+        }
+      ]
+    },
+    {
+      "name": "转接点.057",
+      "type": "NodeReroute",
+      "inputs": [
+        {
+          "name": "Input",
+          "id": "Input",
+          "value": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "id": "Output"
+        }
+      ]
+    },
+    {
+      "name": "运算.011",
+      "type": "ShaderNodeMath",
+      "inputs": [
+        {
+          "name": "Value",
+          "id": "Value",
+          "value": 0.5
+        },
+        {
+          "name": "Value",
+          "id": "Value_001",
+          "value": 0.0
+        },
+        {
+          "name": "Value",
+          "id": "Value_002",
+          "value": 0.5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Value",
+          "id": "Value"
+        }
+      ],
+      "operation": "ADD"
+    },
+    {
+      "name": "混合.051",
+      "type": "ShaderNodeMix",
+      "inputs": [
+        {
+          "name": "Factor",
+          "id": "Factor_Float",
+          "value": 0.5
+        },
+        {
+          "name": "Factor",
+          "id": "Factor_Vector",
+          "value": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Float",
+          "value": 0.0
+        },
+        {
+          "name": "B",
+          "id": "B_Float",
+          "value": 0.0
+        },
+        {
+          "name": "A",
+          "id": "A_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Vector",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Color",
+          "value": [
+            0.5,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "id": "A_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "id": "B_Rotation",
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "id": "Result_Float"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Vector"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Color"
+        },
+        {
+          "name": "Result",
+          "id": "Result_Rotation"
+        }
+      ],
+      "blend_type": "MIX"
+    }
+  ],
+  "links": [
+    {
+      "from": "分离 XYZ.001",
+      "out": "X",
+      "to": "转接点.008",
+      "in": "Input"
+    },
+    {
+      "from": "分离 XYZ.001",
+      "out": "Y",
+      "to": "转接点.007",
+      "in": "Input"
+    },
+    {
+      "from": "转接点.005",
+      "out": "Output",
+      "to": "混合.001",
+      "in": "Factor_Float"
+    },
+    {
+      "from": "转接点.008",
+      "out": "Output",
+      "to": "混合.002",
+      "in": "Factor_Float"
+    },
+    {
+      "from": "混合.002",
+      "out": "Result_Float",
+      "to": "转接点.011",
+      "in": "Input"
+    },
+    {
+      "from": "转接点.006",
+      "out": "Output",
+      "to": "混合.022",
+      "in": "A_Float"
+    },
+    {
+      "from": "转接点.005",
+      "out": "Output",
+      "to": "混合.014",
+      "in": "Factor_Float"
+    },
+    {
+      "from": "转接点.005",
+      "out": "Output",
+      "to": "混合.015",
+      "in": "Factor_Float"
+    },
+    {
+      "from": "混合.014",
+      "out": "Result_Float",
+      "to": "群组.021",
+      "in": "Input_0"
+    },
+    {
+      "from": "混合.015",
+      "out": "Result_Float",
+      "to": "群组.023",
+      "in": "Input_0"
+    },
+    {
+      "from": "Group Input.016",
+      "out": "Input_5",
+      "to": "分离 XYZ.001",
+      "in": "Vector"
+    },
+    {
+      "from": "Group Input.017",
+      "out": "Input_6",
+      "to": "转接点.005",
+      "in": "Input"
+    },
+    {
+      "from": "Group Input.022",
+      "out": "Input_7",
+      "to": "混合.001",
+      "in": "B_Float"
+    },
+    {
+      "from": "Group Input.023",
+      "out": "Socket_1",
+      "to": "混合.014",
+      "in": "B_Float"
+    },
+    {
+      "from": "Group Input.024",
+      "out": "Socket_2",
+      "to": "混合.015",
+      "in": "B_Float"
+    },
+    {
+      "from": "Group Input.025",
+      "out": "Input_8",
+      "to": "混合.002",
+      "in": "B_Float"
+    },
+    {
+      "from": "Group Input.058",
+      "out": "Input_5",
+      "to": "分离 XYZ.002",
+      "in": "Vector"
+    },
+    {
+      "from": "分离 XYZ.002",
+      "out": "Z",
+      "to": "转接点.006",
+      "in": "Input"
+    },
+    {
+      "from": "混合.001",
+      "out": "Result_Float",
+      "to": "运算.011",
+      "in": "Value"
+    },
+    {
+      "from": "混合.001",
+      "out": "Result_Float",
+      "to": "混合.051",
+      "in": "A_Float"
+    },
+    {
+      "from": "混合.001",
+      "out": "Result_Float",
+      "to": "转接点.057",
+      "in": "Input"
+    }
+  ]
+}

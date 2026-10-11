@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "commit": "3e40423dbec489368696c4f89a2bfb285662cdc1",
+  "scope": "Reviewed finite classifier/JSON mapping branches, not every fuzzy filename accepted by a generic importer. Aliases do not prove identical consumer semantics.",
+  "entries": [
+    {
+      "game": "wwmi",
+      "slot": "_D",
+      "guide_anchor": "map-diffuse",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_N",
+      "guide_anchor": "map-normal",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_ID",
+      "guide_anchor": "map-typemask",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_HM",
+      "guide_anchor": "map-hairmask",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_HN",
+      "guide_anchor": "map-hn",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_Skin",
+      "guide_anchor": "map-ramp",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_HET",
+      "guide_anchor": "map-het",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_FX",
+      "guide_anchor": "map-highlight",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_SDF",
+      "guide_anchor": "map-sdf",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_LD",
+      "guide_anchor": "map-ld",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_RGID",
+      "guide_anchor": "map-rgid",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "wwmi",
+      "slot": "_FTM",
+      "guide_anchor": "map-ftm",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/utils/wuwa_texture_utils.py#L308-L393",
+      "note": "Binding alias only; channel semantics require cited shader/node consumer."
+    },
+    {
+      "game": "efmi",
+      "slot": "_D",
+      "guide_anchor": "map-diffuse",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_N",
+      "guide_anchor": "map-normal",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_P",
+      "guide_anchor": "map-community-property",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_E",
+      "guide_anchor": "map-ake-emission",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "PBRToonBase E RGB consumer topology verified; other materials still require their own node contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_M",
+      "guide_anchor": "map-microdetail",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract.",
+      "additional_guide_anchors": [
+        "map-ake-rs-mask"
+      ]
+    },
+    {
+      "game": "efmi",
+      "slot": "_HN",
+      "guide_anchor": "map-hairnormal",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_ST",
+      "guide_anchor": "map-hairst",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_RS",
+      "guide_anchor": "map-rs",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    },
+    {
+      "game": "efmi",
+      "slot": "_RD",
+      "guide_anchor": "map-rd",
+      "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/texture_import_setup/game_texture_importers.py#L2410-L2453",
+      "note": "Heuristic suffix/property matching; material/node consumer takes precedence. _E has no automatic universal emission contract."
+    }
+  ]
+}

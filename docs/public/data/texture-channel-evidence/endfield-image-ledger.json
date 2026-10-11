@@ -1,0 +1,787 @@
+{
+  "schema_version": 1,
+  "commit": "3e40423dbec489368696c4f89a2bfb285662cdc1",
+  "source": "https://github.com/PaoloESAN/gacha-setup/blob/3e40423dbec489368696c4f89a2bfb285662cdc1/setup_wizard/shaders/ake/AKE.blend",
+  "blob_sha": "0eb3a967fe856955d92607eb81f4fcd345213ee5",
+  "audited_tree_count": 88,
+  "scope": "Every TEX_IMAGE node in the observed pinned AKE audit; labels are not proof that all asset instances match a single renderer. Contains names and connection-output IDs only, no pixels or original file paths.",
+  "entries": [
+    {
+      "tree_index": 1,
+      "tree": "Arknights: Endfield_PBRToon_irisBase",
+      "node_index": 18,
+      "label": "T_actor_common_matcap_05_D.png.001",
+      "kind": "iris-matcap05",
+      "guide_anchor": "map-eye-matcap05",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 1,
+      "tree": "Arknights: Endfield_PBRToon_irisBase",
+      "node_index": 21,
+      "label": "T_actor_common_matcap_07_D.png.001",
+      "kind": "iris-matcap07",
+      "guide_anchor": "map-eye-matcap07",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 213,
+      "label": "T_actor_aurora_cloth_03_RS.png.001",
+      "kind": "RS",
+      "guide_anchor": "map-rs",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 225,
+      "label": "T_actor_yvonne_cloth_05_RS.png.001",
+      "kind": "RS",
+      "guide_anchor": "map-rs",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 360,
+      "label": "Eff_MatCap_019.png",
+      "kind": "effect-matcap",
+      "guide_anchor": "map-matcap",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 390,
+      "label": "T_actor_common_rain_02_M.png",
+      "kind": "rain-common",
+      "guide_anchor": "map-microdetail",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 432,
+      "label": "T_actor_common_rain_02_M.png",
+      "kind": "rain-common",
+      "guide_anchor": "map-microdetail",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 457,
+      "label": "T_actor_common_rain_01_M.png",
+      "kind": "rain-common",
+      "guide_anchor": "map-microdetail",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 2,
+      "tree": "Arknights: Endfield_PBRToonBase",
+      "node_index": 538,
+      "label": "T_actor_common_rain_03_M.png",
+      "kind": "rain-common",
+      "guide_anchor": "map-microdetail",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 4,
+      "tree": "Arknights: Endfield_PBRToonBaseFace",
+      "node_index": 158,
+      "label": "T_actor_common_face_01_RD.png.001",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 4,
+      "tree": "Arknights: Endfield_PBRToonBaseFace",
+      "node_index": 233,
+      "label": "T_actor_common_female_face_01_SDF.png.001",
+      "kind": "face-sdf",
+      "guide_anchor": "map-sdf",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 4,
+      "tree": "Arknights: Endfield_PBRToonBaseFace",
+      "node_index": 263,
+      "label": "CsutmMask.001",
+      "kind": "custom-face-mask",
+      "guide_anchor": "map-ake-custom-face-mask",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 4,
+      "tree": "Arknights: Endfield_PBRToonBaseFace",
+      "node_index": 271,
+      "label": "CsutmMask.001",
+      "kind": "custom-face-mask",
+      "guide_anchor": "map-ake-custom-face-mask",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 4,
+      "tree": "Arknights: Endfield_PBRToonBaseFace",
+      "node_index": 299,
+      "label": "T_actor_common_female_face_01_cm_M.png.004",
+      "kind": "face-control",
+      "guide_anchor": "map-cmm",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 4,
+      "tree": "Arknights: Endfield_PBRToonBaseFace",
+      "node_index": 300,
+      "label": "T_actor_common_face_01_hl_M.png.001",
+      "kind": "lip-highlight",
+      "guide_anchor": "map-lip-highlight",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 5,
+      "tree": "Arknights: Endfield_PBRToonBaseHair",
+      "node_index": 144,
+      "label": "T_actor_common_hair_01_RD.png.001",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 40,
+      "tree": "GetPreIntegratedFGDGGXAndDisneyDiffuse",
+      "node_index": 9,
+      "label": "PreIntegratedFGD_GGXDisneyDiffuse.png",
+      "kind": "FGD",
+      "guide_anchor": "map-fgd",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 41,
+      "tree": "GetPreIntegratedFGDGGXAndDisneyDiffuse.001",
+      "node_index": 9,
+      "label": "PreIntegratedFGD_GGXDisneyDiffuse.png.001",
+      "kind": "FGD",
+      "guide_anchor": "map-fgd",
+      "observed_color_space": "Non-Color",
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 58,
+      "tree": "RampSelect.001",
+      "node_index": 10,
+      "label": "T_actor_common_body_01_RD.png.002",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 58,
+      "tree": "RampSelect.001",
+      "node_index": 11,
+      "label": "T_actor_common_cloth_04_RD.png.003",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 58,
+      "tree": "RampSelect.001",
+      "node_index": 13,
+      "label": "T_actor_common_body_01_RD.png.003",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 58,
+      "tree": "RampSelect.001",
+      "node_index": 14,
+      "label": "T_actor_common_cloth_04_RD.png.004",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 58,
+      "tree": "RampSelect.001",
+      "node_index": 15,
+      "label": "TPLK_actor_common_cloth_03_RD.png.001",
+      "kind": "RD",
+      "guide_anchor": "map-rd",
+      "observed_color_space": "sRGB",
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 73,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "body_01_D",
+      "kind": "skin-D",
+      "guide_anchor": "map-skin-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 73,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "body_01_N",
+      "kind": "N",
+      "guide_anchor": "map-normal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 74,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "cloth_01_D",
+      "kind": "D",
+      "guide_anchor": "map-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 74,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "cloth_01_N",
+      "kind": "N",
+      "guide_anchor": "map-normal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 74,
+      "tree": "Shader Nodetree",
+      "node_index": 4,
+      "label": "cloth_01_P",
+      "kind": "P",
+      "guide_anchor": "map-community-property",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 74,
+      "tree": "Shader Nodetree",
+      "node_index": 6,
+      "label": "cloth_01_E",
+      "kind": "E",
+      "guide_anchor": "map-ake-emission",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 74,
+      "tree": "Shader Nodetree",
+      "node_index": 7,
+      "label": "cloth_01_M",
+      "kind": "M",
+      "guide_anchor": "map-ake-rs-mask",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 75,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "cloth_02_D",
+      "kind": "D",
+      "guide_anchor": "map-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 75,
+      "tree": "Shader Nodetree",
+      "node_index": 4,
+      "label": "cloth_02_P",
+      "kind": "P",
+      "guide_anchor": "map-community-property",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 75,
+      "tree": "Shader Nodetree",
+      "node_index": 5,
+      "label": "cloth_02_N",
+      "kind": "N",
+      "guide_anchor": "map-normal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 75,
+      "tree": "Shader Nodetree",
+      "node_index": 6,
+      "label": "cloth_02_M",
+      "kind": "M",
+      "guide_anchor": "map-ake-rs-mask",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 75,
+      "tree": "Shader Nodetree",
+      "node_index": 7,
+      "label": "cloth_02_E",
+      "kind": "E",
+      "guide_anchor": "map-ake-emission",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 77,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "face_01_D",
+      "kind": "face-D",
+      "guide_anchor": "map-face-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 78,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "face_01_D",
+      "kind": "face-D",
+      "guide_anchor": "map-face-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 80,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "face_01_D",
+      "kind": "face-D",
+      "guide_anchor": "map-face-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 81,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "hair_01_D",
+      "kind": "D",
+      "guide_anchor": "map-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 81,
+      "tree": "Shader Nodetree",
+      "node_index": 4,
+      "label": "hair_01_HN",
+      "kind": "hair-HN",
+      "guide_anchor": "map-hairnormal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 81,
+      "tree": "Shader Nodetree",
+      "node_index": 5,
+      "label": "hair_01_P",
+      "kind": "hair-P",
+      "guide_anchor": "map-hairproperty",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 83,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "head_D",
+      "kind": "D",
+      "guide_anchor": "map-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 83,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "head_N",
+      "kind": "N",
+      "guide_anchor": "map-normal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 83,
+      "tree": "Shader Nodetree",
+      "node_index": 4,
+      "label": "head_P",
+      "kind": "P",
+      "guide_anchor": "map-community-property",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 83,
+      "tree": "Shader Nodetree",
+      "node_index": 6,
+      "label": "head_E",
+      "kind": "E",
+      "guide_anchor": "map-ake-emission",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 83,
+      "tree": "Shader Nodetree",
+      "node_index": 7,
+      "label": "head_M",
+      "kind": "M",
+      "guide_anchor": "map-ake-rs-mask",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 84,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "iris_01_D",
+      "kind": "iris-D",
+      "guide_anchor": "map-facial-main",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 85,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "iris_01_D",
+      "kind": "iris-D",
+      "guide_anchor": "map-facial-main",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 86,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "wpn_D",
+      "kind": "D",
+      "guide_anchor": "map-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 86,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "wpn_N",
+      "kind": "N",
+      "guide_anchor": "map-normal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 86,
+      "tree": "Shader Nodetree",
+      "node_index": 4,
+      "label": "wpn_P",
+      "kind": "P",
+      "guide_anchor": "map-community-property",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 86,
+      "tree": "Shader Nodetree",
+      "node_index": 6,
+      "label": "wpn_E",
+      "kind": "E",
+      "guide_anchor": "map-ake-emission",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 86,
+      "tree": "Shader Nodetree",
+      "node_index": 7,
+      "label": "wpn_M",
+      "kind": "M",
+      "guide_anchor": "map-ake-rs-mask",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 87,
+      "tree": "Shader Nodetree",
+      "node_index": 2,
+      "label": "wing_D",
+      "kind": "D",
+      "guide_anchor": "map-diffuse",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 87,
+      "tree": "Shader Nodetree",
+      "node_index": 3,
+      "label": "wing_N",
+      "kind": "N",
+      "guide_anchor": "map-normal",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 87,
+      "tree": "Shader Nodetree",
+      "node_index": 4,
+      "label": "wing_P",
+      "kind": "P",
+      "guide_anchor": "map-community-property",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Alpha",
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 87,
+      "tree": "Shader Nodetree",
+      "node_index": 6,
+      "label": "wing_E",
+      "kind": "E",
+      "guide_anchor": "map-ake-emission",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    },
+    {
+      "tree_index": 87,
+      "tree": "Shader Nodetree",
+      "node_index": 7,
+      "label": "wing_M",
+      "kind": "M",
+      "guide_anchor": "map-ake-rs-mask",
+      "observed_color_space": null,
+      "connected_outputs": [
+        "Color"
+      ],
+      "scope": "Observed AKE image identity only; linked sections distinguish MME and AKE consumer contracts."
+    }
+  ]
+}

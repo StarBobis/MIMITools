@@ -1,0 +1,303 @@
+{
+  "schema_version": 2,
+  "scope": "All HLSL/shader/fxsub files in the pinned source prefixes for the documented games, including zero-declaration files, minus the excluded trees listed in removed_scope. Generated from GitHub recursive trees and original blob bytes. Other languages, generic external engine includes and native game binaries are outside this declaration contract.",
+  "repositories": [
+    {
+      "repository": "Hoyotoon/HoyoToon",
+      "commit": "d9e5ca2f312bf16fba89dee67d32c08b482dcda4",
+      "prefix": "Shaders/",
+      "extensions": [
+        ".hlsl",
+        ".shader",
+        ".fxsub"
+      ],
+      "files": [
+        {
+          "path": "Shaders/Post Processing/HoyoToonPostBloom.shader",
+          "blob_sha": "6f2ff733f1b8b3f3da1c6188612e2a20f674cfbe",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Post Processing/Includes/BloomCommon.hlsl",
+          "blob_sha": "2e50293539ac4853f6582d68b1157d1f772aeca0",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Post Processing/Includes/BloomDeclarations.hlsl",
+          "blob_sha": "f94ad161bee1f643ce0890b5e4bbd3b6c9eb6b2c",
+          "texture_names": [
+            "_BloomAH",
+            "_BloomAV",
+            "_BloomAtlas",
+            "_BloomBH",
+            "_BloomBV",
+            "_BloomCH",
+            "_BloomCV",
+            "_BloomH",
+            "_BloomV",
+            "_CharacterMask",
+            "_FinalImage",
+            "_HDRTexture",
+            "_LayerRT",
+            "_LayerTex",
+            "_Lut2DTex",
+            "_MHYBloomTex",
+            "_MainTex",
+            "_OriginalTexture",
+            "_PreFilter"
+          ]
+        },
+        {
+          "path": "Shaders/Post Processing/Includes/BloomProgram.hlsl",
+          "blob_sha": "49763c184e04bf64b99e03a0747a998420f88fbf",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/HoyoToonWutheringWaves.shader",
+          "blob_sha": "20365e96bdce76123a8f295343a93618787481de",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-common.hlsl",
+          "blob_sha": "e5694d4769403bbcec5e96c2ab450bac1a151f3a",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-declaration.hlsl",
+          "blob_sha": "b40c27de5eff568e03fc536bce465ff2c7c2097f",
+          "texture_names": [
+            "_CommonNoiseMap",
+            "_D",
+            "_EM",
+            "_HeightLightMap",
+            "_HeightLightTex",
+            "_Lut2DTex",
+            "_MainTex",
+            "_Mask",
+            "_MaskTex",
+            "_MatCapTex",
+            "_Noise",
+            "_Noise02",
+            "_Normal_Roughness_Metallic",
+            "_OutlineTexture",
+            "_Ramp",
+            "_SDF",
+            "_Second_RGB",
+            "_ShakeNoise",
+            "_TypeMask"
+          ]
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-input.hlsl",
+          "blob_sha": "67b13e740fbb29a7615fb9dd9708ebe0a32da5ec",
+          "texture_names": []
+        },
+        {
+          "path": "Shaders/Wuthering Waves/Include/HoyoToonWutheringWaves-program.hlsl",
+          "blob_sha": "b5088e56102c48163a526ef318d4b1ff03c2d436",
+          "texture_names": []
+        }
+      ]
+    },
+    {
+      "repository": "chris0214/Arknights-Endfield-MME-Shader",
+      "commit": "f9e90932a25678101e3e28a8d91663fa0706a4ed",
+      "prefix": "EndfieldMME/internal/",
+      "extensions": [
+        ".hlsl",
+        ".shader",
+        ".fxsub"
+      ],
+      "files": [
+        {
+          "path": "EndfieldMME/internal/endfield_camera_light.hlsl",
+          "blob_sha": "4179858a99837d6799036f327fa240aaf323803e",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_cloth.hlsl",
+          "blob_sha": "57d27d209712dac46fee40efa7c79e3c0e7e8aba",
+          "texture_names": [
+            "EF_CLOTH_SHADOW_VIEWPORT_MAP",
+            "EfClothEnvTexture",
+            "EfClothFgdTexture",
+            "EfClothLutTexture",
+            "EfClothMainTexture",
+            "EfClothManualMatcapTexture",
+            "EfClothMatcapTexture",
+            "EfClothNormalTexture",
+            "EfClothPropertyTexture",
+            "EfClothRainDropPhaseTexture",
+            "EfClothRainDropTexture",
+            "EfClothRainTexture",
+            "EfClothRdTexture",
+            "EfClothRsTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye.hlsl",
+          "blob_sha": "178fd41868681ac768597b4f5f2dcf97e60f7d99",
+          "texture_names": [
+            "EfEyeIrisMatcap05Texture",
+            "EfEyeIrisMatcap07Texture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye_highlight.hlsl",
+          "blob_sha": "a90ced8ac3c344b76a8c9e1b931150c2cb889a35",
+          "texture_names": [
+            "EfEyeHlTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye_through_capture_core.fxsub",
+          "blob_sha": "41c263ff254515f919787a25409d6d1e81b52202",
+          "texture_names": [
+            "EfEyeCaptureIrisTexture",
+            "EfEyeCaptureMaterialTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_eye_white.hlsl",
+          "blob_sha": "a08aade9129626af253c5df1237603fefb700e48",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_face.hlsl",
+          "blob_sha": "815f348b3c5070d303a28adc71e946c72353d11c",
+          "texture_names": [
+            "EF_FACE_SHADOW_VIEWPORT_MAP",
+            "EfFaceCmmTexture",
+            "EfFaceLipSpecularTexture",
+            "EfFaceMainTexture",
+            "EfFaceRdTexture",
+            "EfFaceSdfTexture",
+            "EfFaceSkinLutTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_face_depth_capture_core.fxsub",
+          "blob_sha": "36ae27c54c658ed644282c39636482eb56cffdf4",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_facial.hlsl",
+          "blob_sha": "c5e18e7a90bf43fa98107701b45ed4f373cc20a6",
+          "texture_names": [
+            "EF_FACIAL_OVERLAY_DEPTH_MAP",
+            "EfFacialMainTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_global_shadow_scale.hlsl",
+          "blob_sha": "411c827fd2027620236c7a0d24430bc39baa3191",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_ggx.hlsl",
+          "blob_sha": "c1bd925d060b8cc701582eab0916bbdc23633210",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_goo_position.hlsl",
+          "blob_sha": "6232f2021b9362fc54be76682c2f91b2f2c39fdf",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_specular.hlsl",
+          "blob_sha": "1a881da225e8e2217a5f773c30541ab2313b3d63",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hair_visibility_capture_core.fxsub",
+          "blob_sha": "773a42b41305b656c89a6bb2e3f228827d6f5e1b",
+          "texture_names": [
+            "EfHairVisibilityMaterialTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_hidden.hlsl",
+          "blob_sha": "c39ee8e1fb24edac3b4ff119b9d82ea54d63f554",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_lighting.hlsl",
+          "blob_sha": "7090fd3331fb7f05900d3270e18716cfb5c3aa27",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_outline.hlsl",
+          "blob_sha": "d9d3f903365e17b50ac21be42ea13e7ceb45c3c2",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_post.fxsub",
+          "blob_sha": "a9ed644f26c826222d644c3aaa226b63e12ecba0",
+          "texture_names": [
+            "EfPostBloom0",
+            "EfPostBloom1",
+            "EfPostBloom2",
+            "EfPostBloom3",
+            "EfPostBloom4",
+            "EfPostBloomBlur",
+            "EfPostBloomBlurTemp",
+            "EfPostBloomUp0",
+            "EfPostBloomUp1",
+            "EfPostBloomUp2",
+            "EfPostBloomUp3",
+            "EfPostDepthBuffer",
+            "EfPostSceneMap",
+            "EfPostToneMap"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_shader.hlsl",
+          "blob_sha": "958a5273b139ac5a532f6d6d66fca35954d8403f",
+          "texture_names": [
+            "EF_SHADOW_VIEWPORT_MAP",
+            "EfHairAnisoNoiseTexture",
+            "EfHairLineTexture",
+            "EfHairSpecTexture",
+            "EfMainTexture",
+            "EfNormalTexture",
+            "EfOrmTexture",
+            "EfRampTexture",
+            "EndfieldFaceDepth_RT",
+            "EndfieldHairVisibility_RT"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_skin.hlsl",
+          "blob_sha": "1667e38fd0a3130fda1846569835e29abf6af815",
+          "texture_names": [
+            "EF_SKIN_SHADOW_VIEWPORT_MAP",
+            "EfSkinLutTexture",
+            "EfSkinMainTexture",
+            "EfSkinRdTexture"
+          ]
+        },
+        {
+          "path": "EndfieldMME/internal/endfield_specular.hlsl",
+          "blob_sha": "f9b02024fe5c406fde861e725fe40f381314272d",
+          "texture_names": []
+        },
+        {
+          "path": "EndfieldMME/internal/snow_camera_light.hlsl",
+          "blob_sha": "99156bb0135616ec8694ccc79acf59bd40adbc12",
+          "texture_names": []
+        }
+      ]
+    }
+  ],
+  "removed_scope": {
+    "reason": "Four game guides were deleted from this repository; their shader trees and declaration files are no longer documented.",
+    "trees": [
+      "Shaders/Genshin Impact/",
+      "Shaders/Honkai Impact/",
+      "Shaders/Honkai Star Rail/",
+      "Shaders/Particles/",
+      "Shaders/ZenlessZoneZero/"
+    ],
+    "note": "Shaders/Particles/ only carried the Genshin particle implementation. Shaders/Post Processing/ is retained because the documented Wuthering Waves guide still cites it."
+  }
+}
