@@ -1,37 +1,23 @@
 # 如何注入3Dmigoto到终末地
 
-开始之前确保你的MMT版本为V3.5.7或以上版本
+首先确保你使用的是最新版MMT，如图是1.0.94版本
 
-新建一个任意名称的游戏配置，游戏预设选择AEMI：
+![alt text](image-5.png)
 
-![alt text](image.png)
+如图所示：
+- 注入进程路径选择你自己的`Endfield.exe`
+- 运行目标路径空着
+- 启动参数填写 `-force-d3d11`
+- 额外注入一个dll路径，直接点击 `添加当前注入dll` 按钮自动设置
 
-3Dmigoto就用自动下载的，或者你自己的都行：
+随后点击开始游戏，出现Run.exe的黑窗口
 
-## 进程路径和启动路径【必填】
+![alt text](image-7.png)
 
-![alt text](image-1.png)
+随后从游戏官方启动器启动游戏即可，记得勾选`使用DirectX 11`。
 
-进程路径和启动路径都填写为你自己的Endfield.exe路径：
+![alt text](image-8.png)
 
-## 启动参数【必填】
-![alt text](image-2.png)
+游戏中小键盘0开启绿字就算成功
 
-启动参数必须是 `-force-d3d11`
-
-## 额外注入的dll文件【必填】
-
-额外注入的dll文件选你当前3Dmigoto文件夹下面的d3d11.dll
-
-![alt text](image-3.png)
-
-可以点这个按钮打开当前3Dmigoto文件夹：
-
-![alt text](image-4.png)
-
-配置完成后点击开始游戏，就会开始游戏并注入3Dmigoto
-
-## 注意事项
-
-- 暂不清楚终末地对待Mod的态度，MMT仅用于制作二创视频使用，请不要以任何方式传播Mod
-- 如果还是无法注入，把3Dmigoto文件夹里旧的Run.exe删掉试试，可能是缓存导致未成功更新
+![alt text](image-6.png)
