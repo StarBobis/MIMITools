@@ -73,6 +73,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: '骨骼: 模型绑定骨骼', link: '/other/reverse/BindModelToBone/BindModelToBone' },
         { text: '骨骼: 米游游戏原骨骼绑骨', link: '/other/reverse/HoyoGamesBone/HoyoGamesBone' },
         { text: '骨骼: 鸣潮原骨骼绑骨', link: '/other/reverse/WutheringWavesBone/WutheringWavesBone' },
+        { text: '骨骼: 逆向出来自带骨骼', link: '/other/reverse/ReverseWithBones/ReverseWithBones' },
       ]
     }
   ],
