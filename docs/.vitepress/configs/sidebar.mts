@@ -61,18 +61,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: 'MMT介绍', link: '/other/reverse/MMTIntroduction/MMTIntroduction' },
         { text: 'MMT激活方式', link: '/other/reverse/MMTActivation/MMTActivation' },
         { text: '形态键面板Mod格式转换演示', link: '/other/reverse/ShapeKeyPanelModDemo/ShapeKeyPanelModDemo' },
-        { text: 'Mod的模型如何绑定骨骼？', link: '/other/reverse/BindModModelBone/BindModModelBone' },
-        { text: '米游系列游戏原本解包骨骼', link: '/other/reverse/HoyoUnpackedBone/HoyoUnpackedBone' },
         { text: '手动逆向', link: '/other/reverse/ManualReverse/ManualReverse' },
         { text: '一键格式转换后如何导入 Blender', link: '/other/reverse/ImportToBlender/ImportToBlender' },
         { text: '排除并筛选正确的数据类型', link: '/other/reverse/FilterDataTypes/FilterDataTypes' },
         { text: 'Mod模型里没有脸部模型?', link: '/other/reverse/NoFaceModel/NoFaceModel' },
         { text: 'MMT常见问题', link: '/other/reverse/MMTFAQ/MMTFAQ' },
         { text: '四种Mod逆向方式区别', link: '/other/reverse/ReverseMethodComparison/ReverseMethodComparison' },
-        { text: '萌新常见问题', link: '/other/reverse/FAQ/FAQ' },
-        { text: '骨骼: 模型绑定骨骼', link: '/other/reverse/BindModelToBone/BindModelToBone' },
-        { text: '骨骼: 米游游戏原骨骼绑骨', link: '/other/reverse/HoyoGamesBone/HoyoGamesBone' },
-        { text: '骨骼: 鸣潮原骨骼绑骨', link: '/other/reverse/WutheringWavesBone/WutheringWavesBone' },
         { text: '骨骼: 逆向出来自带骨骼', link: '/other/reverse/ReverseWithBones/ReverseWithBones' },
       ]
     }
