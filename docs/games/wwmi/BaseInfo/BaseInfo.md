@@ -24,6 +24,8 @@ C:\Program Files\Wuthering Waves\Wuthering Waves Game\Wuthering Waves.exe
 -dx11 -krqlv=hd
 ```
 
+注意这里的`-krqlv=hd`，如果你下载的版本是hud就改成`-krqlv-hud`，否则进不去游戏
+
 ## GameBanana
 
 https://gamebanana.com/games/20357
