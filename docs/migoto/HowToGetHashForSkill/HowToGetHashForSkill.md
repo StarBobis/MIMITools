@@ -11,6 +11,7 @@
 1. 在释放技能的瞬间按 `Esc` 暂停游戏。
 2. 同时通过小键盘 `7` 和 `8` 切换 **IB** 隐藏掉菜单界面。
 3. 可以把这个 **IB** 做成单纯的 `handling = skip` 的隐藏 **Mod**，最好是设置一个按键开关，这样就可以在时停的时候透过菜单 **UI** 界面看到技能或者大招瞬间的效果。
+   - `handling = skip` 的原理和写法见 [handling = skip 是什么](/migoto/HandlingSkip/HandlingSkip) 与 [按 IB 隐藏模型或部位](/migoto/HideIB/HideIB)。
 4. 然后小键盘 `7` 和 `8` 找 **IB** 值即可。
 
 ### 方法二：Dump 帧分析

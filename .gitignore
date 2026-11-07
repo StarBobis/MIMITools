@@ -31,5 +31,6 @@ docs/.vitepress/cache
 
 # temp files
 tmp.md
+tmp/
 
 references

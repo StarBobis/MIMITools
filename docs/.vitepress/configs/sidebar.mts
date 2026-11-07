@@ -186,6 +186,15 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
   ],
   '/migoto/':[
     {
+      text: '3Dmigoto基础',
+      items: [
+        { text: 'handling = skip 是什么', link: '/migoto/HandlingSkip/HandlingSkip' },
+        { text: '用 skip 隐藏东西（PS 篇）', link: '/migoto/HidePS/HidePS' },
+        { text: '按 IB 隐藏模型或部位', link: '/migoto/HideIB/HideIB' },
+        { text: 'skip 之后自己重画', link: '/migoto/SkipAndRedraw/SkipAndRedraw' },
+      ]
+    },
+    {
       text: '3Dmigoto',
       items: [
         { text: '3Dmigoto简介', link: '/migoto/Introduction/Introduction' },

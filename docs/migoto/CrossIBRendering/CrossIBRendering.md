@@ -8,6 +8,8 @@
 
 > 💡 **提示**：这个名字是我自己随便起的，没有英文对应的技术名词。
 
+> 📖 下面出现的大量 `handling = skip` 是这套写法的关键一步（跳掉原来的绘制，再自己画），它的原理和单独用法见 [handling = skip 是什么](/migoto/HandlingSkip/HandlingSkip) 和 [skip 之后自己重画](/migoto/SkipAndRedraw/SkipAndRedraw)。
+
 ## 🛠️ 实现方法
 
 首先把最终的 Mod 的 `ini` 先贴过来，方便随时参考：
