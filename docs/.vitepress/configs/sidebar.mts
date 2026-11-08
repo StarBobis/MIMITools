@@ -22,6 +22,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: 'MIMIBlender',
       items: [
         { text: '基础信息', link: '/newbie/MIMIBlender/BaseInfo/BaseInfo' },
+        { text: '四种贴图指定：YYSLS 实例', link: '/newbie/MIMIBlender/texture-assignment/texture-assignment' },
         { text: '投影TEXCOORD2.xy', link: '/newbie/MIMIBlender/ProjectTEXCOORD2/ProjectTEXCOORD2' },
         { text: '平滑法线存TEXCOORD1.xy', link: '/newbie/MIMIBlender/SmoothNormalToTEXCOORD1/SmoothNormalToTEXCOORD1' },
         { text: '模型细分后权重问题', link: '/newbie/MIMIBlender/SubdivisionWeightIssue/SubdivisionWeightIssue' },
@@ -92,6 +93,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         { text: '基础信息', link: '/games/yysls/BaseInfo/BaseInfo' },
         { text: 'YYSLS基础配置', link: '/games/yysls/BasicConfig/BasicConfig' },
+        { text: 'MIMIBlender 四种贴图指定', link: '/newbie/MIMIBlender/texture-assignment/texture-assignment' },
         { text: '多个游戏主程序问题', link: '/games/yysls/InjectionIssue/InjectionIssue' }
       ]
     }
