@@ -47,7 +47,7 @@ export const nav: DefaultTheme.Config['nav'] = [
     activeMatch: '/games/',
     items: [
       { items: [
-        { text: '鸣潮', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
+        { text: '鸣潮', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' },
         { text: '明日方舟:终末地', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
       ] },
     ]

@@ -80,7 +80,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '明日方舟:终末地',
       items: [
         { text: 'd3dx.ini特殊变更', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
-        { text: '贴图通道详解与生成提示词', link: '/games/efmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '贴图通道社区简表', link: '/games/efmi/TextureChannels/TextureChannels' },
         { text: '如何注入3Dmigoto', link: '/games/efmi/HowToConfigAndInject/HowToConfigAndInject' },
         { text: '头发生成Mod后炸裂', link: '/games/efmi/HairModBroken/HairModBroken' },
@@ -92,7 +91,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '鸣潮',
       items: [
-        { text: '贴图通道详解与生成提示词', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
       ]
     }
