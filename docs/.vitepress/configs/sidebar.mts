@@ -22,6 +22,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: 'MIMIBlender',
       items: [
         { text: '基础信息', link: '/newbie/MIMIBlender/BaseInfo/BaseInfo' },
+        { text: '蓝图节点:快速跨IB渲染', link: '/newbie/MIMIBlender/FastCrossIBRender/FastCrossIBRender' },
         { text: '四种贴图指定：YYSLS 实例', link: '/newbie/MIMIBlender/texture-assignment/texture-assignment' },
         { text: '投影TEXCOORD2.xy', link: '/newbie/MIMIBlender/ProjectTEXCOORD2/ProjectTEXCOORD2' },
         { text: '平滑法线存TEXCOORD1.xy', link: '/newbie/MIMIBlender/SmoothNormalToTEXCOORD1/SmoothNormalToTEXCOORD1' },
@@ -87,14 +88,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
-  '/games/gf2/': [
-    {
-      text: '少女前线2:追放',
-      items: [
-        { text: '模型删减与偏移', link: '/games/gf2/ModelReductionAndOffset/ModelReductionAndOffset' }
-      ]
-    }
-  ],
   '/games/identityv/': [
     {
       text: '第五人格',
@@ -110,15 +103,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         { text: '贴图通道详解与生成提示词', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
-      ]
-    }
-  ],
-  '/games/naraka/': [
-    {
-      text: '永劫无间',
-      items: [
-        { text: '基础信息', link: '/games/naraka/BaseInfo/BaseInfo' },
-        { text: '蓝图节点:快速跨IB渲染', link: '/games/naraka/FastCrossIBRender/FastCrossIBRender' },
       ]
     }
   ],

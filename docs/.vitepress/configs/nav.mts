@@ -51,9 +51,7 @@ export const nav: DefaultTheme.Config['nav'] = [
         { text: '明日方舟:终末地', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
       ] },
       { items: [
-        { text: '少女前线2:追放', link: '/games/gf2/ModelReductionAndOffset/ModelReductionAndOffset' },
         { text: '第五人格', link: '/games/identityv/ModCreationGuide/ModCreationGuide' },
-        { text: '永劫无间', link: '/games/naraka/BaseInfo/BaseInfo' },
       ] }
     ]
   }
