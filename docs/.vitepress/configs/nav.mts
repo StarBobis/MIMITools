@@ -48,14 +48,11 @@ export const nav: DefaultTheme.Config['nav'] = [
     items: [
       { items: [
         { text: '鸣潮', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
-        { text: '明日方舟:终末地', link: '/games/efmi/BaseInfo/BaseInfo' },
+        { text: '明日方舟:终末地', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
       ] },
       { items: [
-        { text: '燕云十六声', link: '/games/yysls/BaseInfo/BaseInfo' },
-        { text: '少女前线2:追放', link: '/games/gf2/BaseInfo/BaseInfo' },
-        { text: '第五人格', link: '/games/identityv/BaseInfo/BaseInfo' },
-        { text: 'Liar\'s Bar', link: '/games/liarsbar/BaseInfo/BaseInfo' },
-        { text: '异环', link: '/games/ntemi/BaseInfo/BaseInfo' },
+        { text: '少女前线2:追放', link: '/games/gf2/ModelReductionAndOffset/ModelReductionAndOffset' },
+        { text: '第五人格', link: '/games/identityv/ModCreationGuide/ModCreationGuide' },
         { text: '永劫无间', link: '/games/naraka/BaseInfo/BaseInfo' },
       ] }
     ]

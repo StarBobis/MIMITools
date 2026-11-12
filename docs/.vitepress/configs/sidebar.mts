@@ -78,7 +78,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '明日方舟:终末地',
       items: [
-        { text: '基础信息', link: '/games/efmi/BaseInfo/BaseInfo' },
         { text: 'd3dx.ini特殊变更', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
         { text: '贴图通道详解与生成提示词', link: '/games/efmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '贴图通道社区简表', link: '/games/efmi/TextureChannels/TextureChannels' },
@@ -88,21 +87,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
-  '/games/yysls/': [
-    {
-      text: '燕云十六声',
-      items: [
-        { text: '基础信息', link: '/games/yysls/BaseInfo/BaseInfo' },
-        { text: 'MIMIBlender 四种贴图指定', link: '/newbie/MIMIBlender/texture-assignment/texture-assignment' },
-        { text: '多个游戏主程序问题', link: '/games/yysls/InjectionIssue/InjectionIssue' }
-      ]
-    }
-  ],
   '/games/gf2/': [
     {
       text: '少女前线2:追放',
       items: [
-        { text: '基础信息', link: '/games/gf2/BaseInfo/BaseInfo' },
         { text: '模型删减与偏移', link: '/games/gf2/ModelReductionAndOffset/ModelReductionAndOffset' }
       ]
     }
@@ -111,18 +99,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '第五人格',
       items: [
-        { text: '基础信息', link: '/games/identityv/BaseInfo/BaseInfo' },
         { text: 'Mod制作指引', link: '/games/identityv/ModCreationGuide/ModCreationGuide' },
         { text: '新版Mod制作基础', link: '/games/identityv/NeoX3Guide/NeoX3Guide' }
-      ]
-    }
-  ],
-  '/games/liarsbar/': [
-    {
-      text: 'Liar\'s Bar',
-      items: [
-        { text: '基础信息', link: '/games/liarsbar/BaseInfo/BaseInfo' },
-        { text: '手枪模型问题', link: '/games/liarsbar/PistolModelIssue/PistolModelIssue' }
       ]
     }
   ],
@@ -132,14 +110,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         { text: '贴图通道详解与生成提示词', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
-      ]
-    }
-  ],
-  '/games/ntemi/': [
-    {
-      text: '异环',
-      items: [
-        { text: '相关介绍', link: '/games/ntemi/BaseInfo/BaseInfo' },
       ]
     }
   ],
