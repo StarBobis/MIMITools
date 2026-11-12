@@ -405,7 +405,6 @@ $swapkey0 = 0,1
 ## 12. 相关教程
 
 - [蓝图实现按键开关和按键切换](../SwitchAndToggle/SwitchAndToggle.md)
-- [YYSLS 基础配置](/games/yysls/BasicConfig/BasicConfig)
 - [贴图格式导致色差问题](/migoto/TextureFormatProblem/TextureFormatProblem)
 
 本文依据 MIMIBlender `1.0.80`、提交 `e2bf917bd30b4119eeea39b54496f87d407237cb` 的实际节点与 YYSLS 原生导出结果编写；以后节点行为变化时，应重新实测，尤其不要将旧版无槽位 Hash 的范围说明直接搬到新节点上。

@@ -48,6 +48,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '常见问题',
       items: [
         { text: '基础信息', link: '/newbie/faq/BaseInfo/BaseInfo' },
+        { text: 'GameBanana', link: '/newbie/faq/GameBanana/GameBanana' },
         { text: '常用办公软件在哪下载', link: '/newbie/faq/WhereGetSoftware/WhereGetSoftware' },
         { text: '模型从哪里获取', link: '/newbie/faq/WhereGetModels/WhereGetModels' },
         
@@ -92,7 +93,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '燕云十六声',
       items: [
         { text: '基础信息', link: '/games/yysls/BaseInfo/BaseInfo' },
-        { text: 'YYSLS基础配置', link: '/games/yysls/BasicConfig/BasicConfig' },
         { text: 'MIMIBlender 四种贴图指定', link: '/newbie/MIMIBlender/texture-assignment/texture-assignment' },
         { text: '多个游戏主程序问题', link: '/games/yysls/InjectionIssue/InjectionIssue' }
       ]
@@ -130,7 +130,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '鸣潮',
       items: [
-        { text: '基础信息', link: '/games/wwmi/BaseInfo/BaseInfo' },
         { text: '贴图通道详解与生成提示词', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
       ]

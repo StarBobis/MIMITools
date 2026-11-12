@@ -2,10 +2,6 @@
 
 对于 **异环** 来说，更推荐使用 **`.pak` 格式的 UE 重打包 Mod**，尽量避免直接依赖 **3Dmigoto**，因为后者往往会带来更多兼容性和使用上的问题。
 
-## GameBanana
-
-https://gamebanana.com/games/23012
-
 ## ssice-a 的 3Dmigoto 适配资源
 
 如果你仍然需要使用 3Dmigoto 相关方案，可以参考下面这些项目：
