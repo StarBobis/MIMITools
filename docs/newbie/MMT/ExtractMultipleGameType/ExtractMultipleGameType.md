@@ -36,7 +36,6 @@ MMT的提取模型方法是遍历识别每一种可能的数据类型，所以�
 
 到这里如果没能解决的话，就需要你将FrameAnalysis文件夹以及提取用的DrawIB发给我了，详情参考此文档：
 
-[找不到数据类型怎么办？](/newbie/MMT/CantFindDataType/CantFindDataType)
 
 
 ## 不知道DrawIB和Submesh是什么意思？

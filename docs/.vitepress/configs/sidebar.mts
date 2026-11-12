@@ -6,12 +6,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: 'MMT',
       items: [
-        { text: '什么是VSCheck', link: '/newbie/MMT/WhatIsVSCheck/WhatIsVSCheck' },
-        //CantUse3DmigotoInjector
-        { text: '无法使用3Dmigoto注入器?', link: '/newbie/MMT/CantUse3DmigotoInjector/CantUse3DmigotoInjector' },
-        //无法注入3Dmigoto
-        { text: '无法注入3Dmigoto?', link: '/newbie/MMT/CantInject3Dmigoto/CantInject3Dmigoto' },
-        { text: '找不到数据类型', link: '/newbie/MMT/CantFindDataType/CantFindDataType' },
+        { text: '注入3Dmigoto常见问题', link: '/newbie/MMT/InjectionFAQ/InjectionFAQ' },
         { text: '提取模型有多个数据类型', link: '/newbie/MMT/ExtractMultipleGameType/ExtractMultipleGameType' },
         { text: 'Dump文件过大处理', link: '/newbie/MMT/DumpFileTooHuge/DumpFileTooHuge' },
       ]
@@ -36,7 +31,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '常用工具',
       items: [
-        { text: 'ComfyUI贴图工作流', link: '/newbie/tools/ComfyUITexture/ComfyUITexture' },
         { text: 'Paint.NET工具介绍', link: '/newbie/tools/PaintDotNet/PaintDotNet' },
         { text: 'Paint.NET Modify Channels插件', link: '/newbie/tools/ModifyChannelPlugin/ModifyChannelPlugin' },
         { text: 'PhotoShop', link: '/newbie/tools/PhotoShop/PhotoShop' },
@@ -54,44 +48,38 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: '模型从哪里获取', link: '/newbie/faq/WhereGetModels/WhereGetModels' },
         
       ]
-    }
-  ],
-  '/other/reverse/': [
-    {
-      text: 'Mod逆向',
-      items: [
-        { text: '功能介绍', link: '/other/reverse/Welcome/Welcome' },
-        { text: 'MMT介绍', link: '/other/reverse/MMTIntroduction/MMTIntroduction' },
-        { text: 'MMT激活方式', link: '/other/reverse/MMTActivation/MMTActivation' },
-        { text: '形态键面板Mod格式转换演示', link: '/other/reverse/ShapeKeyPanelModDemo/ShapeKeyPanelModDemo' },
-        { text: '手动逆向', link: '/other/reverse/ManualReverse/ManualReverse' },
-        { text: '一键格式转换后如何导入 Blender', link: '/other/reverse/ImportToBlender/ImportToBlender' },
-        { text: '排除并筛选正确的数据类型', link: '/other/reverse/FilterDataTypes/FilterDataTypes' },
-        { text: 'Mod模型里没有脸部模型?', link: '/other/reverse/NoFaceModel/NoFaceModel' },
-        { text: 'MMT常见问题', link: '/other/reverse/MMTFAQ/MMTFAQ' },
-        { text: '四种Mod逆向方式区别', link: '/other/reverse/ReverseMethodComparison/ReverseMethodComparison' },
-        { text: '骨骼: 逆向出来自带骨骼', link: '/other/reverse/ReverseWithBones/ReverseWithBones' },
-      ]
-    }
-  ],
-  '/games/efmi/': [
-    //D3dxIniChanges
+    },
     {
       text: '明日方舟:终末地',
       items: [
-        { text: 'd3dx.ini特殊变更', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
-        { text: '贴图通道社区简表', link: '/games/efmi/TextureChannels/TextureChannels' },
-        { text: '如何注入3Dmigoto', link: '/games/efmi/HowToConfigAndInject/HowToConfigAndInject' },
-        { text: '头发生成Mod后炸裂', link: '/games/efmi/HairModBroken/HairModBroken' },
-        { text: 'Hash风格贴图无法生效', link: '/games/efmi/HashStyleTextureNotWork/HashStyleTextureNotWork' }
+        { text: 'd3dx.ini特殊变更', link: '/newbie/faq/efmi/D3dxIniChanges/D3dxIniChanges' },
+        { text: '如何注入3Dmigoto', link: '/newbie/faq/efmi/HowToConfigAndInject/HowToConfigAndInject' },
+        { text: '头发生成Mod后炸裂', link: '/newbie/faq/efmi/HairModBroken/HairModBroken' },
+        { text: 'Hash风格贴图无法生效', link: '/newbie/faq/efmi/HashStyleTextureNotWork/HashStyleTextureNotWork' }
       ]
-    }
-  ],
-  '/games/wwmi/': [
+    },
     {
       text: '鸣潮',
       items: [
-        { text: '版本更新后贴图炸裂修复', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
+        { text: '版本更新后贴图炸裂修复', link: '/newbie/faq/wwmi/HowToFixTextureBug/HowToFixTextureBug' }
+      ]
+    }
+  ],
+  '/newbie/reverse/': [
+    {
+      text: 'Mod逆向',
+      items: [
+        { text: '功能介绍', link: '/newbie/reverse/Welcome/Welcome' },
+        { text: 'MMT介绍', link: '/newbie/reverse/MMTIntroduction/MMTIntroduction' },
+        { text: 'MMT激活方式', link: '/newbie/reverse/MMTActivation/MMTActivation' },
+        { text: '形态键面板Mod格式转换演示', link: '/newbie/reverse/ShapeKeyPanelModDemo/ShapeKeyPanelModDemo' },
+        { text: '手动逆向', link: '/newbie/reverse/ManualReverse/ManualReverse' },
+        { text: '一键格式转换后如何导入 Blender', link: '/newbie/reverse/ImportToBlender/ImportToBlender' },
+        { text: '排除并筛选正确的数据类型', link: '/newbie/reverse/FilterDataTypes/FilterDataTypes' },
+        { text: 'Mod模型里没有脸部模型?', link: '/newbie/reverse/NoFaceModel/NoFaceModel' },
+        { text: 'MMT常见问题', link: '/newbie/reverse/MMTFAQ/MMTFAQ' },
+        { text: '四种Mod逆向方式区别', link: '/newbie/reverse/ReverseMethodComparison/ReverseMethodComparison' },
+        { text: '骨骼: 逆向出来自带骨骼', link: '/newbie/reverse/ReverseWithBones/ReverseWithBones' },
       ]
     }
   ],

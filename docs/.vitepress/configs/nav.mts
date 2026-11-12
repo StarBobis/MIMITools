@@ -8,7 +8,7 @@ export const nav: DefaultTheme.Config['nav'] = [
     items: [
       {
         text: 'MMT',
-        link: '/newbie/MMT/WhatIsVSCheck/WhatIsVSCheck'
+        link: '/newbie/MMT/InjectionFAQ/InjectionFAQ'
       },
       {
         text: 'MIMIBlender',
@@ -27,29 +27,13 @@ export const nav: DefaultTheme.Config['nav'] = [
         link: '/newbie/tools/PaintDotNet/PaintDotNet'
       },
       {
+        text: 'Mod逆向',
+        link: '/newbie/reverse/Welcome/Welcome'
+      },
+      {
         text: 'FAQ',
         link: '/newbie/faq/BaseInfo/BaseInfo'
       },
     ]
   },
-  {
-    text: '附加功能',
-    activeMatch: '/other/',
-    items: [
-      {
-        text: 'Mod逆向',
-        link: '/other/reverse/Welcome/Welcome'
-      },
-    ]
-  },
-  {
-    text: '游戏配置',
-    activeMatch: '/games/',
-    items: [
-      { items: [
-        { text: '鸣潮', link: '/games/wwmi/HowToFixTextureBug/HowToFixTextureBug' },
-        { text: '明日方舟:终末地', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
-      ] },
-    ]
-  }
 ]
