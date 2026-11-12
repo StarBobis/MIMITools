@@ -88,15 +88,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
-  '/games/identityv/': [
-    {
-      text: '第五人格',
-      items: [
-        { text: 'Mod制作指引', link: '/games/identityv/ModCreationGuide/ModCreationGuide' },
-        { text: '新版Mod制作基础', link: '/games/identityv/NeoX3Guide/NeoX3Guide' }
-      ]
-    }
-  ],
   '/games/wwmi/': [
     {
       text: '鸣潮',

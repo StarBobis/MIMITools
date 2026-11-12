@@ -10,4 +10,4 @@
 | 第五人格 | `IdentityV` / `IdentityV2` / `IdentityVNeoX3` | [第五人格](https://gamebanana.com/games/19670) |
 | 异环 | `NTEMI` | [异环](https://gamebanana.com/games/23012) |
 
-第五人格的预设需按客户端和引擎版本选择，具体配置参见[Mod制作指引](/games/identityv/ModCreationGuide/ModCreationGuide)和[新版Mod制作基础](/games/identityv/NeoX3Guide/NeoX3Guide)。
+第五人格的预设需按客户端和引擎版本选择。

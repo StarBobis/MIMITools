@@ -50,9 +50,6 @@ export const nav: DefaultTheme.Config['nav'] = [
         { text: '鸣潮', link: '/games/wwmi/TextureChannelGuide/TextureChannelGuide' },
         { text: '明日方舟:终末地', link: '/games/efmi/D3dxIniChanges/D3dxIniChanges' },
       ] },
-      { items: [
-        { text: '第五人格', link: '/games/identityv/ModCreationGuide/ModCreationGuide' },
-      ] }
     ]
   }
 ]
