@@ -17,6 +17,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: 'MIMIBlender',
       items: [
         { text: '基础信息', link: '/newbie/MIMIBlender/BaseInfo/BaseInfo' },
+        { text: '各游戏的 COLOR 类型记录', link: '/newbie/MIMIBlender/color-types/color-types' },
         { text: '蓝图节点:快速跨IB渲染', link: '/newbie/MIMIBlender/FastCrossIBRender/FastCrossIBRender' },
         { text: '四种贴图指定：YYSLS 实例', link: '/newbie/MIMIBlender/texture-assignment/texture-assignment' },
         { text: '投影TEXCOORD2.xy', link: '/newbie/MIMIBlender/ProjectTEXCOORD2/ProjectTEXCOORD2' },
