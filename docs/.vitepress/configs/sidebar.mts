@@ -7,6 +7,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: 'MMT',
       items: [
         { text: '注入3Dmigoto常见问题', link: '/newbie/MMT/InjectionFAQ/InjectionFAQ' },
+        { text: '贴图标记用法', link: '/newbie/MMT/MarkTexture/MarkTexture' },
         { text: '提取模型有多个数据类型', link: '/newbie/MMT/ExtractMultipleGameType/ExtractMultipleGameType' },
         { text: 'Dump文件过大处理', link: '/newbie/MMT/DumpFileTooHuge/DumpFileTooHuge' },
       ]
