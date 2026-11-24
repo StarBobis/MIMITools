@@ -1,5 +1,9 @@
 # MMT常见问题
 
+## MMT 打不开，提示缺少 WebView2
+
+启动时提示缺少运行时，或禁用 Edge 相关组件后打不开 MMT，可以按[缺失WebView2导致无法打开软件如何处理](../../MMT/WebView2Startup/WebView2Startup.md)排查。
+
 ## 我从老版本MMT、DBMT、SSMT升级到新版MMT(MIMITools)是否需要重新赞助或者重新激活？
 不需要，我开发的所有3Dmigoto系列工具都是附带老用户激活的，激活绑定主板，只要你不换主板就可以直接下载最新版使用。
 

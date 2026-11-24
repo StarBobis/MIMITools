@@ -6,6 +6,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: 'MMT',
       items: [
+        { text: '缺失WebView2导致无法打开软件如何处理', link: '/newbie/MMT/WebView2Startup/WebView2Startup' },
         { text: '注入3Dmigoto常见问题', link: '/newbie/MMT/InjectionFAQ/InjectionFAQ' },
         { text: '贴图标记用法', link: '/newbie/MMT/MarkTexture/MarkTexture' },
         { text: '提取模型有多个数据类型', link: '/newbie/MMT/ExtractMultipleGameType/ExtractMultipleGameType' },
